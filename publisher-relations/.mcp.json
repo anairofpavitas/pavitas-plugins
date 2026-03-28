@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "gmail": {
+      "type": "url",
+      "url": "https://gmail.mcp.claude.com/mcp",
+      "note": "Publisher email communications, contract threads"
+    },
+    "notion": {
+      "type": "url",
+      "url": "https://mcp.notion.com/mcp",
+      "note": "Audiobook Projects database for project context per publisher"
+    },
+    "box": {
+      "type": "url",
+      "url": "https://mcp.box.com",
+      "note": "File delivery to publishers"
+    }
+  }
+}

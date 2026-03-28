@@ -1,0 +1,24 @@
+{
+  "mcpServers": {
+    "notion": {
+      "type": "url",
+      "url": "https://mcp.notion.com/mcp",
+      "note": "Audiobook Projects database, Chapters database, Littlebird Log"
+    },
+    "google-calendar": {
+      "type": "url",
+      "url": "https://gcal.mcp.claude.com/mcp",
+      "note": "Studio calendar for recording blocks and deadlines"
+    },
+    "gmail": {
+      "type": "url",
+      "url": "https://gmail.mcp.claude.com/mcp",
+      "note": "Publisher communications, delivery confirmations"
+    },
+    "box": {
+      "type": "url",
+      "url": "https://mcp.box.com",
+      "note": "File delivery to publishers, script storage"
+    }
+  }
+}

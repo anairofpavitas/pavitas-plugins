@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "notion": {
+      "type": "url",
+      "url": "https://mcp.notion.com/mcp",
+      "note": "Littlebird Log for pattern storage and project tracking"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "google-calendar": {
+      "type": "url",
+      "url": "https://gcal.mcp.claude.com/mcp",
+      "note": "All 4 calendars: Primary, Studio, Cultural Events, Colin's shared"
+    },
+    "gmail": {
+      "type": "url",
+      "url": "https://gmail.mcp.claude.com/mcp",
+      "note": "Email triage, VIP monitoring, awaiting-reply tracking"
+    },
+    "notion": {
+      "type": "url",
+      "url": "https://mcp.notion.com/mcp",
+      "note": "Littlebird Log, Littlebird Database, Tasks database"
+    }
+  }
+}

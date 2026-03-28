@@ -1,0 +1,7 @@
+{
+  "name": "daily-ops",
+  "description": "Daily workflow orchestration for Pavi Proczko. Morning briefings with parallel data gathering (4 calendars, email triage, Notion tasks, Littlebird Log), session handoffs between web and CLI, mid-day inbox triage, quick task capture to Notion, and end-of-day reviews. Uses the 3-3-3 method for task organization and Cora-style intelligent email processing.",
+  "version": "1.0.0",
+  "author": "Pavitas Productions",
+  "keywords": ["briefing", "daily", "productivity", "handoff", "tasks", "email"]
+}

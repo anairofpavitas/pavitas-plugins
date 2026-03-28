@@ -1,0 +1,41 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "pavitas-plugins",
+  "version": "1.0.0",
+  "description": "Custom plugin suite for Pavitas Productions LLC",
+  "owner": {
+    "name": "Pavitas Productions"
+  },
+  "plugins": [
+    {
+      "name": "audiobook-production",
+      "description": "End-to-end audiobook production: script analysis, recording prep, QC, delivery, invoicing",
+      "source": "./audiobook-production",
+      "category": "productivity"
+    },
+    {
+      "name": "daily-ops",
+      "description": "Daily workflow orchestration: briefings, handoffs, email triage, task capture, day reviews",
+      "source": "./daily-ops",
+      "category": "productivity"
+    },
+    {
+      "name": "publisher-relations",
+      "description": "Publisher relationship management: email intake, invoicing, status tracking, reply drafting",
+      "source": "./publisher-relations",
+      "category": "productivity"
+    },
+    {
+      "name": "creative-writing",
+      "description": "Story Grid fiction toolkit: scene analysis, mentor submissions, prose cleaning, dictation processing",
+      "source": "./creative-writing",
+      "category": "productivity"
+    },
+    {
+      "name": "fiber-arts-content",
+      "description": "Crochet documentation and Instagram content for @pavi.spins.yarns",
+      "source": "./fiber-arts-content",
+      "category": "productivity"
+    }
+  ]
+}
