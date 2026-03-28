@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "pavitas-plugins",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Custom plugin suite for Pavitas Productions LLC",
   "owner": {
     "name": "Pavitas Productions"
@@ -35,6 +35,18 @@
       "name": "fiber-arts-content",
       "description": "Crochet documentation and Instagram content for @pavi.spins.yarns",
       "source": "./fiber-arts-content",
+      "category": "productivity"
+    },
+    {
+      "name": "enterprise-search",
+      "description": "Customized cross-tool search across email, chat, docs, and wikis",
+      "source": "./enterprise-search",
+      "category": "productivity"
+    },
+    {
+      "name": "writing-workshop",
+      "description": "Customized writing workshop plugin",
+      "source": "./writing-workshop",
       "category": "productivity"
     }
   ]

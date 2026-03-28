@@ -1,0 +1,8 @@
+{
+  "name": "writing-workshop",
+  "version": "1.0.0",
+  "description": "A guided writing plugin that interviews you through scenes and drafts, then compiles your answers into prose matched to your project's style. Includes writing-interview (extract drafts through conversation) and style-mirror (analyze and reproduce your prose style).",
+  "author": {
+    "name": "Pavi Proczko"
+  }
+}
