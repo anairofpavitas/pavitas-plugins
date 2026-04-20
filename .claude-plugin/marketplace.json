@@ -44,6 +44,12 @@
       "category": "productivity"
     },
     {
+      "name": "spins-yarns-content",
+      "description": "Weekly @pavi.spins.yarns social content generation (2 IG posts + 1 Threads post) from Notion Littlebird crochet brief + Perplexity trends, with Canva visual assets",
+      "source": "./spins-yarns-content",
+      "category": "productivity"
+    },
+    {
       "name": "enterprise-search",
       "description": "Customized cross-tool search across email, chat, docs, and wikis",
       "source": "./enterprise-search",
