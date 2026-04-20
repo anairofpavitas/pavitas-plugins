@@ -2,6 +2,8 @@
   "name": "publisher-relations",
   "description": "Centralized publisher relationship management for Pavitas Productions LLC. Stores publisher profiles (contacts, rates, payment terms, delivery preferences), processes incoming publisher emails to extract action items, generates invoices with stored billing data, tracks active projects per publisher, and drafts all outgoing communications in Biz Mode (full review before sending). Works with Aethon, Podium, Recorded Books, Blackstone, Portal Books, Audible direct, and others.",
   "version": "1.0.0",
-  "author": "Pavitas Productions",
+  "author": {
+    "name": "Pavitas Productions"
+  },
   "keywords": ["publisher", "invoice", "client", "communications", "narration"]
 }

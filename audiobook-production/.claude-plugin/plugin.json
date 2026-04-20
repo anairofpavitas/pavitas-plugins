@@ -2,6 +2,8 @@
   "name": "audiobook-production",
   "description": "End-to-end audiobook production management for Pavitas Productions LLC. Handles project onboarding (script analysis, folder setup, Notion population, calendar milestones), active recording session prep, QC pack generation, pickup tracking, and project delivery. Designed for professional audiobook narrator workflow at $350 PFH with punch-and-roll technique.",
   "version": "1.0.0",
-  "author": "Pavitas Productions",
+  "author": {
+    "name": "Pavitas Productions"
+  },
   "keywords": ["audiobook", "narration", "production", "recording", "QC"]
 }
