@@ -1,6 +1,6 @@
 # Pavitas Productions Plugin Suite
 
-Five custom Claude Code / Cowork plugins designed for Pavi Proczko's audiobook narration business, creative work, and personal projects.
+Nine custom Claude Code / Cowork plugins designed for Pavi Proczko's audiobook narration business, creative work, and personal projects.
 
 ## Installation
 
@@ -14,6 +14,10 @@ claude plugin install daily-ops@pavitas-plugins
 claude plugin install publisher-relations@pavitas-plugins
 claude plugin install creative-writing@pavitas-plugins
 claude plugin install fiber-arts-content@pavitas-plugins
+claude plugin install pavitas-content@pavitas-plugins
+claude plugin install spins-yarns-content@pavitas-plugins
+claude plugin install enterprise-search@pavitas-plugins
+claude plugin install writing-workshop@pavitas-plugins
 ```
 
 ## Plugin Overview
@@ -25,7 +29,11 @@ claude plugin install fiber-arts-content@pavitas-plugins
 | **publisher-relations** | 4 | — | 1 | Gmail, Notion, Box |
 | **creative-writing** | 5 | 2 | — | Notion |
 | **fiber-arts-content** | 4 | — | — | Notion |
-| **TOTAL** | **22** | **9** | **1** | — |
+| **pavitas-content** | 1 | 1 | 1 | Notion |
+| **spins-yarns-content** | 1 | 1 | 1 | Notion, Canva |
+| **enterprise-search** | 2 | — | 3 | Slack/Discord, Gmail, Drive/Box, Wiki, PM, CRM |
+| **writing-workshop** | — | — | 4 | — |
+| **TOTAL** | **26** | **11** | **10** | — |
 
 ## All Commands Quick Reference
 
@@ -60,6 +68,19 @@ claude plugin install fiber-arts-content@pavitas-plugins
 - `/fiber-arts-content:log` — Save to Notion + crochet/ folder
 - `/fiber-arts-content:post` — Instagram draft for @pavi.spins.yarns
 - `/fiber-arts-content:project` — Track active crochet projects
+
+### Pavitas Content (audiobook brand social)
+- `/pavitas-content:weekly` — Weekly @pavitasproductions drop: 1 image/carousel (IG+FB) + 1 short-form video script (TikTok+Shorts), drafted from Notion inputs
+
+### Spins Yarns Content (crochet brand social)
+- `/spins-yarns-content:weekly` — Weekly @pavi.spins.yarns drop: 2 IG posts + 1 Threads post, drafted from today-dated Littlebird crochet brief + Perplexity trends, with Canva visual assets
+
+### Enterprise Search
+- `/enterprise-search:search` — Cross-tool search across email, chat, docs, wikis in one query
+- `/enterprise-search:digest` — Daily or weekly activity digest across connected sources
+
+### Writing Workshop
+Skill-only plugin (no slash commands) — `writing-interview`, `writing-nudge`, `project-setup`, `style-mirror`
 
 ## Shared Dependencies
 
