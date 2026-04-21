@@ -1,15 +1,15 @@
 ---
-description: Generate this week's @pavi.spins.yarns content drop. Pulls today-dated Littlebird crochet brief + Perplexity crochet trends from the Spinning Yarns Notion DB, drafts 2 Instagram posts + 1 Threads post, generates visual assets in Canva, and posts everything back to Notion as one structured page. Autonomous — no intermediate review step. Never invents projects; if fewer than 3 workable topics exist, produces fewer posts and flags the gap.
+description: Generate this week's @pavi.spins.yarns content drop. Pulls today-dated Littlebird crochet brief + Perplexity crochet trends from the Pavi Spins Yarns Notion DB, drafts 2 Instagram posts + 1 Threads post, generates visual assets in Canva, and posts everything back to Notion as one structured page. Autonomous — no intermediate review step. Never invents projects; if fewer than 3 workable topics exist, produces fewer posts and flags the gap.
 ---
 
-# Spinning Yarns Weekly Content Generation
+# Pavi Spins Yarns Weekly Content Generation
 
 Fully autonomous. Gather → pick → draft → generate visuals → post → report. Flag problems, don't pause for permission. Quality over cadence — never fabricate craft details.
 
 ## Phase 1 — Gather
 
 Spawn the `spins-yarns-intel` agent. It returns a structured brief with:
-- Littlebird crochet brief (today-dated, from Spinning Yarns Content DB)
+- Littlebird crochet brief (today-dated, from Pavi Spins Yarns Content DB)
 - Perplexity crochet trends (today-dated, from same DB)
 - Workable topic inventory + count
 
@@ -87,7 +87,7 @@ For each post that needs a visual (typically both IG posts; Threads optional):
 2. Use the visual brief as the design prompt. Specify:
    - Format: IG square (1080×1080) or carousel (2–6 slides, 1080×1350 or 1080×1080)
    - Text overlays if any (exact copy from the brief)
-   - Any brand elements (Spinning Yarns wordmark if available in assets)
+   - Any brand elements (Pavi Spins Yarns wordmark if available in assets)
 3. Generate the design (e.g. `generate-design` or `generate-design-structured`), then export it (`export-design`) to a shareable format.
 4. Capture the Canva design URL and/or export URL — both go into the Notion row under "Visual Assets".
 

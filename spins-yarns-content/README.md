@@ -1,6 +1,6 @@
-# Spins Yarns Content Plugin
+# Pavi Spins Yarns Content Plugin
 
-Weekly social content generation for @pavi.spins.yarns (Spinning Yarns with Pavi) — the crochet / fiber arts account.
+Weekly social content generation for @pavi.spins.yarns (Pavi Spins Yarns) — the crochet / fiber arts account.
 
 Distinct from `pavitas-content` (audiobook narration brand) and from the older `fiber-arts-content` plugin (pattern transcription, project logs, one-off drafts). This plugin is the **weekly automated drop**: gather inputs → pick angles → draft → generate visuals in Canva → post to Notion.
 
@@ -8,7 +8,7 @@ Distinct from `pavitas-content` (audiobook narration brand) and from the older `
 
 | Command | What it does |
 |---------|-------------|
-| `/spins-yarns-content:weekly` | Generate this week's content drop (2 Instagram posts + 1 Threads post). Autonomous — pulls Littlebird crochet brief + Perplexity crochet trends from Notion, picks angles, drafts posts, generates Canva visual assets, and posts everything back to the Spinning Yarns Notion DB as a single structured page. |
+| `/spins-yarns-content:weekly` | Generate this week's content drop (2 Instagram posts + 1 Threads post). Autonomous — pulls Littlebird crochet brief + Perplexity crochet trends from Notion, picks angles, drafts posts, generates Canva visual assets, and posts everything back to the Pavi Spins Yarns Notion DB as a single structured page. |
 
 ## Skills
 
@@ -20,7 +20,7 @@ Distinct from `pavitas-content` (audiobook narration brand) and from the older `
 
 ## Connectors
 
-- **Notion** (via `.mcp.json`) — Spinning Yarns Content DB (source + destination)
+- **Notion** (via `.mcp.json`) — Pavi Spins Yarns Content DB (source + destination)
 - **Canva** — Used at runtime to generate visual assets. Requires the Canva connector to be active in your claude.ai setup (tools surface as `mcp__claude_ai_Canva__*`).
 
 ## Source / destination DB

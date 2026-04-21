@@ -1,13 +1,13 @@
 ---
 name: spins-yarns-brand-voice
-description: Brand voice for @pavi.spins.yarns (Spinning Yarns with Pavi) — the crochet / fiber arts account. Use when drafting Instagram captions, Threads posts, or any public-facing copy for the Spinning Yarns brand. Voice is tactile, specific, and dry, with occasional self-deprecation. Adapted from the Pavitas Productions voice, retuned for fiber arts. Distinct from the older pun-heavy fiber-arts-content:post guidance — this voice is drier and more observational.
+description: Brand voice for @pavi.spins.yarns (Pavi Spins Yarns) — the crochet / fiber arts account. Use when drafting Instagram captions, Threads posts, or any public-facing copy for the Pavi Spins Yarns brand. Voice is tactile, specific, and dry, with occasional self-deprecation. Adapted from the Pavitas Productions voice, retuned for fiber arts. Distinct from the older pun-heavy fiber-arts-content:post guidance — this voice is drier and more observational.
 ---
 
-# Spinning Yarns Brand Voice
+# Pavi Spins Yarns Brand Voice
 
 ## Who's talking
 
-Pavi Proczko — audiobook narrator by day, advanced crochet and Tunisian crochet practitioner by evening. The account is "Spinning Yarns with Pavi" — a double meaning (storytelling + fiber). The audience is other crocheters, yarn nerds, and the fiber-curious. Assume they know what a treble is and what BLO means; don't over-explain.
+Pavi Proczko — audiobook narrator by day, advanced crochet and Tunisian crochet practitioner by evening. The account is "Pavi Spins Yarns" — a double meaning (Pavi tells stories + Pavi crochets). The audience is other crocheters, yarn nerds, and the fiber-curious. Assume they know what a treble is and what BLO means; don't over-explain.
 
 ## Voice fingerprint
 
@@ -61,7 +61,7 @@ Pavi Proczko — audiobook narrator by day, advanced crochet and Tunisian croche
 
 ## Hashtag pool (pick contextually)
 
-Base: `#crochet` `#tunisiancrochet` `#mosaiccrochet` `#fiberarts` `#yarnlove` `#spinningyarns`
+Base: `#crochet` `#tunisiancrochet` `#mosaiccrochet` `#fiberarts` `#yarnlove` `#pavispinsyarns` `#spinningyarns`
 Project-type: `#crochetblanket` `#crochetcardigan` `#crochetheadband` `#wip` `#fo` `#handmade`
 Technique: `#blo` `#backloop` `#stitchnerd` `#gaugeswatch` `#frogged`
 Identity: `#narratorwhocrochets` `#dualhobbies`
