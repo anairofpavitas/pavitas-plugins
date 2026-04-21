@@ -1,7 +1,7 @@
 {
   "name": "fiber-arts-content",
   "description": "Crochet project documentation and Instagram content creation for @pavi.spins.yarns (Spinning Yarns). Transcribes patterns from video/web sources, formats as standard crochet patterns (PDF), stores in Notion and organized crochet/ folder, tracks active projects (waistband, offset cardigan, landscape blanket), and drafts Instagram posts blending narration identity with fiber arts. Advanced crochet and Tunisian crochet practitioner context.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": {
     "name": "Pavitas Productions"
   },
