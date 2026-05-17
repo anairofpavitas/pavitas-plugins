@@ -15,6 +15,26 @@ reference file updates, and debrief-driven edits all get logged here.
 
 ---
 
+## [1.3.0] — 2026-05-17
+
+### Changed
+- **pocket-hunt** — Refinement release merging improvements developed with
+  the skill in Perplexity back into the canonical version. Trigger
+  description expanded with explicit phrases ("pocket hunt", "quick hunt",
+  "noticing walk", "start a hunt", "let's hunt", "take me on a walk") so the
+  skill fires more reliably. The end-of-hunt feedback loop now classifies
+  into three buckets instead of two — this-hunt only / forever preference
+  (memory) / skill update (file edit) — with durable taste preferences saved
+  to Supermemory rather than forcing a file edit. New explicit rule that
+  seed prompts always precede clues and are never baked into clue 1; the
+  hunt flow is reordered so summary/confirmation happens before seeds. Adds
+  a Tooling section mapping each hunt beat to a Claude-native tool
+  (WebSearch, WebFetch, Claude in Chrome, Supermemory, canvas-design,
+  pdf/docx, scheduled-tasks). rungs.md: rung 4 (combinatorial) now reminds
+  Claude to keep a running role tally in chat between clue stretches.
+
+---
+
 ## [1.2.0] — 2026-05-17
 
 ### Added
