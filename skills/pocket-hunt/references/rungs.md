@@ -69,7 +69,7 @@ Project shapes (pick one at intake or let it emerge):
 - **Vignette / shelf moment** — 3–5 objects that compose into a small visual arrangement at home. Centerpiece, vessel, scent, scatter, weird object.
 - **Sensory pairing** — a meal/snack/drink composition. Hero ingredient, contrast, garnish, vessel.
 
-The find isn't the project — the **assembly is**. Clue language reflects this: each find is a *role*, and Claude tracks which roles are filled.
+The find isn't the project — the **assembly is**. Clue language reflects this: each find is a *role*, and Claude tracks which roles are filled (keep a running role tally in chat between clue stretches).
 
 - **Verbs:** find, get, buy, gather, combine
 - **Seeds:** themed, photographed

@@ -1,6 +1,6 @@
 ---
 name: pocket-hunt
-description: Run lightweight on-the-go scavenger hunts for presence anchoring on a walk, bike, or trip — solo, with companions, or with dogs. Use for pocket hunt, quick hunt, or noticing walk requests.
+description: Run lightweight on-the-go scavenger hunts for presence anchoring on a walk, bike, or trip — solo, with companions, or with dogs. Triggers include "pocket hunt", "quick hunt", "noticing walk", "start a hunt", "let's hunt", or "take me on a walk". Distinct from scavenger-hunt-designer (pre-planned event-style hunts).
 ---
 
 # Pocket hunts
@@ -15,7 +15,7 @@ The skill is built around three foundational principles. These override anything
 
 **2. Override anywhere, anytime.** The user can change the hunt at any point: downgrade, upgrade, skip a clue, regenerate the current one, start fresh, add or remove a companion, name their own seed, end early, switch hunt shape. Accept and adapt without resistance. Don't ask "are you sure?" Don't suggest staying the course. Don't push back. Their instinct in the moment is more authoritative than the plan.
 
-**3. Feedback loop.** Feedback can come mid-hunt or at the end. The classification of feedback (one-hunt vs forever) is the debrief's job, never mid-hunt.
+**3. Feedback loop.** Feedback can come mid-hunt or at the end. The classification of feedback is the debrief's job, never mid-hunt.
 
 **Mid-hunt feedback:** acknowledge briefly, apply to the current hunt if applicable, bank the raw feedback as-is. Don't classify, don't ask follow-up questions about scope, don't derail into meta-conversation. Return to the hunt.
 
@@ -23,8 +23,11 @@ The skill is built around three foundational principles. These override anything
 1. Recap each piece of banked feedback the user gave during the hunt.
 2. For each one, ask whether it's a forever change or just for this hunt.
 3. Ask if there's any additional feedback that didn't come up during the walk.
-4. Classify each final item: **this-hunt only** (already applied, no further action), **future-hunt** (remember next time), or **skill update** (actual file edit).
-5. Offer to make any skill updates now, or save for later.
+4. Classify each final item into one of three buckets:
+   - **this-hunt only** — already applied, no further action
+   - **forever preference (memory)** — a durable taste/pattern preference that should color all future hunts but doesn't require a structural file edit. Save to Supermemory via `mcp__mcp-supermemory-ai__memory` (e.g. "Remember that I prefer found-object combinatorial hunts over commercial gift bags").
+   - **skill update (file edit)** — an actual structural or rule change to the skill. Edit the relevant `SKILL.md` or references file.
+5. Apply memory updates immediately at the user's OK. Offer to apply skill file edits now, or save them for later.
 
 The user is the only one who can correctly classify forever-vs-temporary, and they usually need distance from the hunt to do it well. The debrief is where that distance lives. Never try to classify in-flight.
 
@@ -69,12 +72,12 @@ Lead with: rung, range, companion. Those three shape everything else. Then envir
 Once intake is gathered, do a quick research pass before generating the first clue. Light, focused, not exhaustive.
 
 **Always research:**
-- Weather for the next few hours at the user's location
+- Weather for the next few hours at the user's location — `WebSearch` for forecast, or `WebFetch` against a weather source if a precise read is needed
 - Day of week + time of day implications (what's open, what's quiet, what's busy)
 
 **Research if relevant to the hunt:**
-- Specific neighborhood landscape (shops, parks, cafes) when the user named one
-- Wider Chicago-area events (street fairs, festivals, farmers markets, public events) when the user is exploring widely or hasn't picked a neighborhood — especially May–October
+- Specific neighborhood landscape (shops, parks, cafes) when the user named one — `WebSearch` with tight queries like *"Portage Park Chicago independent shops"* or *"yarn store Andersonville Chicago"*
+- Wider Chicago-area events (street fairs, festivals, farmers markets, public events) when the user is exploring widely or hasn't picked a neighborhood — especially May–October. *"Chicago events this weekend"*
 - Specific shop types when the user names them ("yarn stores," "ceramics," "specialty art supplies")
 
 **Ambient context the user can request anytime:**
@@ -89,9 +92,11 @@ Bake research into seed prompts and clue mechanics naturally. Don't dump researc
 
 ## The hunt flow
 
-**1. Generate seeds.** 3 seed prompts, varied patterns from `references/seed-prompts.md`, adapted to environment and rung. Solo prompts for solo hunts. Conversation prompts for engaged human companions. Mixed for dog companions. Photographing each seed is required for rung 2+. The user shares back text descriptions (authoritative) and optional photos. Text wins if they conflict.
+**1. Summary + confirmation.** After intake, summarize the hunt in 4–6 lines: rung, shape, range, companion, duration, named end state if any. Wait for user confirmation before sending seed prompts.
 
-**2. Summary + confirmation.** After intake and seeds, summarize the hunt in 4–6 lines: rung, shape, range, companion, duration, named end state if any. Wait for user confirmation before generating clues.
+**2. Generate seeds.** 3 seed prompts, varied patterns from `references/seed-prompts.md`, adapted to environment and rung. Solo prompts for solo hunts. Conversation prompts for engaged human companions. Mixed for dog companions. Photographing each seed is required for rung 2+. The user shares back text descriptions (authoritative) and optional photos. Text wins if they conflict.
+
+**Seeds always come before clues. Never bake seed prompts into clue 1.** Send the seed prompts first as a standalone message. The user works through them and returns with their three seeds. Only then do you generate the first clue stretch, built around what they found. The seeds are the lens; clues come second.
 
 **3. Generate clue stretches.** 1–3 clues at a time. Each clue follows the two-stage structure (where to go + what to do/find). Use path-aware clue mechanics when there's distance to cover — instructions on what to notice between points, not just at the destination. Rung determines verbs (notice / photograph / find / acquire / combine).
 
@@ -105,8 +110,8 @@ Bake research into seed prompts and clue mechanics naturally. Don't dump researc
    - Recap banked feedback from during the hunt
    - For each banked item, ask: forever or just this hunt?
    - Ask if there's any additional feedback that didn't come up during the walk
-   - Classify final feedback set (this-hunt only / future-hunt / skill update)
-   - Offer to apply skill updates now or save for later
+   - Classify final feedback set (this-hunt only / forever preference / skill update)
+   - Apply forever preferences via Supermemory immediately (with the user's OK). Offer to apply skill file edits now or save for later.
 
 If a destination-with-delivery hunt: also ask how the delivery went. Light, curious, no scoring.
 
@@ -120,6 +125,20 @@ See `references/side-quests.md` for the catalog. Conditions for offering:
 - Context fits (e.g., "person you know in the area" needs commercial access for gift items; "pit stop" needs nearby cafes/bars)
 
 Don't deploy more than one side quest per hunt unless the user requests another. Skippable without consequence — skip, generate the next regular clue.
+
+---
+
+## Tooling
+
+Map each beat to the right tool. Be invisible about tool choice — the user is on a walk, they want clues, not infrastructure.
+
+- **Weather + day-of context:** `WebSearch` for a quick forecast. `WebFetch` if you need a precise read from a specific weather source.
+- **Neighborhood research / open-now / events:** `WebSearch` with tight 2–5 word queries. Prefer this over rendering a full page.
+- **Specific shop check (hours, status, menu):** `WebFetch` against the URL. Escalate to Claude in Chrome (`mcp__Claude_in_Chrome__*`) only if the page is JS-rendered or requires interaction.
+- **Photos from the user:** the user attaches photos directly in chat. Read them with the file tools. **Text descriptions remain authoritative** — never override the user's naming based on what the photo looks like.
+- **Forever preferences from the debrief:** `mcp__mcp-supermemory-ai__memory`, written from Pavi's perspective ("Remember that I prefer found-object hunts in residential environments").
+- **Closing artifacts (if the user wants one):** photo collage or visual via `canvas-design` skill, social posts as drafts in chat, journal pages via the `pdf` or `docx` skill. Always offer, never force.
+- **Scheduling a recurring hunt prompt** (e.g., weekly Sunday morning nudge): `mcp__scheduled-tasks__create_scheduled_task`. Only on user request.
 
 ---
 
