@@ -15,6 +15,25 @@ reference file updates, and debrief-driven edits all get logged here.
 
 ---
 
+## [1.2.0] — 2026-05-17
+
+### Added
+- **pleasure-hunt** — Miniaturized intimate scavenger hunt skill for sexual
+  pleasure, intimacy, and exploration, built for gay men. Companion to
+  pocket-hunt and scavenger-hunt-designer; lightweight like the former but
+  generated entirely upfront like the latter's pre-built mode. Four modes
+  (solo / partner / group / cruising), four boundary tiers (low / medium /
+  high / extreme), include/exclude/dealer's-choice equipment handling, a
+  user-named-or-Claude-suggested activity option, a three-beat escalation
+  arc with an optional elegant-exit beat, optional timer-paced clues, and
+  discreet dating-app integration. Three foundational principles: the user
+  holds the controls, consent and enthusiasm are the engine, and discretion
+  and safety woven in without preaching. Includes a living long-horizon goal
+  ledger (practices to deepen, not a checklist). SKILL.md + 5 reference files
+  (boundary-tiers, equipment, long-horizon-goals, hunt-modes, clue-patterns).
+
+---
+
 ## [1.1.0] — 2026-05-11
 
 ### Added
