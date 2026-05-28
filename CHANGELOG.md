@@ -10,6 +10,18 @@ Version numbers are independent from the skills version sequence.
 
 ## [Unreleased]
 
+### Changed
+- **audiobook-production** (`/new-project`) — Agent 4 (calendar-setup) now
+  pulls events from primary, Events, and Colin's calendars before placing
+  recording blocks, treats opaque events as hard blocks (transparent banners
+  don't), and shifts within the same day rather than skipping days when a
+  morning conflict exists. Final placement is re-verified for overlap and
+  unavoidable conflicts are surfaced to Pavi.
+- **audiobook-production** (`/new-project`) — Agent 2 (production-tracker) now
+  sets `Work Date` on each chapter record to match the per-day chapter
+  assignment produced by Agent 4. Standby status string corrected to match
+  the actual Notion option ("Standing By").
+
 ---
 
 ## [1.2.0] — [DATE — fill in]
