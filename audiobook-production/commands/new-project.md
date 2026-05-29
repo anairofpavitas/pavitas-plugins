@@ -1,5 +1,5 @@
 ---
-description: Full parallel project onboarding for a new audiobook. Analyzes script, creates folder structure, populates Notion databases, sets calendar milestones, and drafts publisher confirmation email.
+description: Full parallel project onboarding for a new audiobook. Analyzes script, creates folder structure, populates Notion databases, and drafts publisher confirmation email.
 ---
 
 # New Audiobook Project Setup
@@ -10,31 +10,31 @@ Run this command when Pavi receives a new audiobook project. This orchestrates t
 
 Ask Pavi for:
 1. **Script file** — PDF or DOCX uploaded or path provided
-2. **Book short name** — Suggest based on title (first letters of each word, e.g., "Defiance of the Fall" → DotF). For series, append book number (e.g., Exlian5)
+2. **Book short name** — Suggest based on title (first letters of each word, e.g., "Defiance of the Fall" → DotF). For series, append book number (e.g., Exlian5). Use the user's chosen short name VERBATIM in all downstream operations (no spacing/case modifications).
 3. **Publisher** — Check Notion Audiobook Projects for existing publisher records
-4. **Deadline** — Recording window and final delivery date
+4. **Project dates** — Start date and end date for the recording window. The END date is BOTH the last recording day AND the delivery day (it's a valid recording day, not a buffer).
 5. **Rate** — Default $350 PFH unless specified otherwise
 
 ## Parallel Execution Plan
 
-Spawn these sub-agents simultaneously:
+Spawn these three sub-agents simultaneously:
 
 ### Agent 1: script-scout
 - Analyze uploaded script for chapter structure
 - Extract word count (excluding front/back matter)
-- Detect chapters, prologues, epilogues, interludes
-- Generate file naming convention: `[###]_[ShortName]_[Chapter Title]`
-- No subtitles in file names — header only
-- Output: chapter list with page counts, file names, total word count
+- Detect chapters, prologues, epilogues, interludes, opening billboards
+- Generate file names per `skills/audiobook-script-analyzer/SKILL.md` § "File Naming Convention" — that document is the source of truth. Key rules: opening billboard = `000`, first section = `001`, three-digit zero-padded sequential, short name VERBATIM, subtitles stripped, no "Chapter" prefix when header is just a number, POV indicator retained on POV-split duplicates.
+- Output: chapter list with page counts, file names, total word count, plus a billboard entry (000) if one is present in the project folder
 
 ### Agent 2: production-tracker
 - Search Notion Audiobook Projects for existing book record
 - If found: update fields (short title, word count, manuscript pages)
-- If not found: create new record with Status = "Standby" (or "Standing By" — match the actual DB option)
+- If not found: create new record with Status = "Standing By" (the actual Notion option)
 - Create chapter records in Notion Chapters database
-  - Each chapter: record name, quantity of pages, Status = "Record"
+  - **Record Name = file name from script-scout output** (full file name, e.g., `001_LoopBound1_Chapter 1` — NOT just the chapter heading)
+  - Set Numbers, Pages, Chapter Word count, Status = "Record"
   - Relate each chapter to the parent book record
-- **Assign `Work Date` on each chapter record** to match the recording schedule produced by Agent 4 (calendar-setup). Each chapter's Work Date = the calendar day Pavi is recording it. Distribute chapters across the recording window in the same order they appear in the book.
+- **Distribute Work Dates across weekdays.** Using the book record's `Dates` field (start → end), generate all weekdays in the range (Mon–Fri, both endpoints inclusive as valid recording days). Distribute chapter records across those weekdays roughly evenly by page count, in chapter order. Algorithm spec: `skills/audiobook-script-analyzer/SKILL.md` § "Distribute chapters across workdays". This runs automatically — no user gate, no Google Calendar involvement.
 
 ### Agent 3: folder-setup
 - Create standardized folder structure:
@@ -45,22 +45,14 @@ Spawn these sub-agents simultaneously:
   └── CRX/
   ```
 
-### Agent 4: calendar-setup
-- **BEFORE creating any events:** pull all events from Pavi's other calendars (primary `pavi@paviproczko.com`, Events `c_fb4b7a14c6d341ed9afa87061b525156db2058eaab394d54c349211cc5c26106@group.calendar.google.com`, Colin's `colin.t.funk@gmail.com`, plus Bookings & Rehearsal if accessible) across the full recording window. Treat any opaque (non-transparent) event as a hard block. Transparent all-day banners (NYC Potential, Camp Run A Pup, MCA Free Day) don't block.
-- Plan recording blocks that avoid those conflicts. Default Pavi's recording window to 10 AM–12 PM CT when clear; shift the same day if a morning conflict exists rather than skipping the day.
-- Create recording block events on Studio Schedule calendar (`paviproczko.com_pvq1muo01o05os0nvnq4tqrkko@group.calendar.google.com`)
-- Set delivery deadline event with 48-hour warning reminder
-- After placement, **re-verify no overlap** with primary/Events/Colin's calendars; report any unavoidable conflicts to Pavi instead of silently leaving them
-- Output the final per-day chapter assignment back to Agent 2 so chapter Work Dates can be populated
-- If deadline is tight (< 2 weeks for > 100k words), flag it
-
 ## After All Agents Complete
 
 1. **Generate QC spreadsheet** — Excel file with chapter rows (title, file name, page count)
 2. **Present summary** to Pavi for review:
    - Total word count → estimated finished hours (word count ÷ 9,300 = approx PFH)
-   - Chapter count
-   - Recording window with deadline
+   - Chapter count (including billboard if present)
+   - Recording window: start → end (end = delivery day)
+   - Per-day chapter distribution (so Pavi can sanity-check the schedule before it ships in Notion)
    - Estimated invoice amount (PFH × rate)
 3. **Draft publisher confirmation email** — confirm receipt of manuscript, recording window, expected delivery date
 4. Present email draft in Biz Mode (full review before sending)

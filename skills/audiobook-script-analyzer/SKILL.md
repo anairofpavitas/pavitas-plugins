@@ -32,26 +32,51 @@ Analyze audiobook scripts to extract chapter structure, generate file naming con
 
 Format: `[File Number]_[Book Short Name]_[Chapter Title]`
 
-- **File Number**: Three digits, starting at 001, incrementing sequentially
-  - Prologue = 001, Chapter 1 = 002 (if prologue exists)
-  - Interludes increment the count: Ch7 = 007, Interlude = 008, Ch8 = 009
-  - Epilogue follows last chapter number
-  
-- **Book Short Name**: Use EXACTLY as user provides — no modifications
-  - User says "DotF16" → use "DotF16"
-  - User says "Exlian Syndrome 5" → use "Exlian Syndrome 5"
-  - User says "Obelisk" → use "Obelisk"
-  - NEVER shorten, abbreviate, or adjust the short name in any way
+### File Number — three digits, zero-padded
 
-- **Chapter Title**: Header only, no subtitles
-  - Keep as appears: "Chapter Seven" or "Chapter 7" based on source
-  - Remove invalid filename characters (: / \ < > " | ? *)
+- **`000`** — Opening billboard, if the publisher provides one. Detect by scanning the project folder for `billboards*.pdf` or similar before numbering begins. Most major publishers (Aethon, Podium, Recorded Books, Blackstone, Audible direct) supply a billboard.
+- **`001`** — First chapter or section. This might be a Prologue, Chapter 1, Introduction, or whatever appears first in the manuscript.
+- Increments by 1 for every recorded item in the order it appears in the manuscript.
+- **Sections include** Prologues, Epilogues, Interludes, Introductions, Afterwords, Parts/Acts — anything delineated as its own section (typically by bold or title-styled text). Always include these in the numbering sequence in source order.
+- File number is NOT the same as chapter number when non-chapter sections exist. Example with billboard + prologue: `000_Billboard, 001_Prologue, 002_Chapter 1, 003_Chapter 2…`
 
-Examples:
+### Book Short Name — verbatim
+
+- Use the short name **exactly** as the user provided, preserving spaces, case, and punctuation.
+- User says "Loop Bound 1" → `Loop Bound 1` (with spaces, if that's what they wrote) OR `LoopBound1` (no spaces, if that's what they wrote). Do not transform.
+- User says "DotF16" → `DotF16`
+- User says "Exlian Syndrome 5" → `Exlian Syndrome 5`
+- NEVER shorten, abbreviate, strip spaces, change case, or otherwise modify the short name.
+
+### Chapter/Section Title — header only
+
+- Use the title text as it appears in the manuscript.
+- **Strip subtitles.** Anything after a delimiter (`:`, `—`, `-`) following the main header is a subtitle and gets removed.
+  - `Chapter 1: A dark day` → `Chapter 1`
+  - `Chapter 7 — The Long Climb` → `Chapter 7`
+  - `Epilogue: What's to Come` → `Epilogue`
+- **If the header is only a number, do NOT add the word "Chapter".**
+  - Source `3` → `3` (file name fragment), full file name `003_Pretend Book 2_3`
+- **Special section names stand alone:** `Prologue`, `Epilogue`, `Interlude`, `Introduction`, `Afterword`, `Billboard`.
+- **POV-split duplicates** (e.g., dual-POV books where Ch 19 splits into Logan and Alyndra POV chapters): retain the POV indicator so each file name is unique. `Chapter 19` and `Chapter 19 Alyndra` are distinct chapter titles, both valid. Flag the user for confirmation.
+- Remove invalid filename characters: `: / \ < > " | ? *`
+
+### Examples
+
+Standard book (no billboard):
 - `001_DotF16_Prologue`
 - `002_DotF16_Chapter One`
 - `015_Exlian Syndrome 4_Interlude`
 - `048_Stray Cat Strut 7_Epilogue`
+
+Book with publisher billboard:
+- `000_LoopBound1_Billboard`
+- `001_LoopBound1_Chapter 1`
+- `036_LoopBound1_Epilogue`
+
+Book where chapter headers are just numbers:
+- `001_Pretend Book 3_1`
+- `069_Pretend Book 3_Epilogue`
 
 ## Chapter Detection
 
@@ -85,10 +110,12 @@ Create page in Audiobook Projects with:
 - `Status`: "Standing By"
 
 ### 3. Create chapters
-For each chapter, create page in Chapters database:
+For each chapter (including the billboard at 000 if present), create page in Chapters database:
 - Data source: `collection://a9ad76f7-aa1c-4423-9c7b-71905a721958`
-- `Chapter Title`: Chapter header as it appears
-- `Pages`: Page count for that chapter
+- `Chapter Title` (Notion title property): full **file name** from this analysis (e.g., `001_LoopBound1_Chapter 1`). NOT just the chapter heading. The file name IS the Notion record name.
+- `Numbers`: file number (0 for billboard, 1+ for sections in appearance order)
+- `Pages`: page count for that chapter
+- `Chapter Word count`: word count for that chapter
 - `Project`: Relation to the audiobook record
 - `Status`: "Record"
 
@@ -100,23 +127,24 @@ If book already exists, ALWAYS check and update these fields:
 
 Update any that are empty or have different values than the analysis.
 
-### 5. Distribute chapters across workdays (optional)
+### 5. Distribute chapters across workdays (default)
 
-When user wants work dates assigned to chapters:
+Runs automatically during project onboarding. Skip only if the user explicitly opts out. This is the single source of truth for the recording schedule — no Google Calendar duplication.
 
 **Prerequisites:**
-- Book record must have `Dates` field populated (start and end date)
-- Book record has calculated `Pages per day` field
+- Book record must have `Dates` field populated (start_date, end_date)
+- `Pages per day` is **optional**. If present on the book record (formula or manual override), use it as the daily target. If absent, auto-compute: `target = ceil(total_pages / weekday_count)`.
 
 **Algorithm:**
-1. Get date range from book's `Dates` field (start → end)
-2. Generate list of weekdays only (Monday-Friday) within that range — skip weekends
-3. Get `Pages per day` target from book record
-4. Assign chapters to workdays in chronological order:
-   - For each weekday, add chapters until cumulative pages ≥ pages-per-day target
+1. Get date range from book's `Dates` field (start_date → end_date)
+2. Generate weekdays (Mon–Fri) from start_date through end_date INCLUSIVE. **Both endpoints are valid recording days** — the end_date is BOTH the last recording day AND the delivery day. Skip Saturdays and Sundays.
+3. Determine `target` pages-per-day (see Prerequisites above)
+4. Assign chapters to workdays in chronological order (by `Numbers` field):
+   - For each weekday, add chapters until cumulative pages ≥ target
    - Move to next weekday and repeat
    - Continue until all chapters are assigned
 5. Update each chapter's `Work Date` field
+6. Verify: every chapter has a Work Date, none falls on a weekend, last Work Date ≤ end_date
 
 **Example:**
 - Book dates: January 6-16, 2026

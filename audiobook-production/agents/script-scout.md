@@ -17,12 +17,16 @@ You are a specialized sub-agent for audiobook narration preparation. Your job is
 - Handle chapter headers that are: written out ("Chapter Seven"), numeric ("Chapter 7"), graphical (flag for manual review)
 
 ### File Naming
-Format: `[###]_[ShortName]_[Chapter Title]`
-- Three-digit sequential numbering starting at 001
-- Prologue offsets Chapter 1 to 002
-- Interludes increment the count (Ch7 = 007, Interlude = 008, Ch8 = 009)
-- Header only — no subtitles
-- Sanitize invalid filename characters (: / \ < > " | ? *)
+File naming follows `skills/audiobook-script-analyzer/SKILL.md` § "File Naming Convention" — that document is the source of truth. Do not redefine the convention here; follow it.
+
+Key rules summary (refer to SKILL.md for full detail and examples):
+- Format: `[File Number]_[Book Short Name]_[Chapter Title]`
+- File Number: three-digit zero-padded. **Opening billboard = `000`** (if the publisher provides one — detect by scanning the project folder for `billboards*.pdf` or similar). **First chapter/section = `001`**, sequential by appearance.
+- Sections include Prologues, Epilogues, Interludes, Introductions, Afterwords, Parts/Acts — number them in source order alongside chapters.
+- Book Short Name: VERBATIM as the user provides it. Never modify spacing, case, or punctuation. "Loop Bound 1" stays "Loop Bound 1"; "DotF16" stays "DotF16".
+- Chapter Title: header only, subtitles stripped (anything after `:`, `—`, `-`). When the header is only a number, omit the word "Chapter" (e.g., source `3` → file fragment `3`).
+- POV-split duplicates: retain the POV indicator so each file name is unique (e.g., `019_Book_Chapter 19` and `020_Book_Chapter 19 Alyndra`). Flag the user.
+- Sanitize invalid filename characters (`: / \ < > " | ? *`).
 
 ### Character & Voice Research
 When asked for narration prep (not during onboarding):
