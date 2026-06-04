@@ -10,6 +10,43 @@ Version numbers are independent from the skills version sequence.
 
 ## [Unreleased]
 
+### Changed
+- **audiobook-production** (`/new-project`, `agents/production-tracker`) —
+  Chapter Work Date distribution now runs automatically during onboarding as
+  a default step. Distributes chapters by page count across all weekdays
+  (Mon–Fri) in the book's `Dates` range; both start_date and end_date are
+  valid recording days (end_date is BOTH the last recording day and the
+  delivery day). Spec lives in
+  `skills/audiobook-script-analyzer/SKILL.md` § "Distribute chapters across
+  workdays". `Standing By` status string corrected to the actual Notion
+  option.
+- **audiobook-production** (`agents/production-tracker`) — Chapter `Record
+  Name` now stores the full file name (e.g.,
+  `001_LoopBound1_Chapter 1`), not the chapter heading alone. Fixes a
+  long-standing mistranslation where script-scout produced correct file
+  names but production-tracker wrote only the chapter heading into Notion.
+- **audiobook-script-analyzer** — "Distribute chapters across workdays"
+  promoted from optional to default. `Pages per day` field no longer
+  required; auto-computed from `ceil(total_pages / weekday_count)` when
+  absent. Algorithm clarified: both endpoints of the `Dates` range are
+  valid recording days.
+- **audiobook-script-analyzer** — File Naming Convention expanded. Opening
+  billboards numbered `000`; first chapter or section starts at `001`. When
+  a chapter header is only a number, omit the word "Chapter". POV-split
+  duplicates retain their POV indicator as the unique differentiator. Short
+  name rule reinforced: use VERBATIM as the user provides it, never modify
+  spacing or case.
+- **audiobook-production** (`agents/script-scout`) — File Naming section
+  now points to `skills/audiobook-script-analyzer/SKILL.md` as the single
+  source of truth rather than redefining the convention.
+
+### Removed
+- **audiobook-production** (`/new-project`) — Agent 4 (calendar-setup) and
+  all Google Calendar event creation from the onboarding flow. Notion
+  `Work Date` is now the single source of truth for the recording schedule;
+  Pavi views it via Notion's calendar view. Eliminates drift between
+  Google Calendar and Notion.
+
 ---
 
 ## [1.2.0] — [DATE — fill in]
