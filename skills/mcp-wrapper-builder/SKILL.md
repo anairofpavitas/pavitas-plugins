@@ -2,7 +2,7 @@
 name: mcp-wrapper-builder
 description: Build a new MCP server wrapper hosted on paviproczko.zo.space so external tools (Perplexity, Claude.ai, Little Bird) can connect to a Zo-mediated service. Use when Pavi says "make an MCP wrapper", "wrap X as an MCP server", "new MCP proxy", "expose X to Perplexity/Little Bird", or similar. Runs from Claude.ai chat, operating Zo through the Zo Computer MCP proxy (Claude reasons; Zo executes). Two avenues — (1) OAuth-shim-backed (Perplexity-compatible, the default) and (2) standard URL-only. Handles slug generation, the JSON-RPC scaffold, the OAuth shim wiring, smoke testing, doc updates, and post-deploy connection troubleshooting.
 metadata:
-  author: paviproczko.zo.computer
+  author: paviproczko.zo.space
   runs_from: claude.ai chat via the "Zo Computer" MCP proxy
 ---
 # MCP Wrapper Builder

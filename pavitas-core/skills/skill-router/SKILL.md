@@ -13,9 +13,9 @@ Match the user's goal to ONE profile. Read that profile's skills. Do not read ot
 | Goal signal | Profile | Load |
 |---|---|---|
 | Morning greeting, "what's on today", "brief me" | morning-review | `pavitas-core:morning-review` (calls `pavitas-core:decision-framework` by reference) |
-| New book, script uploaded, "new audiobook project" | audiobook-kickoff | `pavitas-core:audiobook-kickoff` → `audiobook-script-analyzer`, `audiobook-project-setup`, `business-documentation`, `publisher-relations:publisher-profiles` |
-| Invoice, contract, publisher correspondence | biz-admin | `business-documentation`, `publisher-relations:publisher-profiles` |
-| Fiction drafting, "interview me", Jim & Percy, Story Grid work | story-session | `pavitas-core:story-session` → `writing-workshop:*` as directed |
+| New book, script uploaded, "new audiobook project" | audiobook-kickoff | `pavitas-core:audiobook-kickoff` → `audiobook-script-analyzer`, `audiobook-project-setup` (Cowork-native), `business-documentation` |
+| Invoice, contract, client correspondence | biz-admin | `business-documentation` |
+| Fiction drafting, "interview me", Jim & Percy, Story Grid work | story-session | `pavitas-core:story-session` (self-contained — interview and style-matching are inlined) |
 | Social post, caption, content batch | content-pipeline | `pavitas-core:content-pipeline` → ONE brand voice (pavitas xor spins-yarns) |
 | Zo work, MCP, automation, repo, skill maintenance | infra-session | `pavitas-core:infra-session` → `mcp-wrapper-builder`, `autoresearch` as needed |
 | Scavenger hunt (planned group/date event) | play | `scavenger-hunt-designer` |
@@ -34,3 +34,17 @@ Match the user's goal to ONE profile. Read that profile's skills. Do not read ot
 - The three hunt skills are distinct systems, not variants. Route by the signals above; if ambiguous, ask which flavor.
 - If no profile matches, proceed with constraints only. Don't force a skill onto a task that doesn't need one.
 - Loading a profile means reading the orchestrator's SKILL.md; the orchestrator names which leaves to read and when. Don't pre-load leaves the orchestrator hasn't called for.
+
+## Coverage manifest
+
+Every installed skill must appear in this list with a routing home. A skill not listed here is invisible to the system — when installing or removing a skill, update this manifest in the same change. Any audit of the ecosystem starts by diffing installed skills against this list.
+
+**pavitas-core (12):** skill-router (this file) · safety-rails, workspace-context, output-quality (always-on constraints) · morning-review, audiobook-kickoff, story-session, content-pipeline, infra-session (orchestrators) · handoff, decision-framework, proof (direct-routed).
+
+**User skills (9):** audiobook-script-analyzer, audiobook-project-setup, business-documentation (audiobook-kickoff / biz-admin) · mcp-wrapper-builder, autoresearch (infra-session) · scavenger-hunt-designer, pocket-hunt, pleasure-hunt (play) · relational-emotional-regulation (support).
+
+**Brand plugins (2):** pavitas-content:pavitas-brand-voice, spins-yarns-content:spins-yarns-brand-voice (content-pipeline). Pending: fiber-arts-content merges into spins-yarns-content; until merged it has no route and must not load.
+
+**Environment notes:** audiobook-project-setup is Cowork-native (needs Mac filesystem access); from Claude.ai, folder creation happens on Zo instead — see audiobook-kickoff. autoresearch runs in Claude Code.
+
+**Removed — never reference:** writing-workshop (all four skills; interview/style-matching now live inside story-session), publisher-relations:publisher-profiles, enterprise-search (all three), daily-briefing, zo-workspace-orientation, design-elevation, humanize-prose (merged into output-quality).

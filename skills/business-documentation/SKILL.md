@@ -1,6 +1,6 @@
 ---
 name: business-documentation
-description: Generate consistent, professionally formatted business documents for Pavitas Productions audiobook narration services. Creates invoices, contracts, and other business documents with brand-consistent design. Use when creating invoices for clients like Blackstone or Portal Books, or when generating any business documents that need brand colors, logos, and consistent formatting.
+description: Generate consistent, professionally formatted business documents for Pavitas Productions audiobook narration services. Creates invoices, contracts, and other business documents with brand-consistent design. Use when creating invoices or any business documents that need brand colors, logos, and consistent formatting.
 ---
 
 # Business Documentation - Pavitas Productions
@@ -32,19 +32,13 @@ description: Generate consistent, professionally formatted business documents fo
 **Primary:** #394851 (slate), #f7f4eb (cream), #c7bca2 (beige)
 **Accent:** #666441 (olive), #793e2d (terracotta), #62403d (chocolate)
 
-## Client Profiles
+## Client Details
 
-**Blackstone Publishing**
-- **Address:** 31 Mistletoe Rd., Ashland, OR 97520
-- **Payment Terms:** Net 30
-- **Special Requirements:** None currently specified
-
-**Portal Books**
-[To be added: contact, address, payment terms, special requirements]
+No client data is stored in this skill. For every document, confirm with Pavi: client legal name, billing address, payment terms (default Net 30 if unspecified), and any delivery or formatting requirements. For prior-project context, check the Audiobook Projects DB (IDs in `pavitas-core:workspace-context`) — but billing details still get confirmed, never assumed from old records.
 
 ## Invoice Requirements
 
-**Critical:** ALWAYS use design-elevation skill for consistent visual formatting.
+**Critical:** Apply `pavitas-core:output-quality` (visual half) for consistent, elevated formatting.
 
 **Logo placement:**
 - **Header:** Use color wordmark logo in the centered header section
@@ -59,11 +53,13 @@ description: Generate consistent, professionally formatted business documents fo
 - Header with wordmark logo (centered)
 - Badge logo (top right corner)
 - Invoice number format: User-specified or PP-YYYY-MM-### (e.g., PP-2024-11-001)
-- Bill To section with client info from profiles
+- Bill To section with client info confirmed for this document
 - Service table: Description | Quantity (FH) | Rate (PFH) | Amount
-- Payment terms from client profile (default: Net 30)
+- Payment terms as confirmed (default: Net 30)
 - Payment methods: Only include if user specifies for this project
 - Footer: "Thank you for your business!"
+
+**Rate:** $350/PFH unless Pavi states otherwise — flag deviations (`pavitas-core:safety-rails`, Biz Mode).
 
 **Output:** .docx format by default. Filename: Invoice_[ClientName]_[ProjectName]_[Date].docx
 
@@ -73,9 +69,6 @@ description: Generate consistent, professionally formatted business documents fo
 
 **Creating invoices:**
 "Create an invoice for [Client] for [X] hours on [Project]"
-
-**Adding clients:**
-"Add [Publisher] to client profiles" - then ask for needed details and update this skill.
 
 **Design changes:**
 Update this skill document to apply changes to all future documents.

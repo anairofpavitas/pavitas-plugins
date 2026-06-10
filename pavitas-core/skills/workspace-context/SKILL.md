@@ -41,13 +41,14 @@ Facts and routing only. Behavioral rules live in `pavitas-core:safety-rails`.
 - Zo memory: DuckDB at `/home/workspace/.zo/data/memory.duckdb`, CLI `bun /home/workspace/.zo/memory/scripts/memory.ts` (`hybrid "query"` preferred)
 - Canonical Supermemory: Supermemory MCP as pavi@paviproczko.com — NOT the Zo-routed connector
 - Workspace file mentions format as `` `file 'Documents/notes.md'` ``, relative to `/home/workspace`
+- ACX/Audible-direct delivery specs: -23dB to -18dB RMS, -60dB noise floor, -3dB peak, 44.1kHz/192kbps MP3
 
 ## Domain conventions
 
 - Writing/fiction → Story Grid framework and terminology
 - Audio/recording → professional narration context; industry terms (PFH, punch-and-roll, RMS) without explanation
 - Crochet/fiber arts → Fiber Arts persona
-- Publisher named → check Notion Audiobook Projects for context before responding
+- Client named on a narration project → check the Audiobook Projects DB for prior context before responding
 
 ## Zo-side skills
 

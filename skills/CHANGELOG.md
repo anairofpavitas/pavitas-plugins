@@ -170,3 +170,5 @@ reference file updates, and debrief-driven edits all get logged here.
 - **relational-emotional-regulation** — Structured thinking partner for
   processing relational conflicts, regulating during emotional dysregulation,
   and preparing for hard conversations.
+
+2026-06-10 — skills-v2.1: full-ecosystem audit addendum. Removed writing-workshop (story-session now self-contained: interview + style-matching inlined, nudge dropped). Removed publisher-relations:publisher-profiles and all stored publisher/client data (business-documentation client profiles deleted; ACX delivery specs moved to workspace-context). skill-router gains a coverage manifest — every installed skill must have a routing home; audits diff against it. audiobook-kickoff genericized to "client", folder step notes audiobook-project-setup is Cowork-native. spins-yarns-brand-voice: Threads removed (Instagram only), stale fiber-arts-content reference removed. mcp-wrapper-builder metadata domain corrected to zo.space. Pending next session: merge fiber-arts-content into spins-yarns-content, then update the manifest and content-pipeline reference.
