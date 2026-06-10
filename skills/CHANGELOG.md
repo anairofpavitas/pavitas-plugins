@@ -39,6 +39,31 @@ reference file updates, and debrief-driven edits all get logged here.
 
 ---
 
+## [1.4.0] — 2026-06-03
+
+### Added
+- **mcp-wrapper-builder** — Claude-side port of the Zo-native skill for
+  standing up new MCP server wrappers on paviproczko.zo.space. Runs from
+  claude.ai chat, operating Zo through the Zo Computer MCP proxy (Claude
+  reasons; Zo executes mechanically — no second AI, never routed through
+  `ask_zo`). Two avenues: OAuth-shim-backed (default, Perplexity-compatible)
+  and standard URL-only. Retargets the execution layer from Zo-native calls
+  to `Zo Computer:*` proxy tools, with a deferred-tool preflight (tool_search
+  + schema verification) and an explicit two-wall model: Zo Secrets are
+  invisible to Claude and Claude's container is firewalled from zo.space, so
+  all site/secret/file actions route through the proxy, never Claude's local
+  bash. Slug generation done inline (gen-slugs.ts kept as the canonical word
+  list); smoke-test.sh materialized-if-absent onto Zo and run via
+  `Zo Computer:bash`. Doc/memory updates (MCP-Proxies.md, Connections-Index.md,
+  project_mcp_proxy.md) via proxy file tools plus a Supermemory save step.
+  Scaffold fix: `initialize` now echoes the client's requested
+  protocolVersion, falling back to the 2024-11-05 constant — affects only new
+  builds, existing proxies untouched. SKILL.md + 3 reference files
+  (json-rpc-scaffold, oauth-shim, troubleshooting) + 2 scripts (gen-slugs,
+  smoke-test).
+
+---
+
 ## [1.3.0] — 2026-05-17
 
 ### Changed
