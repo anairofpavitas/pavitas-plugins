@@ -11,6 +11,15 @@ Version numbers are independent from the skills version sequence.
 ## [Unreleased]
 
 ### Changed
+- **spins-yarns-content** v2.0.0 — absorbed fiber-arts-content. Gains
+  `/pattern`, `/log`, and `/project` commands (cleaned: stale hardcoded
+  project lists removed — the Notion Littlebird Log is the only project
+  source of truth) and a rewritten `/post` that defers entirely to the
+  `spins-yarns-brand-voice` skill. Old pun-heavy voice guidance deleted,
+  not migrated. Threads removed from `/weekly`, README, and plugin
+  metadata — the brand is Instagram-only (2 IG posts/week), aligning the
+  plugin with its own voice skill and content-pipeline's hard rule.
+  Marketplace manifest bumped to 1.3.0.
 - **audiobook-production** (`/new-project`, `agents/production-tracker`) —
   Chapter Work Date distribution now runs automatically during onboarding as
   a default step. Distributes chapters by page count across all weekdays
@@ -41,6 +50,9 @@ Version numbers are independent from the skills version sequence.
   source of truth rather than redefining the convention.
 
 ### Removed
+- **fiber-arts-content** — merged into spins-yarns-content (above). Its
+  `/post` voice guidance (pun-mandatory, engagement-bait closers,
+  #narratorlife) was superseded by `spins-yarns-brand-voice` and deleted.
 - **audiobook-production** (`/new-project`) — Agent 4 (calendar-setup) and
   all Google Calendar event creation from the onboarding flow. Notion
   `Work Date` is now the single source of truth for the recording schedule;

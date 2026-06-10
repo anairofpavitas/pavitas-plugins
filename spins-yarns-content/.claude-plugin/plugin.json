@@ -1,9 +1,9 @@
 {
   "name": "spins-yarns-content",
-  "description": "Weekly social content generation for @pavi.spins.yarns (Pavi Spins Yarns). Pulls the Littlebird crochet brief and Perplexity crochet trends from the Pavi Spins Yarns Notion database, picks the strongest angles for the week, drafts 2 Instagram posts + 1 Threads post, generates visual assets in Canva, and posts the weekly drop back to the Notion DB as one structured page. Voice is tactile, specific, and dry — distinct from the Pavitas Productions narration brand.",
-  "version": "1.0.0",
+  "description": "Content and craft documentation for @pavi.spins.yarns (Pavi Spins Yarns) — Instagram only. Weekly automated drop (2 Instagram posts from the Littlebird crochet brief + Perplexity trends, with Canva visual assets), one-off post drafting, crochet pattern transcription from video/web sources, project logging, and project status tracking via Notion Littlebird Log. Voice is tactile, specific, and dry — distinct from the Pavitas Productions narration brand. Absorbs the former fiber-arts-content plugin.",
+  "version": "2.0.0",
   "author": {
     "name": "Pavitas Productions"
   },
-  "keywords": ["crochet", "fiber-arts", "social", "instagram", "threads", "pavi-spins-yarns", "content", "canva"]
+  "keywords": ["crochet", "fiber-arts", "tunisian", "yarn", "social", "instagram", "pavi-spins-yarns", "content", "pattern", "canva"]
 }

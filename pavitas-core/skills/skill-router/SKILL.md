@@ -43,8 +43,8 @@ Every installed skill must appear in this list with a routing home. A skill not 
 
 **User skills (9):** audiobook-script-analyzer, audiobook-project-setup, business-documentation (audiobook-kickoff / biz-admin) · mcp-wrapper-builder, autoresearch (infra-session) · scavenger-hunt-designer, pocket-hunt, pleasure-hunt (play) · relational-emotional-regulation (support).
 
-**Brand plugins (2):** pavitas-content:pavitas-brand-voice, spins-yarns-content:spins-yarns-brand-voice (content-pipeline). Pending: fiber-arts-content merges into spins-yarns-content; until merged it has no route and must not load.
+**Brand plugins (2):** pavitas-content:pavitas-brand-voice, spins-yarns-content:spins-yarns-brand-voice (content-pipeline). spins-yarns-content also carries the crochet pattern/log/project commands (CLI-side; absorbed from fiber-arts-content 2026-06-10).
 
 **Environment notes:** audiobook-project-setup is Cowork-native (needs Mac filesystem access); from Claude.ai, folder creation happens on Zo instead — see audiobook-kickoff. autoresearch runs in Claude Code.
 
-**Removed — never reference:** writing-workshop (all four skills; interview/style-matching now live inside story-session), publisher-relations:publisher-profiles, enterprise-search (all three), daily-briefing, zo-workspace-orientation, design-elevation, humanize-prose (merged into output-quality).
+**Removed — never reference:** writing-workshop (all four skills; interview/style-matching now live inside story-session), publisher-relations:publisher-profiles, enterprise-search (all three), daily-briefing, zo-workspace-orientation, design-elevation, humanize-prose (merged into output-quality), fiber-arts-content (merged into spins-yarns-content — its old voice guidance is dead; spins-yarns-brand-voice is the only voice source).

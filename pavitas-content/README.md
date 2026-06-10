@@ -2,7 +2,7 @@
 
 Weekly social content generation for Pavitas Productions — audiobook narration work, craft reflection, LitRPG/progression/sci-fi genre presence.
 
-Distinct from `fiber-arts-content` (which handles @pavi.spins.yarns, the crochet side).
+Distinct from `spins-yarns-content` (which handles @pavi.spins.yarns, the crochet side).
 
 ## Commands
 

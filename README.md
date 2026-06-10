@@ -13,7 +13,6 @@ claude plugin install audiobook-production@pavitas-plugins
 claude plugin install daily-ops@pavitas-plugins
 claude plugin install publisher-relations@pavitas-plugins
 claude plugin install creative-writing@pavitas-plugins
-claude plugin install fiber-arts-content@pavitas-plugins
 claude plugin install pavitas-content@pavitas-plugins
 claude plugin install spins-yarns-content@pavitas-plugins
 claude plugin install enterprise-search@pavitas-plugins
@@ -28,9 +27,8 @@ claude plugin install writing-workshop@pavitas-plugins
 | **daily-ops** | 5 | 3 | — | Calendar, Gmail, Notion |
 | **publisher-relations** | 4 | — | 1 | Gmail, Notion, Box |
 | **creative-writing** | 5 | 2 | — | Notion |
-| **fiber-arts-content** | 4 | — | — | Notion |
 | **pavitas-content** | 1 | 1 | 1 | Notion |
-| **spins-yarns-content** | 1 | 1 | 1 | Notion, Canva |
+| **spins-yarns-content** | 5 | 1 | 1 | Notion, Canva |
 | **enterprise-search** | 2 | — | 3 | Slack/Discord, Gmail, Drive/Box, Wiki, PM, CRM |
 | **writing-workshop** | — | — | 4 | — |
 | **TOTAL** | **26** | **11** | **10** | — |
@@ -63,17 +61,15 @@ claude plugin install writing-workshop@pavitas-plugins
 - `/creative-writing:dictate` — Dictation transcript processing
 - `/creative-writing:stuck` — One actionable step to get unstuck
 
-### Fiber Arts & Content
-- `/fiber-arts-content:pattern` — Pattern transcription (video/web → PDF)
-- `/fiber-arts-content:log` — Save to Notion + crochet/ folder
-- `/fiber-arts-content:post` — Instagram draft for @pavi.spins.yarns
-- `/fiber-arts-content:project` — Track active crochet projects
-
 ### Pavitas Content (audiobook brand social)
 - `/pavitas-content:weekly` — Weekly @pavitasproductions drop: 1 image/carousel (IG+FB) + 1 short-form video script (TikTok+Shorts), drafted from Notion inputs
 
-### Spins Yarns Content (crochet brand social)
-- `/spins-yarns-content:weekly` — Weekly @pavi.spins.yarns drop: 2 IG posts + 1 Threads post, drafted from today-dated Littlebird crochet brief + Perplexity trends, with Canva visual assets
+### Spins Yarns Content (crochet brand, Instagram only)
+- `/spins-yarns-content:weekly` — Weekly @pavi.spins.yarns drop: 2 IG posts, drafted from today-dated Littlebird crochet brief + Perplexity trends, with Canva visual assets
+- `/spins-yarns-content:post` — One-off Instagram draft (defers to `spins-yarns-brand-voice`)
+- `/spins-yarns-content:pattern` — Pattern transcription (video/web → PDF or Notion)
+- `/spins-yarns-content:log` — Save pattern/project update to Notion + crochet/ folder
+- `/spins-yarns-content:project` — Track active crochet projects via Littlebird Log
 
 ### Enterprise Search
 - `/enterprise-search:search` — Cross-tool search across email, chat, docs, wikis in one query

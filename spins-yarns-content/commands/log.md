@@ -15,17 +15,17 @@ Quick save for pattern documents and project progress updates.
 
 ### Project Update
 "Log crochet update" → Create Littlebird Log entry with:
-- Which project (waistband, offset cardigan, landscape blanket, etc.)
+- Which project (by name — current projects live in the Littlebird Log, not this file)
 - What was accomplished
 - Any decisions made (stitch choices, color changes, modifications)
 - What's next
 
-## Active Projects Reference
+## Tagging
 
-- **Waistband**: Single crochet in back loop, worked vertically. Researching stretchy stitch options without elastic.
-- **Offset Cardigan**: In progress
-- **Landscape Blanket**: In progress
-- **Devil's Dance Floor Mosaic Blanket**: Pattern compiled into Notion
+- Pattern transcription → tag "Crochet Pattern"
+- Project update → tag "Crochet Project"
+- Technique notes → tag "Crochet Notes"
+- Instagram draft → tag "Spinning Yarns"
 
 ## Folder Organization
 
@@ -49,3 +49,4 @@ crochet/
 - Always specify article type for proper filing
 - Include stitch pattern details for future reference
 - Photos/images should be referenced by file path if available
+- Do not maintain a project list inside this command — query the Littlebird Log for current projects
