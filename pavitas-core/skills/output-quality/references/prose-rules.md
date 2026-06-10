@@ -1,13 +1,6 @@
----
-name: humanize-prose
-description: Apply anti-AI writing rules to prose output to strip generated-sounding patterns and produce human-quality reflective, personal, or essay-style writing. Triggers whenever writing prose, essays, reflections, personal narratives, or any long-form non-technical content. Use this skill automatically when asked to write, rewrite, polish, or edit any prose that should sound human and authentic — including essays, memoir, first-person reflection, blog posts, narration copy, or creative nonfiction. Also triggers when the user says "make this sound more human," "remove AI-isms," "this sounds generated," "strip the AI out of this," or similar. Apply proactively whenever writing prose even without explicit request — this skill should be the default mode for all non-technical writing.
----
+# Prose Rules — Full Reference
 
-# Humanize Prose
-
-Apply these rules to all prose output. They exist because LLMs produce predictable patterns that trained readers recognize immediately. Every item below is a failure mode to eliminate.
-
----
+Apply to all prose output. Every item is a known LLM failure mode that trained readers spot immediately.
 
 ## Sentence Structure
 

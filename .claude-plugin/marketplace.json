@@ -60,6 +60,12 @@
       "description": "Customized writing workshop plugin",
       "source": "./writing-workshop",
       "category": "productivity"
+    },
+    {
+      "name": "pavitas-core",
+      "description": "Core skill architecture: router, constraints (safety-rails, workspace-context, output-quality), orchestrators (morning-review, audiobook-kickoff, story-session, content-pipeline, infra-session), handoff, decision-framework, proof",
+      "source": "./pavitas-core",
+      "category": "productivity"
     }
   ]
 }

@@ -1,0 +1,6 @@
+{
+  "name": "pavitas-core",
+  "description": "Core skill architecture for Pavi's agent ecosystem: load-set router, always-on constraints (safety-rails, workspace-context, output-quality), and domain orchestrators (morning-review, audiobook-kickoff, story-session, content-pipeline, infra-session), plus handoff, decision-framework, and proof.",
+  "version": "2.0.0",
+  "author": { "name": "Pavi Proczko (Pavitas Productions)" }
+}

@@ -15,6 +15,30 @@ reference file updates, and debrief-driven edits all get logged here.
 
 ---
 
+## [2026-06-10] skills-v2 refactor — shipped as pavitas-core plugin v2.0.0
+
+### Added
+- pavitas-core plugin packaging (.claude-plugin/plugin.json); bundled skills namespaced as pavitas-core:<name>
+- skill-router (meta: goal → load-set dispatch)
+- safety-rails, workspace-context, output-quality (constraint layer)
+- audiobook-kickoff, story-session, content-pipeline, infra-session (orchestrators)
+
+### Changed
+- daily-briefing → morning-review (712→~70 lines; email triage delegated to Cora)
+- handoff trimmed 383→~80 lines, behavior preserved; universal handoff-offer rule added to safety-rails (substantive multi-step sessions)
+- decision-framework: Gmail references patched to Superhuman
+- zo-workspace-orientation → workspace-context (+ references/zo-skill-index.md)
+- design-elevation + humanize-prose → output-quality (+ references preserved)
+
+### Removed
+- enterprise-search ×3 (re-taught default behavior)
+- Duplicate plugin loader entries (enterprise-search, writing-workshop)
+
+### Reversed from audit
+- Hunt-family merge cancelled: three skills are distinct systems; router disambiguates instead.
+
+---
+
 ## [1.3.0] — 2026-05-17
 
 ### Changed
