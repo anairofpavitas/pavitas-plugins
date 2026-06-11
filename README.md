@@ -1,6 +1,8 @@
 # Pavitas Productions Plugin Suite
 
-Nine custom Claude Code / Cowork plugins designed for Pavi Proczko's audiobook narration business, creative work, and personal projects.
+Six custom Claude Code / Cowork plugins designed for Pavi Proczko's audiobook narration business, creative work, and personal projects.
+
+> **v2/v2.1 refactor (2026-06-10):** the suite consolidated from nine plugins to six. `publisher-relations`, `enterprise-search`, and `writing-workshop` were removed; `fiber-arts-content` merged into `spins-yarns-content` v2.0.0; the core skill architecture shipped as the `pavitas-core` plugin v2.0.0. History: [CHANGELOG.md](CHANGELOG.md) (plugins) and [skills/CHANGELOG.md](skills/CHANGELOG.md) (skills).
 
 ## Installation
 
@@ -11,27 +13,25 @@ claude plugin marketplace add [path-or-repo]/pavitas-plugins
 # Install individual plugins
 claude plugin install audiobook-production@pavitas-plugins
 claude plugin install daily-ops@pavitas-plugins
-claude plugin install publisher-relations@pavitas-plugins
 claude plugin install creative-writing@pavitas-plugins
 claude plugin install pavitas-content@pavitas-plugins
 claude plugin install spins-yarns-content@pavitas-plugins
-claude plugin install enterprise-search@pavitas-plugins
-claude plugin install writing-workshop@pavitas-plugins
+claude plugin install pavitas-core@pavitas-plugins
 ```
 
 ## Plugin Overview
 
-| Plugin | Commands | Agents | Skills | Connectors |
-|--------|----------|--------|--------|------------|
-| **audiobook-production** | 4 | 4 | — | Notion, Calendar, Gmail, Box |
-| **daily-ops** | 5 | 3 | — | Calendar, Gmail, Notion |
-| **publisher-relations** | 4 | — | 1 | Gmail, Notion, Box |
-| **creative-writing** | 5 | 2 | — | Notion |
-| **pavitas-content** | 1 | 1 | 1 | Notion |
-| **spins-yarns-content** | 5 | 1 | 1 | Notion, Canva |
-| **enterprise-search** | 2 | — | 3 | Slack/Discord, Gmail, Drive/Box, Wiki, PM, CRM |
-| **writing-workshop** | — | — | 4 | — |
-| **TOTAL** | **26** | **11** | **10** | — |
+| Plugin | Version | Commands | Agents | Skills | Connectors |
+|--------|---------|----------|--------|--------|------------|
+| **audiobook-production** | 1.0.0 | 4 | 4 | — | Notion, Calendar, Gmail, Box |
+| **daily-ops** | 1.0.0 | 5 | 3 | — | Calendar, Gmail, Notion |
+| **creative-writing** | 1.0.0 | 5 | 2 | — | Notion |
+| **pavitas-content** | 1.0.0 | 1 | 1 | 1 | Notion (session) |
+| **spins-yarns-content** | 2.0.0 | 5 | 1 | 1 | Notion; Canva (session) |
+| **pavitas-core** | 2.0.0 | — | — | 12 | — |
+| **TOTAL** | | **20** | **11** | **14** | |
+
+Connectors marked *(session)* are not bundled in the plugin's `.mcp.json` — they use whatever connection the claude.ai / Cowork session already has. pavitas-content bundles no `.mcp.json` at all; Canva is used at runtime by `/spins-yarns-content:weekly` for visual assets.
 
 ## All Commands Quick Reference
 
@@ -45,14 +45,8 @@ claude plugin install writing-workshop@pavitas-plugins
 - `/daily-ops:briefing` — Morning briefing (3-3-3 method)
 - `/daily-ops:handoff` — Session handoff management
 - `/daily-ops:triage` — Mid-day email check
-- `/daily-ops:tasks` — Quick task capture to Notion
+- `/daily-ops:task` — Quick task capture to Notion
 - `/daily-ops:review` — End-of-day retrospective
-
-### Publisher Relations
-- `/publisher-relations:intake` — Process publisher email
-- `/publisher-relations:invoice` — Generate branded invoice
-- `/publisher-relations:status` — Active projects by publisher
-- `/publisher-relations:reply` — Draft reply in Biz Mode
 
 ### Creative Writing
 - `/creative-writing:scene` — Story Grid scene analysis
@@ -71,30 +65,46 @@ claude plugin install writing-workshop@pavitas-plugins
 - `/spins-yarns-content:log` — Save pattern/project update to Notion + crochet/ folder
 - `/spins-yarns-content:project` — Track active crochet projects via Littlebird Log
 
-### Enterprise Search
-- `/enterprise-search:search` — Cross-tool search across email, chat, docs, wikis in one query
-- `/enterprise-search:digest` — Daily or weekly activity digest across connected sources
+### Pavitas Core (skill architecture)
+Skill-only plugin (no slash commands) — 12 skills load as `pavitas-core:<name>`. See next section.
 
-### Writing Workshop
-Skill-only plugin (no slash commands) — `writing-interview`, `writing-nudge`, `project-setup`, `style-mirror`
+## pavitas-core: Skill Architecture
 
-## Shared Dependencies
+Shipped 2026-06-10 as the skills-v2 refactor, packaged as a plugin (v2.0.0). This repo is the canon for the skill ecosystem; claude.ai and Cowork mount the same skills.
 
-These existing skills are referenced by multiple plugins:
-- `humanize-prose` — Used by creative-writing (clean command) and publisher-relations (email drafting)
-- `business-documentation` — Used by audiobook-production (wrap) and publisher-relations (invoice)
-- `design-elevation` — Used by any plugin generating visual documents
-- `decision-framework` — Used by daily-ops when patterns emerge
-- `audiobook-script-analyzer` — Used by audiobook-production (new-project)
-- `audiobook-project-setup` — Used by audiobook-production (folder creation)
-- `handoff` — Functionality absorbed into daily-ops plugin
+| Layer | Skills | Role |
+|-------|--------|------|
+| Meta | `skill-router` | Goal → load-set dispatch; owns the coverage manifest every installed skill must appear in |
+| Constraints (always-on) | `safety-rails`, `workspace-context`, `output-quality` | Conduct rules; IDs/routing/facts; prose + visual standards |
+| Orchestrators | `morning-review`, `audiobook-kickoff`, `story-session`, `content-pipeline`, `infra-session` | Domain workflows that name which leaf skills to load |
+| Direct-routed | `handoff`, `decision-framework`, `proof` | Load on their own triggers |
+
+Notes:
+- `morning-review` replaces the old `daily-briefing` skill (712 → ~70 lines; email sourced from the Cora brief).
+- `output-quality` absorbed `humanize-prose` and `design-elevation` (reference files preserved).
+- `story-session` is self-contained — writing-workshop's interview and style-matching were inlined (skills-v2.1).
+- Layering rules, eval rubrics, and migration details: [pavitas-core/README.md](pavitas-core/README.md) and [pavitas-core/MIGRATION.md](pavitas-core/MIGRATION.md).
+
+## Shared Skills (repo `skills/` folder)
+
+Standalone skills the plugins reference:
+- `audiobook-script-analyzer` — used by audiobook-production (new-project); source of truth for the file naming convention and chapter→workday distribution
+- `audiobook-project-setup` — used by audiobook-production (folder creation); Cowork-native — from claude.ai, folders are created on Zo instead
+- `business-documentation` — used by audiobook-production (wrap) and the biz-admin routing profile
+
+Moved into pavitas-core in skills-v2 — update any older references:
+- `humanize-prose` and `design-elevation` → `pavitas-core:output-quality`
+- `decision-framework` → `pavitas-core:decision-framework`
+- `handoff` → `pavitas-core:handoff` (daily-ops keeps its `/handoff` command)
+
+The `skills/` folder also carries standalone personal skills — including the hunt family (`scavenger-hunt-designer`, `pocket-hunt`, `pleasure-hunt`), `relational-emotional-regulation`, and `mcp-wrapper-builder` — see [skills/CHANGELOG.md](skills/CHANGELOG.md).
 
 ## Connector Requirements
 
-All plugins use remote MCP connectors via OAuth:
+Plugins that bundle an `.mcp.json` use remote MCP connectors via OAuth:
 - **Notion**: https://mcp.notion.com/mcp
 - **Google Calendar**: https://gcal.mcp.claude.com/mcp
 - **Gmail**: https://gmail.mcp.claude.com/mcp
 - **Box**: https://mcp.box.com
 
-Authenticate each connector once; plugins share the authentication.
+Authenticate each connector once; plugins share the authentication. Canva is connected at the claude.ai session level (not bundled) — without it, `/spins-yarns-content:weekly` still produces drafts and visual briefs and flags that assets weren't generated.
