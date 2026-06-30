@@ -15,6 +15,28 @@ reference file updates, and debrief-driven edits all get logged here.
 
 ---
 
+## [2026-06-30] Superhuman → Slashy migration — skill layer
+
+### Added
+- **pavitas-core:using-slashy** — New shared Slashy MCP reference skill. Single source of truth for `inbox_email` requirement, `list_messages` query syntax, `draft_email` literal-HTML-body constraint, `send_email` approval/no-undo behavior, `create_event`/`update_event` split, `get_available_times` param shape, per-thread `read_thread(include_tracking=true)` pattern (no bulk read-receipt feed in Slashy), `label_email` action map, and Slashy deep links. Added to skill-router coverage manifest. Email skills reference this instead of re-deriving mechanics.
+- **morning-briefing** — Email-first morning intelligence using Slashy. Three `list_messages` inbox passes (unread, starred, todo:reply) + calendar events in parallel; `read_thread` per VIP or flagged thread; Claude synthesizes email + calendar directly (no `query_email_and_calendar` equivalent in Slashy). References `pavitas-core:using-slashy`.
+- **eod-wrapup** — End-of-day email and calendar wrap using Slashy. Today's email passes + tomorrow calendar preview + Littlebird Log comparison; `read_thread` for follow-up threads; `label_email(action="archive")` for confirmed-done threads. References `pavitas-core:using-slashy`.
+- **batch-draft-writer** — Batch email drafting using Slashy. Write-review-save loop, one draft at a time. Literal HTML body required — no `instructions` delegation (Slashy has no AI-writer field); voice fidelity comes from `pavitas-core:output-quality`. Send is a separate explicit step with no undo window. References `pavitas-core:using-slashy`.
+- **meeting-scheduler** — End-to-end meeting scheduling using Slashy. `get_available_times` with corrected param shape (`emails`, `min_duration_minutes`, `business_hours_only`, `display_timezone`). Branches on `create_event` vs. `update_event` based on whether `event_id` is known (Slashy splits Superhuman's single `create_or_update_event`). Optional confirmation email via `draft_email` + explicit `send_email`. References `pavitas-core:using-slashy`.
+- **deal-tracker** — Email-based deal and relationship tracker using Slashy. Three `list_messages` passes (starred, followup, important); `read_thread` per deal thread; per-thread `read_thread(include_tracking=true)` loop for open-tracking data (N calls, not one — no bulk feed in Slashy). Fixes pre-existing bug: `Superhuman_Mail.get_read_statuses` was never a real tool name; rewritten as per-thread tracking loop. References `pavitas-core:using-slashy`.
+
+### Changed
+- **pavitas-core:workspace-context** — Email routing table updated: both rows (reading/search and drafting/sending) now point to Slashy tools with `pavitas-core:using-slashy` for mechanics. Gmail MCP ban carried over unchanged — that constraint is about Gmail's HTML-drop bug, not Superhuman-specific.
+- **pavitas-core:skill-router** — Coverage manifest updated: `using-slashy` added to pavitas-core (13 total); five email-ops skills added to User skills (14 total). Five routing entries added to dispatch table.
+- **pavitas-core:decision-framework** — Two Superhuman MCP references updated to Slashy `list_messages`/`read_thread` in the evidence-gathering sections (~line 74, ~lines 129–132). Reference/advisory text only — framework behavior unchanged.
+
+### Notes
+- The five leaf skills (morning-briefing, eod-wrapup, batch-draft-writer, meeting-scheduler, deal-tracker) are new additions to this repo. Their prior Superhuman versions existed only in Claude.ai's `/mnt/skills/user` storage (user-uploaded, not GitHub-backed). These GitHub-tracked Slashy-native versions should be installed to replace those uploads.
+- Infrastructure layer (Zo automations, Zo rules, Connections-Index.md) was fully migrated in a prior session — this change covers the skill layer only.
+- Smoke test: Slashy MCP is available in this environment (`mcp__Slashy__*` tools present). Full trigger-test of all 7 files should run in a Claude.ai Web session where Pavi can review live inbox/calendar results before trusting the skills in production.
+
+---
+
 ## [2026-06-10] skills-v2 refactor — shipped as pavitas-core plugin v2.0.0
 
 ### Added

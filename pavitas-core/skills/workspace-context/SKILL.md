@@ -25,8 +25,8 @@ Facts and routing only. Behavioral rules live in `pavitas-core:safety-rails`.
 |---|---|
 | Notion database operations | Composio Notion preferred; native Notion MCP fallback |
 | Email to Pavi himself | `send_email_to_user` (Zo) |
-| Email to anyone else | Superhuman MCP draft → review → send |
-| Email reading/search | Superhuman MCP. **Never** the Gmail MCP (drops HTML-only emails) |
+| Email to anyone else | Slashy `draft_email` → review → `send_email` (explicit approval each time — no undo window). Mechanics: `pavitas-core:using-slashy` |
+| Email reading/search | Slashy `list_messages` / `read_thread`. **Never** the Gmail MCP (drops HTML-only emails). Mechanics: `pavitas-core:using-slashy` |
 | Cora data (briefs, inbox, todos) | Cora MCP tools, or Zo-side `cora` CLI during Zo sessions |
 | Zo file ops / bash | `Zo Computer:bash`, `read_file`, `write_file` via the MCP proxy |
 | Calendar | Native Google Calendar tools |
