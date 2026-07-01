@@ -5,7 +5,7 @@ description: Generate compact, upfront intimate scavenger hunts focused on sexua
 
 # Pleasure hunts
 
-A miniaturized scavenger hunt skill for sexual pleasure, intimacy, and exploration. Built for gay men. Companion to `pocket-hunt` (lightweight presence-anchoring walks) and `scavenger-hunt-designer` (event-style group hunts) — this one is for intimate play.
+A miniaturized scavenger hunt skill for sexual pleasure, intimacy, and exploration. Built for gay men. Companion to `hunt-skills:pocket-hunt` (lightweight presence-anchoring walks) and `hunt-skills:scavenger-hunt-designer` (event-style group hunts) — this one is for intimate play.
 
 Two things make it distinct:
 

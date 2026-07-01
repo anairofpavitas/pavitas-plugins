@@ -1,0 +1,9 @@
+{
+  "name": "hunt-skills",
+  "description": "The scavenger-hunt family: event-style walking hunts for groups (scavenger-hunt-designer), lightweight on-the-go presence-anchoring hunts (pocket-hunt), and intimate solo/partner/group hunts (pleasure-hunt). Three distinct hunt systems bundled to install and update together — the skill descriptions handle disambiguation, there is no shared mechanic layer.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Pavitas Productions"
+  },
+  "keywords": ["scavenger-hunt", "walk", "presence", "games", "personal", "intimacy"]
+}

@@ -11,6 +11,12 @@ Version numbers are independent from the skills version sequence.
 ## [Unreleased]
 
 ### Added
+- **hunt-skills** v1.0.0 — new plugin packaging three previously-standalone scavenger-hunt
+  skills (scavenger-hunt-designer, pocket-hunt, pleasure-hunt) so they install and update
+  together. Moved as-is, with internal cross-references namespaced
+  (`hunt-skills:scavenger-hunt-designer`, `hunt-skills:pocket-hunt`). No dependency on other
+  plugins. Skill-only — no agents or commands; each skill runs live in the main conversation
+  and a sub-agent hop would only add latency. Marketplace manifest bumped to 1.6.0.
 - **story-grid-skills** v1.0.0 — new plugin packaging five previously-standalone Story
   Grid mentorship coaching skills (sg-grade, sg-edit, sg-drill, sg-spar, sg-sync) so they
   install and update together. Moved as-is, with internal cross-references namespaced
