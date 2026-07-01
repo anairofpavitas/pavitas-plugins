@@ -11,6 +11,11 @@ Version numbers are independent from the skills version sequence.
 ## [Unreleased]
 
 ### Added
+- **story-grid-skills** v1.0.0 — new plugin packaging five previously-standalone Story
+  Grid mentorship coaching skills (sg-grade, sg-edit, sg-drill, sg-spar, sg-sync) so they
+  install and update together. Moved as-is, with internal cross-references namespaced
+  (`story-grid-skills:sg-grade`, `story-grid-skills:sg-edit`). No dependency on other
+  plugins. Marketplace manifest bumped to 1.5.0.
 - **slashy-ops** v1.0.0 — new plugin packaging the five Slashy-based email/
   calendar skills (morning-briefing, eod-wrapup, batch-draft-writer,
   meeting-scheduler, deal-tracker) that previously shipped as unnamespaced

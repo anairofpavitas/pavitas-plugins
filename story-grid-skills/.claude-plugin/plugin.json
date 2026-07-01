@@ -1,0 +1,9 @@
+{
+  "name": "story-grid-skills",
+  "description": "Story Grid mentorship-program coaching skills for beat-level drilling: mock grading against the real examiner's bar, Socratic line-editing, drill-worksheet generation, brainstorming/pressure-testing, and knowledge-base sync. Distinct from creative-writing (drafting Jim & Percy) — this plugin coaches the beat-writing submission cycle (Lessons/, knowledge/, workbench/, feedback rounds).",
+  "version": "1.0.0",
+  "author": {
+    "name": "Pavitas Productions"
+  },
+  "keywords": ["writing", "story-grid", "beats", "mentorship", "grading", "editing", "drilling"]
+}
