@@ -107,7 +107,11 @@ Each framework concludes with a clear decision section. Answer:
 
 **For NO decisions**: Note what you learned about your patterns.
 
-### Step 6: Set Review Triggers
+### Step 6: Save the Decision
+
+The moment the decision resolves — YES, NO, or DEFER — run `pavitas-core:memory-capture`. Not only at final wrap: don't wait for the review trigger or the artifact file to be filed, the decision itself is the durable fact.
+
+### Step 7: Set Review Triggers
 
 Every framework includes review checkpoints. Set actual reminders:
 - 7-day check (for cooling-off decisions)
