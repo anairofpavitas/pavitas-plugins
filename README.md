@@ -15,6 +15,11 @@ Nine custom Claude Code / Cowork plugins designed for Pavi Proczko's audiobook n
 > install and update together. Skill-only — no agents or commands; each skill runs live in
 > the main conversation and a sub-agent hop would only add latency. No dependency on other
 > plugins.
+>
+> **audiobook-production skills bundled (2026-07-01):** `audiobook-script-analyzer` and
+> `audiobook-project-setup`, previously standalone `skills/` uploads, moved into the
+> `audiobook-production` plugin itself so the whole workflow (commands, agents, skills)
+> installs and updates as one unit. Plugin count unaffected by this change.
 
 ## Installation
 
@@ -38,7 +43,7 @@ claude plugin install hunt-skills@pavitas-plugins
 
 | Plugin | Version | Commands | Agents | Skills | Connectors |
 |--------|---------|----------|--------|--------|------------|
-| **audiobook-production** | 1.0.0 | 4 | 4 | — | Notion, Calendar, Gmail, Box |
+| **audiobook-production** | 1.1.0 | 4 | 4 | 2 | Notion, Calendar, Gmail, Box |
 | **daily-ops** | 1.0.0 | 5 | 3 | — | Calendar, Gmail, Notion |
 | **creative-writing** | 1.0.0 | 5 | 2 | — | Notion |
 | **pavitas-content** | 1.0.0 | 1 | 1 | 1 | Notion (session) |
@@ -47,7 +52,7 @@ claude plugin install hunt-skills@pavitas-plugins
 | **slashy-ops** | 1.0.0 | — | — | 5 | Slashy (session) |
 | **story-grid-skills** | 1.0.0 | — | — | 5 | — |
 | **hunt-skills** | 1.0.0 | — | — | 3 | — |
-| **TOTAL** | | **20** | **11** | **28** | |
+| **TOTAL** | | **20** | **11** | **30** | |
 
 Connectors marked *(session)* are not bundled in the plugin's `.mcp.json` — they use whatever connection the claude.ai / Cowork session already has. pavitas-content bundles no `.mcp.json` at all; Canva is used at runtime by `/spins-yarns-content:weekly` for visual assets.
 
@@ -58,6 +63,7 @@ Connectors marked *(session)* are not bundled in the plugin's `.mcp.json` — th
 - `/audiobook-production:session-prep` — Pre-recording briefing
 - `/audiobook-production:qc-pack` — QC spreadsheet generation
 - `/audiobook-production:wrap` — Project close-out + invoice
+- Skills: `audiobook-production:audiobook-script-analyzer` (file naming convention, chapter→workday distribution — source of truth for `new-project`/`script-scout`/`production-tracker`), `audiobook-production:audiobook-project-setup` (Cowork-native folder creation)
 
 ### Daily Operations
 - `/daily-ops:briefing` — Morning briefing (3-3-3 method)
@@ -166,14 +172,16 @@ distinctness callouts. Details: [hunt-skills/README.md](hunt-skills/README.md).
 ## Shared Skills (repo `skills/` folder)
 
 Standalone skills the plugins reference:
-- `audiobook-script-analyzer` — used by audiobook-production (new-project); source of truth for the file naming convention and chapter→workday distribution
-- `audiobook-project-setup` — used by audiobook-production (folder creation); Cowork-native — from claude.ai, folders are created on Zo instead
 - `business-documentation` — used by audiobook-production (wrap) and the biz-admin routing profile
 
 Moved into pavitas-core in skills-v2 — update any older references:
 - `humanize-prose` and `design-elevation` → `pavitas-core:output-quality`
 - `decision-framework` → `pavitas-core:decision-framework`
 - `handoff` → `pavitas-core:handoff` (daily-ops keeps its `/handoff` command)
+
+Moved into audiobook-production (2026-07-01) — update any older references:
+- `audiobook-script-analyzer` → `audiobook-production:audiobook-script-analyzer`
+- `audiobook-project-setup` → `audiobook-production:audiobook-project-setup`
 
 The `skills/` folder also carries standalone personal skills — including `relational-emotional-regulation` and `mcp-wrapper-builder` — see [skills/CHANGELOG.md](skills/CHANGELOG.md). The hunt family (`scavenger-hunt-designer`, `pocket-hunt`, `pleasure-hunt`) moved out of this folder into the `hunt-skills` plugin — see above.
 

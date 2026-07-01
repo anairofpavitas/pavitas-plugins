@@ -15,11 +15,11 @@ Missing facts get asked or flagged. Never invented (deadline, client contact, co
 
 ## 1. Script analysis
 
-Read and follow `audiobook-script-analyzer`. Output: chapter structure, per-chapter word counts, total words/pages excluding front/back matter, file naming convention, estimated finished hours (word count ÷ ~9,300 words/finished hour as a starting estimate — label it an estimate).
+Read and follow `audiobook-production:audiobook-script-analyzer`. Output: chapter structure, per-chapter word counts, total words/pages excluding front/back matter, file naming convention, estimated finished hours (word count ÷ ~9,300 words/finished hour as a starting estimate — label it an estimate).
 
 ## 2. Folders
 
-`audiobook-project-setup` is Cowork-native (it needs Mac filesystem access) — from Cowork, read and follow it. From Claude.ai, create the same structure on Zo under `/home/workspace/Audiobooks/[Title]/`:
+`audiobook-production:audiobook-project-setup` is Cowork-native (it needs Mac filesystem access) — from Cowork, read and follow it. From Claude.ai, create the same structure on Zo under `/home/workspace/Audiobooks/[Title]/`:
 
 ```
 [Short Title]/

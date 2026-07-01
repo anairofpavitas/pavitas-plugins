@@ -20,6 +20,15 @@ End-to-end audiobook production management for Pavitas Productions LLC.
 | `qc-manager` | Pickup tracking, error logging, delivery spec verification |
 | `business-ops` | Invoice generation, rate calculations, project estimates |
 
+## Skills
+
+| Skill | Role |
+|-------|------|
+| `audiobook-production:audiobook-script-analyzer` | Script analysis — chapter detection, word/page counts, file naming convention, chapter→workday distribution. Source of truth for `/new-project`, `script-scout`, and `production-tracker` |
+| `audiobook-production:audiobook-project-setup` | Standardized folder creation (Assets/Chapters/CRX). Cowork-native — needs Mac filesystem access; from Claude.ai, folders are created on Zo instead |
+
+Bundled 2026-07-01 (previously standalone uploads under the repo's shared `skills/` folder). Also referenced from outside this plugin: `pavitas-core:audiobook-kickoff` calls both by their namespaced name.
+
 ## Connectors
 
 - **Notion** — Audiobook Projects database, Chapters database
@@ -31,7 +40,7 @@ End-to-end audiobook production management for Pavitas Productions LLC.
 
 1. Install: `claude plugin install audiobook-production`
 2. Ensure Notion, Google Calendar, Gmail, and Box connectors are authenticated
-3. Existing skills referenced: `audiobook-script-analyzer`, `audiobook-project-setup`, `business-documentation`, `design-elevation`
+3. Other skills referenced: `business-documentation` (invoicing, on `/wrap`)
 
 ## Usage
 

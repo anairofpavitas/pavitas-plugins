@@ -9,7 +9,7 @@
   "plugins": [
     {
       "name": "audiobook-production",
-      "description": "End-to-end audiobook production: script analysis, recording prep, QC, delivery, invoicing",
+      "description": "End-to-end audiobook production: script analysis, recording prep, QC, delivery, invoicing. Bundles the audiobook-script-analyzer and audiobook-project-setup skills.",
       "source": "./audiobook-production",
       "category": "productivity"
     },
