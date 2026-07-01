@@ -66,4 +66,4 @@ Next action: [what needs to happen]
 
 - **Archive resolved thread:** `label_email(inbox_email=..., email_id=..., action="archive")`
 - **Mark for follow-up:** `label_email(inbox_email=..., email_id=..., action="todo")`
-- **Draft a follow-up:** hand to `batch-draft-writer` or compose inline per `pavitas-core:output-quality`
+- **Draft a follow-up:** hand to `slashy-ops:batch-draft-writer` or compose inline per `pavitas-core:output-quality`

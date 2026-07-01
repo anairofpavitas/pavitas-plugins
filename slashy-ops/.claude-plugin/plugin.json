@@ -1,0 +1,9 @@
+{
+  "name": "slashy-ops",
+  "description": "Email and calendar operations built on Slashy MCP: morning email briefs, end-of-day wrapup, batch draft writing, meeting scheduling, and deal/relationship tracking. All five skills share mechanics from pavitas-core:using-slashy.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Pavitas Productions"
+  },
+  "keywords": ["email", "slashy", "calendar", "scheduling", "drafts", "deals", "briefing"]
+}

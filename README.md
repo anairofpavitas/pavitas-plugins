@@ -1,8 +1,10 @@
 # Pavitas Productions Plugin Suite
 
-Six custom Claude Code / Cowork plugins designed for Pavi Proczko's audiobook narration business, creative work, and personal projects.
+Seven custom Claude Code / Cowork plugins designed for Pavi Proczko's audiobook narration business, creative work, and personal projects.
 
 > **v2/v2.1 refactor (2026-06-10):** the suite consolidated from nine plugins to six. `publisher-relations`, `enterprise-search`, and `writing-workshop` were removed; `fiber-arts-content` merged into `spins-yarns-content` v2.0.0; the core skill architecture shipped as the `pavitas-core` plugin v2.0.0. History: [CHANGELOG.md](CHANGELOG.md) (plugins) and [skills/CHANGELOG.md](skills/CHANGELOG.md) (skills).
+>
+> **slashy-ops added (2026-07-01):** five email/calendar skills (previously migrated off Superhuman Mail to Slashy MCP as standalone `skills/` entries) packaged into a seventh plugin so they install and update together. Requires `pavitas-core` for shared mechanics.
 
 ## Installation
 
@@ -17,6 +19,7 @@ claude plugin install creative-writing@pavitas-plugins
 claude plugin install pavitas-content@pavitas-plugins
 claude plugin install spins-yarns-content@pavitas-plugins
 claude plugin install pavitas-core@pavitas-plugins
+claude plugin install slashy-ops@pavitas-plugins
 ```
 
 ## Plugin Overview
@@ -28,8 +31,9 @@ claude plugin install pavitas-core@pavitas-plugins
 | **creative-writing** | 1.0.0 | 5 | 2 | — | Notion |
 | **pavitas-content** | 1.0.0 | 1 | 1 | 1 | Notion (session) |
 | **spins-yarns-content** | 2.0.0 | 5 | 1 | 1 | Notion; Canva (session) |
-| **pavitas-core** | 2.0.0 | — | — | 12 | — |
-| **TOTAL** | | **20** | **11** | **14** | |
+| **pavitas-core** | 2.0.0 | — | — | 13 | — |
+| **slashy-ops** | 1.0.0 | — | — | 5 | Slashy (session) |
+| **TOTAL** | | **20** | **11** | **20** | |
 
 Connectors marked *(session)* are not bundled in the plugin's `.mcp.json` — they use whatever connection the claude.ai / Cowork session already has. pavitas-content bundles no `.mcp.json` at all; Canva is used at runtime by `/spins-yarns-content:weekly` for visual assets.
 
@@ -66,7 +70,10 @@ Connectors marked *(session)* are not bundled in the plugin's `.mcp.json` — th
 - `/spins-yarns-content:project` — Track active crochet projects via Littlebird Log
 
 ### Pavitas Core (skill architecture)
-Skill-only plugin (no slash commands) — 12 skills load as `pavitas-core:<name>`. See next section.
+Skill-only plugin (no slash commands) — 13 skills load as `pavitas-core:<name>`. See next section.
+
+### Slashy Ops (email + calendar, Slashy MCP)
+Skill-only plugin (no slash commands) — 5 skills load as `slashy-ops:<name>`. See "slashy-ops: Email + Calendar Operations" section below.
 
 ## pavitas-core: Skill Architecture
 
@@ -84,6 +91,20 @@ Notes:
 - `output-quality` absorbed `humanize-prose` and `design-elevation` (reference files preserved).
 - `story-session` is self-contained — writing-workshop's interview and style-matching were inlined (skills-v2.1).
 - Layering rules, eval rubrics, and migration details: [pavitas-core/README.md](pavitas-core/README.md) and [pavitas-core/MIGRATION.md](pavitas-core/MIGRATION.md).
+
+## slashy-ops: Email + Calendar Operations
+
+Packaged 2026-07-01 so the five skills below install and update as one plugin rather than five separate uploads. All five defer to `pavitas-core:using-slashy` for tool mechanics, `pavitas-core:output-quality` for email prose, and `pavitas-core:workspace-context` for IDs/routing — `pavitas-core` must be installed alongside this plugin.
+
+| Skill | Role |
+|-------|------|
+| `slashy-ops:morning-briefing` | Email-first morning intelligence — inbox passes + calendar snapshot, Claude synthesizes both |
+| `slashy-ops:eod-wrapup` | End-of-day email/calendar wrap — open threads, resolved threads, tomorrow preview |
+| `slashy-ops:batch-draft-writer` | Write/review/save loop for multiple drafts; literal HTML body (no AI-writer delegation); explicit send per draft |
+| `slashy-ops:meeting-scheduler` | Availability lookup → create/update calendar event → optional confirmation email |
+| `slashy-ops:deal-tracker` | Deal/relationship thread tracking with per-thread read-receipt checks |
+
+History: migrated off Superhuman Mail to Slashy 2026-06-30, packaged as a standalone plugin 2026-07-01. Full record: [skills/CHANGELOG.md](skills/CHANGELOG.md), [CHANGELOG.md](CHANGELOG.md). Details: [slashy-ops/README.md](slashy-ops/README.md).
 
 ## Shared Skills (repo `skills/` folder)
 

@@ -13,6 +13,14 @@ reference file updates, and debrief-driven edits all get logged here.
 
 ## [Unreleased]
 
+### Changed
+- **morning-briefing, eod-wrapup, batch-draft-writer, meeting-scheduler,
+  deal-tracker** — relocated from standalone `skills/` to the new
+  `slashy-ops` plugin (see root `CHANGELOG.md`) so they update as one
+  plugin install rather than five separate uploads. Content unchanged
+  except internal cross-references now namespaced (e.g.
+  `slashy-ops:batch-draft-writer`).
+
 ---
 
 ## [2026-06-30] Superhuman → Slashy migration — skill layer

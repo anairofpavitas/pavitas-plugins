@@ -10,6 +10,17 @@ Version numbers are independent from the skills version sequence.
 
 ## [Unreleased]
 
+### Added
+- **slashy-ops** v1.0.0 — new plugin packaging the five Slashy-based email/
+  calendar skills (morning-briefing, eod-wrapup, batch-draft-writer,
+  meeting-scheduler, deal-tracker) that previously shipped as unnamespaced
+  standalone skills under `skills/`. Moved as-is, no content changes beyond
+  namespacing internal cross-references (`slashy-ops:batch-draft-writer`).
+  All five require `pavitas-core` installed for `using-slashy`,
+  `output-quality`, and `workspace-context`. Marketplace manifest bumped to
+  1.4.0. `pavitas-core:skill-router`'s coverage manifest and dispatch table
+  updated to route to the namespaced skills and list the new plugin.
+
 ### Changed
 - **spins-yarns-content** v2.0.0 — absorbed fiber-arts-content. Gains
   `/pattern`, `/log`, and `/project` commands (cleaned: stale hardcoded
