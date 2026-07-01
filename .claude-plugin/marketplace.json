@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "pavitas-plugins",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Custom plugin suite for Pavitas Productions LLC",
   "owner": {
     "name": "Pavitas Productions"
@@ -47,6 +47,12 @@
       "name": "slashy-ops",
       "description": "Email and calendar operations on Slashy MCP: morning email brief, EOD wrapup, batch draft writing, meeting scheduling, deal/relationship tracking. Requires pavitas-core for using-slashy mechanics.",
       "source": "./slashy-ops",
+      "category": "productivity"
+    },
+    {
+      "name": "story-grid-skills",
+      "description": "Story Grid beat-writing mentorship coaching: mock grading against the real examiner's bar, Socratic line-editing, drill-worksheet generation, brainstorming/pressure-testing, and knowledge-base sync.",
+      "source": "./story-grid-skills",
       "category": "productivity"
     }
   ]

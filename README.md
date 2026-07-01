@@ -1,10 +1,14 @@
 # Pavitas Productions Plugin Suite
 
-Seven custom Claude Code / Cowork plugins designed for Pavi Proczko's audiobook narration business, creative work, and personal projects.
+Eight custom Claude Code / Cowork plugins designed for Pavi Proczko's audiobook narration business, creative work, and personal projects.
 
 > **v2/v2.1 refactor (2026-06-10):** the suite consolidated from nine plugins to six. `publisher-relations`, `enterprise-search`, and `writing-workshop` were removed; `fiber-arts-content` merged into `spins-yarns-content` v2.0.0; the core skill architecture shipped as the `pavitas-core` plugin v2.0.0. History: [CHANGELOG.md](CHANGELOG.md) (plugins) and [skills/CHANGELOG.md](skills/CHANGELOG.md) (skills).
 >
 > **slashy-ops added (2026-07-01):** five email/calendar skills (previously migrated off Superhuman Mail to Slashy MCP as standalone `skills/` entries) packaged into a seventh plugin so they install and update together. Requires `pavitas-core` for shared mechanics.
+>
+> **story-grid-skills added (2026-07-01):** five previously-standalone Story Grid mentorship
+> coaching skills (sg-grade, sg-edit, sg-drill, sg-spar, sg-sync) packaged into an eighth
+> plugin so they install and update together. No dependency on other plugins.
 
 ## Installation
 
@@ -20,6 +24,7 @@ claude plugin install pavitas-content@pavitas-plugins
 claude plugin install spins-yarns-content@pavitas-plugins
 claude plugin install pavitas-core@pavitas-plugins
 claude plugin install slashy-ops@pavitas-plugins
+claude plugin install story-grid-skills@pavitas-plugins
 ```
 
 ## Plugin Overview
@@ -33,7 +38,8 @@ claude plugin install slashy-ops@pavitas-plugins
 | **spins-yarns-content** | 2.0.0 | 5 | 1 | 1 | Notion; Canva (session) |
 | **pavitas-core** | 2.0.0 | — | — | 13 | — |
 | **slashy-ops** | 1.0.0 | — | — | 5 | Slashy (session) |
-| **TOTAL** | | **20** | **11** | **20** | |
+| **story-grid-skills** | 1.0.0 | — | — | 5 | — |
+| **TOTAL** | | **20** | **11** | **25** | |
 
 Connectors marked *(session)* are not bundled in the plugin's `.mcp.json` — they use whatever connection the claude.ai / Cowork session already has. pavitas-content bundles no `.mcp.json` at all; Canva is used at runtime by `/spins-yarns-content:weekly` for visual assets.
 
@@ -75,6 +81,9 @@ Skill-only plugin (no slash commands) — 13 skills load as `pavitas-core:<name>
 ### Slashy Ops (email + calendar, Slashy MCP)
 Skill-only plugin (no slash commands) — 5 skills load as `slashy-ops:<name>`. See "slashy-ops: Email + Calendar Operations" section below.
 
+### Story Grid Skills (beat-writing mentorship coaching)
+Skill-only plugin (no slash commands) — 5 skills load as `story-grid-skills:<name>`. See "story-grid-skills: Beat-Writing Mentorship Coaching" section below.
+
 ## pavitas-core: Skill Architecture
 
 Shipped 2026-06-10 as the skills-v2 refactor, packaged as a plugin (v2.0.0). This repo is the canon for the skill ecosystem; claude.ai and Cowork mount the same skills.
@@ -105,6 +114,24 @@ Packaged 2026-07-01 so the five skills below install and update as one plugin ra
 | `slashy-ops:deal-tracker` | Deal/relationship thread tracking with per-thread read-receipt checks |
 
 History: migrated off Superhuman Mail to Slashy 2026-06-30, packaged as a standalone plugin 2026-07-01. Full record: [skills/CHANGELOG.md](skills/CHANGELOG.md), [CHANGELOG.md](CHANGELOG.md). Details: [slashy-ops/README.md](slashy-ops/README.md).
+
+## story-grid-skills: Beat-Writing Mentorship Coaching
+
+Packaged 2026-07-01 from five previously-standalone Story Grid coaching skills so they
+install and update as one plugin. No dependency on other plugins — operates entirely on
+local project files (`knowledge/`, `Lessons/`, `* Feedback/`, `workbench/`).
+
+| Skill | Role |
+|-------|------|
+| `story-grid-skills:sg-grade` | Mock examiner — dry-run PASS/REVISE verdict + score before real submission |
+| `story-grid-skills:sg-edit` | Socratic line editor — mechanics pass + full conformance battery |
+| `story-grid-skills:sg-drill` | Practice-worksheet generator — targeted reps with an answer-key rationale |
+| `story-grid-skills:sg-spar` | Brainstorming / pressure-testing partner |
+| `story-grid-skills:sg-sync` | Knowledge-base maintenance — distills new lessons/feedback, never edits source files |
+
+Not to be confused with `creative-writing` (original fiction drafting, e.g. Jim & Percy) —
+this plugin coaches the beat-writing submission cycle for the Story Grid mentorship program.
+Details: [story-grid-skills/README.md](story-grid-skills/README.md).
 
 ## Shared Skills (repo `skills/` folder)
 
