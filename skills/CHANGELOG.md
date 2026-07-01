@@ -14,6 +14,14 @@ reference file updates, and debrief-driven edits all get logged here.
 ## [Unreleased]
 
 ### Changed
+- **scavenger-hunt-designer, pocket-hunt, pleasure-hunt** — relocated from
+  standalone `skills/` to the new `hunt-skills` plugin (see root
+  `CHANGELOG.md`) so they update as one plugin install rather than three
+  separate uploads. Content unchanged except internal cross-references now
+  namespaced (e.g. `hunt-skills:scavenger-hunt-designer`,
+  `hunt-skills:pocket-hunt`). The prior "hunt-family merge cancelled" call
+  (2026-06-10 entry below) still stands — this bundles three distinct
+  systems for shared install/update, it does not merge them into one skill.
 - **morning-briefing, eod-wrapup, batch-draft-writer, meeting-scheduler,
   deal-tracker** — relocated from standalone `skills/` to the new
   `slashy-ops` plugin (see root `CHANGELOG.md`) so they update as one

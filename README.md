@@ -1,6 +1,6 @@
 # Pavitas Productions Plugin Suite
 
-Eight custom Claude Code / Cowork plugins designed for Pavi Proczko's audiobook narration business, creative work, and personal projects.
+Nine custom Claude Code / Cowork plugins designed for Pavi Proczko's audiobook narration business, creative work, and personal projects.
 
 > **v2/v2.1 refactor (2026-06-10):** the suite consolidated from nine plugins to six. `publisher-relations`, `enterprise-search`, and `writing-workshop` were removed; `fiber-arts-content` merged into `spins-yarns-content` v2.0.0; the core skill architecture shipped as the `pavitas-core` plugin v2.0.0. History: [CHANGELOG.md](CHANGELOG.md) (plugins) and [skills/CHANGELOG.md](skills/CHANGELOG.md) (skills).
 >
@@ -9,6 +9,12 @@ Eight custom Claude Code / Cowork plugins designed for Pavi Proczko's audiobook 
 > **story-grid-skills added (2026-07-01):** five previously-standalone Story Grid mentorship
 > coaching skills (sg-grade, sg-edit, sg-drill, sg-spar, sg-sync) packaged into an eighth
 > plugin so they install and update together. No dependency on other plugins.
+>
+> **hunt-skills added (2026-07-01):** three previously-standalone scavenger-hunt skills
+> (scavenger-hunt-designer, pocket-hunt, pleasure-hunt) packaged into a ninth plugin so they
+> install and update together. Skill-only — no agents or commands; each skill runs live in
+> the main conversation and a sub-agent hop would only add latency. No dependency on other
+> plugins.
 
 ## Installation
 
@@ -25,6 +31,7 @@ claude plugin install spins-yarns-content@pavitas-plugins
 claude plugin install pavitas-core@pavitas-plugins
 claude plugin install slashy-ops@pavitas-plugins
 claude plugin install story-grid-skills@pavitas-plugins
+claude plugin install hunt-skills@pavitas-plugins
 ```
 
 ## Plugin Overview
@@ -39,7 +46,8 @@ claude plugin install story-grid-skills@pavitas-plugins
 | **pavitas-core** | 2.0.0 | — | — | 13 | — |
 | **slashy-ops** | 1.0.0 | — | — | 5 | Slashy (session) |
 | **story-grid-skills** | 1.0.0 | — | — | 5 | — |
-| **TOTAL** | | **20** | **11** | **25** | |
+| **hunt-skills** | 1.0.0 | — | — | 3 | — |
+| **TOTAL** | | **20** | **11** | **28** | |
 
 Connectors marked *(session)* are not bundled in the plugin's `.mcp.json` — they use whatever connection the claude.ai / Cowork session already has. pavitas-content bundles no `.mcp.json` at all; Canva is used at runtime by `/spins-yarns-content:weekly` for visual assets.
 
@@ -83,6 +91,9 @@ Skill-only plugin (no slash commands) — 5 skills load as `slashy-ops:<name>`. 
 
 ### Story Grid Skills (beat-writing mentorship coaching)
 Skill-only plugin (no slash commands) — 5 skills load as `story-grid-skills:<name>`. See "story-grid-skills: Beat-Writing Mentorship Coaching" section below.
+
+### Hunt Skills (scavenger-hunt family)
+Skill-only plugin (no slash commands) — 3 skills load as `hunt-skills:<name>`. See "hunt-skills: The Scavenger-Hunt Family" section below.
 
 ## pavitas-core: Skill Architecture
 
@@ -133,6 +144,25 @@ Not to be confused with `creative-writing` (original fiction drafting, e.g. Jim 
 this plugin coaches the beat-writing submission cycle for the Story Grid mentorship program.
 Details: [story-grid-skills/README.md](story-grid-skills/README.md).
 
+## hunt-skills: The Scavenger-Hunt Family
+
+Packaged 2026-07-01 from three previously-standalone scavenger-hunt skills so they install
+and update as one plugin. No dependency on other plugins. Skill-only — no agents or
+commands: all three run live in the main conversation, and a sub-agent hop would only add
+latency to what are deliberately low-friction, real-time skills.
+
+| Skill | Role |
+|-------|------|
+| `hunt-skills:scavenger-hunt-designer` | Event-style walking hunts for small groups — date walks, group adventures, couples outings — live or pre-built delivery |
+| `hunt-skills:pocket-hunt` | Lightweight, turn-by-turn hunts for in-the-moment presence anchoring on a walk, bike, or trip — solo, with companions, or with dogs |
+| `hunt-skills:pleasure-hunt` | Compact, upfront intimate hunts for sexual pleasure, intimacy, and exploration — solo, partner, group, or cruising |
+
+Three distinct systems, not a merged skill — a prior audit considered merging them and
+reversed that decision (see `skills/CHANGELOG.md`, 2026-06-10 entry). Each skill's
+frontmatter `description` still does the disambiguation work; `pocket-hunt` and
+`pleasure-hunt` cross-reference the others by namespaced name for tone-matching and
+distinctness callouts. Details: [hunt-skills/README.md](hunt-skills/README.md).
+
 ## Shared Skills (repo `skills/` folder)
 
 Standalone skills the plugins reference:
@@ -145,7 +175,7 @@ Moved into pavitas-core in skills-v2 — update any older references:
 - `decision-framework` → `pavitas-core:decision-framework`
 - `handoff` → `pavitas-core:handoff` (daily-ops keeps its `/handoff` command)
 
-The `skills/` folder also carries standalone personal skills — including the hunt family (`scavenger-hunt-designer`, `pocket-hunt`, `pleasure-hunt`), `relational-emotional-regulation`, and `mcp-wrapper-builder` — see [skills/CHANGELOG.md](skills/CHANGELOG.md).
+The `skills/` folder also carries standalone personal skills — including `relational-emotional-regulation` and `mcp-wrapper-builder` — see [skills/CHANGELOG.md](skills/CHANGELOG.md). The hunt family (`scavenger-hunt-designer`, `pocket-hunt`, `pleasure-hunt`) moved out of this folder into the `hunt-skills` plugin — see above.
 
 ## Connector Requirements
 

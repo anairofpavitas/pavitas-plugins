@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "pavitas-plugins",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "Custom plugin suite for Pavitas Productions LLC",
   "owner": {
     "name": "Pavitas Productions"
@@ -53,6 +53,12 @@
       "name": "story-grid-skills",
       "description": "Story Grid beat-writing mentorship coaching: mock grading against the real examiner's bar, Socratic line-editing, drill-worksheet generation, brainstorming/pressure-testing, and knowledge-base sync.",
       "source": "./story-grid-skills",
+      "category": "productivity"
+    },
+    {
+      "name": "hunt-skills",
+      "description": "The scavenger-hunt family: event-style walking hunts for groups (scavenger-hunt-designer), lightweight on-the-go presence-anchoring hunts (pocket-hunt), and intimate solo/partner/group hunts (pleasure-hunt).",
+      "source": "./hunt-skills",
       "category": "productivity"
     }
   ]

@@ -5,7 +5,7 @@ description: Run lightweight on-the-go scavenger hunts for presence anchoring on
 
 # Pocket hunts
 
-A lightweight scavenger hunt skill for in-the-moment presence anchoring. Designed to be used live, on-the-go, with minimal friction. Distinct from `scavenger-hunt-designer`, which is for pre-planned event-style hunts.
+A lightweight scavenger hunt skill for in-the-moment presence anchoring. Designed to be used live, on-the-go, with minimal friction. Distinct from `hunt-skills:scavenger-hunt-designer`, which is for pre-planned event-style hunts.
 
 The skill is built around three foundational principles. These override anything else:
 
@@ -155,6 +155,6 @@ Map each beat to the right tool. Be invisible about tool choice — the user is 
 
 ## Tone
 
-Match `scavenger-hunt-designer`. Sentences not paragraphs. Active voice. Contractions fine. No corporate gloss, no twee phrasing. Treat the user as an adult on a walk, not a child on a field trip. Clue text is concrete and specific. Seed prompts have a little poetry where it earns it, but never overwrites.
+Match `hunt-skills:scavenger-hunt-designer`. Sentences not paragraphs. Active voice. Contractions fine. No corporate gloss, no twee phrasing. Treat the user as an adult on a walk, not a child on a field trip. Clue text is concrete and specific. Seed prompts have a little poetry where it earns it, but never overwrites.
 
 Shift warmer and quieter for solo-presence hunts. Shift more playful for companion hunts. Shift practical and short for travel-hunt clue language. The rung determines the register.
