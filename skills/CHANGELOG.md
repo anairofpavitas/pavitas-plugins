@@ -77,6 +77,47 @@ reference file updates, and debrief-driven edits all get logged here.
   plugin install rather than five separate uploads. Content unchanged
   except internal cross-references now namespaced (e.g.
   `slashy-ops:batch-draft-writer`).
+- **pavitas-core:memory-capture, pavitas-core:workspace-context** —
+  resolved a trigger-phrase collision: both skills claimed "make a note
+  of that" / "Make a note" with different destinations. Notion keeps the
+  phrase. `memory-capture`'s frontmatter trigger list drops "make a note
+  of that" (keeps "save this", "remember that", "log this deal").
+  `workspace-context`'s routing row still sends destination-less "Make a
+  note" asks to the Littlebird Log, and now additionally calls
+  `memory-capture` with a one-line distillation after writing the note
+  when the note also clears memory-capture's existing Save criteria
+  (decision, deadline, contact, direction change) — reusing that gate
+  rather than duplicating criteria, and never duplicating the full note
+  text into Supermemory.
+
+### Fixed
+- **pavitas-core:memory-capture** — corrected a regression in the `##
+  Tool` section and the `Don't save` list: both framed
+  `mcp__Supermemory_MCP__recall` as a required pre-write dedup gate
+  ("search before writing anything that might already be captured").
+  This was explicitly rejected earlier in the design process — recall
+  has propagation lag, so a clean search doesn't mean a fact wasn't
+  already saved, which makes it unreliable (and misleading) as a dedup
+  check in either direction. `recall` is now scoped to legitimate
+  lookups ("what do we know about X") plus its existing opportunistic
+  role in the `Expiry` cleanup flow (a session recalls something for an
+  unrelated reason, notices it's stale, `forget`s it — unchanged). The
+  `Don't save` entry now points at session-local awareness — don't
+  re-save a fact this same session already captured moments ago —
+  instead of a Supermemory query required before every write.
+
+### Notes
+- Verify pass (this session): re-confirmed the original memory-capture
+  build directly against file contents rather than assuming the merged
+  PR covered everything. All seven callers (`slashy-ops:eod-wrapup`,
+  `pavitas-core:handoff`, `pavitas-core:morning-review`,
+  `pavitas-core:infra-session`, `pavitas-core:story-session`,
+  `pavitas-core:content-pipeline`, `pavitas-core:decision-framework`)
+  still call `memory-capture` explicitly; `safety-rails`'s one-line
+  fallback, `skill-router`'s 14-skill coverage manifest and direct-ask
+  routing row, and this changelog's original build entry (above) are
+  all present and unchanged. Nothing was missing; no additional wiring
+  was required this session.
 
 ---
 

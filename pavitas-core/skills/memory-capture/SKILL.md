@@ -1,6 +1,6 @@
 ---
 name: memory-capture
-description: Writes durable facts (decisions, deadlines, contacts, direction changes) to Supermemory for cross-platform recall. LEAF skill — not router-matched standalone; invoked as an explicit step by other skills (eod-wrapup, handoff, morning-review, infra-session, story-session, content-pipeline, decision-framework) and by the safety-rails fallback. Also triggers directly on explicit asks — "save this", "remember that", "log this deal", "make a note of that."
+description: Writes durable facts (decisions, deadlines, contacts, direction changes) to Supermemory for cross-platform recall. LEAF skill — not router-matched standalone; invoked as an explicit step by other skills (eod-wrapup, handoff, morning-review, infra-session, story-session, content-pipeline, decision-framework) and by the safety-rails fallback. Also triggers directly on explicit asks — "save this", "remember that", "log this deal."
 ---
 
 # Memory Capture
@@ -17,7 +17,7 @@ Claude.ai's own native memory already runs in the background on claude.ai — no
   - `content` (required, string) — the memory text. See **Metadata tag** below for what goes in it.
   - `containerTag` — always `"sm_project_default"`. See **Destination**.
   - `action` — `"save"` (default) to write, `"forget"` to remove a stale one.
-- `mcp__Supermemory_MCP__recall` — search (`query`, `containerTag: "sm_project_default"`) before writing anything that might already be captured. If a stale version turns up, `forget` it before saving the update, rather than leaving both live.
+- `mcp__Supermemory_MCP__recall` — search (`query`, `containerTag: "sm_project_default"`) for legitimate lookups: answering "what do we know about X"-type questions. **Not** a pre-write dedup check — recall has propagation lag, so an empty result doesn't mean a fact wasn't already saved; a search that comes back clean is not license to skip capturing something new. It still gets used opportunistically outside of writing: a session recalls something for an unrelated reason, notices it's stale, and `forget`s it — see **Expiry**.
 
 Neither tool exposes a structured metadata parameter or a TTL/expiry field — `content` is a single string, full stop. The metadata and expiry requirements below are real, but both are satisfied by folding the information into that string, not by passing extra parameters the tool doesn't have.
 
@@ -34,7 +34,7 @@ Neither tool exposes a structured metadata parameter or a TTL/expiry field — `
 
 - Promotional content, transactional notifications, operational noise
 - Raw digest/long-form content — extract atomic facts instead (see **Digest handling**), archive the raw content to filesystem only
-- Anything already captured in a prior memory — `recall` first; update, don't duplicate
+- Anything you already know wasn't captured because you were in the same session when it was saved moments ago (avoid re-saving mid-session). This is about session-local awareness, not a recall check — don't query Supermemory to verify past saves before writing.
 - Conversational filler with no durable signal
 
 ## Write rule
