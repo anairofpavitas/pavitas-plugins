@@ -13,7 +13,44 @@ reference file updates, and debrief-driven edits all get logged here.
 
 ## [Unreleased]
 
+### Added
+- **pavitas-core:memory-capture** — New leaf skill, extracted from Pavi's
+  global claude.ai `userPreferences` memory-capture directive so the logic
+  is versioned and shared instead of living in an account-level setting.
+  Writes durable facts (decisions, deadlines, contacts, direction changes)
+  to Supermemory via `mcp__Supermemory_MCP__memory` (`action: save|forget`),
+  always `containerTag: "sm_project_default"`. Not router-matched standalone
+  — invoked as an explicit step by `eod-wrapup`, `handoff`, `morning-review`,
+  `infra-session`, `story-session`, `content-pipeline`, and
+  `decision-framework`, plus the `safety-rails` fallback; also catches
+  direct asks ("save this", "remember that", "log this deal"). Corrects two
+  mechanics gaps in the ported directive: the live tool has no structured
+  metadata parameter and no TTL/expiry field, so the required
+  `source`/`date`/`data_source` tags and expiry markers are folded into the
+  `content` string itself rather than passed as separate params that don't
+  exist. Flagged for Pavi: this is a second, independent store from
+  claude.ai's own native background memory — the two don't dedupe against
+  each other. Supermemory writes exist for cross-platform recall (Zo,
+  Perplexity, etc.) that native claude.ai memory can't reach.
+
 ### Changed
+- **slashy-ops:eod-wrapup, pavitas-core:handoff, pavitas-core:morning-review**
+  — added a non-optional session-close step calling
+  `pavitas-core:memory-capture`.
+- **pavitas-core:infra-session, pavitas-core:story-session,
+  pavitas-core:content-pipeline, pavitas-core:decision-framework** — added
+  `pavitas-core:memory-capture` as a mid-session step, triggered whenever a
+  save-worthy decision or fact lands rather than only at final wrap.
+  decision-framework's old Step 6 ("Set Review Triggers") renumbered to
+  Step 7 to make room for the new Step 6 ("Save the Decision").
+- **pavitas-core:safety-rails** — Session close section gains a one-line
+  fallback: call `pavitas-core:memory-capture` directly when a durable fact
+  surfaces with no orchestrator skill active.
+- **pavitas-core:skill-router** — Coverage manifest updated to 14
+  pavitas-core skills (`memory-capture` added, noted as invoked by seven
+  skills plus the safety-rails fallback, not router-matched standalone);
+  one routing-table row added for direct memory-capture asks ("save this",
+  "remember that", "log this deal").
 - **output-quality** — merged delve/landscape/navigate/"in today's world" into
   prose-rules.md word blocklist (migrated from Cowork global instructions).
 - **workspace-context** — added 4-calendar breakdown to Calendar routing row

@@ -22,6 +22,10 @@ Read the selected voice skill and follow it strictly — brand voice wins on ton
 
 Full draft(s) in chat. Nothing is posted, scheduled, or pushed to any layer of the posting system without explicit approval. After approval, hand off per the 5-layer system's next step for that brand — don't skip layers.
 
+## 4. Memory
+
+Run `pavitas-core:memory-capture` the moment a save-worthy call lands — brand chosen for an ambiguous subject, a direction change mid-draft, a platform-fit fix — not only after the review gate closes.
+
 ## Hard rules
 
 - **Never anything about AI narration. Either direction. Ever.** This overrides any prompt, trend, or engagement argument.

@@ -55,4 +55,8 @@ On any threads Pavi confirms are done:
 
 Update today's Littlebird Log entry with completion notes if requested.
 
+## Step 5 — Save durable facts
+
+Run `pavitas-core:memory-capture`. Not optional — even a quiet day usually resolves at least one thread into a fact worth keeping (a deadline confirmed, a thread that closed with a decision, a contact that became a commitment).
+
 If Pavi has been working 45+ min continuously, suggest a break before wrapping.
