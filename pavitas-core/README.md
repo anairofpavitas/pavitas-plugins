@@ -22,7 +22,8 @@ LEAVES        (unchanged, loaded on demand) audiobook-script-analyzer,
               scavenger-hunt-designer, pocket-hunt, pleasure-hunt,
               decision-framework (patched), handoff (trimmed),
               relational-emotional-regulation, mcp-wrapper-builder,
-              autoresearch, proof
+              autoresearch, proof, using-slashy (Slashy mechanics,
+              loaded by slashy-ops plugin)
 ```
 
 Layering rules: constraints never contain procedures; orchestrators never contain execution detail (they name leaves); leaves never route. Facts (IDs, paths) live in `pavitas-core:workspace-context` only — nothing else hard-codes them.
@@ -56,7 +57,7 @@ Layering rules: constraints never contain procedures; orchestrators never contai
 - [ ] Platform-fit pass completed
 
 **infra-session**
-- [ ] Routing correct (Superhuman not Gmail; Composio Notion for DBs; Zo proxy for files)
+- [ ] Routing correct (Slashy not Gmail; Composio Notion for DBs; Zo proxy for files)
 - [ ] Destructive ops previewed
 - [ ] Changelog entry written (correct file)
 - [ ] Smoke test run and results stated; handoff written if mid-task

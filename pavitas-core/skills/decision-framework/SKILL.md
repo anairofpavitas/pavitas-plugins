@@ -71,7 +71,7 @@ Most frameworks require pulling actual data:
 
 **For Narrative Reality Check & Time Allocation Audit:**
 - Use `list_gcal_events` to pull calendar patterns from last 30-90 days
-- Use Superhuman MCP search (never Gmail MCP) to check email timestamp patterns
+- Use Slashy `list_messages` / `read_thread` to check email timestamp patterns
 - Use `searchLifelogsWithTranscripts` (Limitless) to review actual behavior
 - Check screen time reports, activity logs, commit histories
 
@@ -126,8 +126,8 @@ These frameworks work best when fed with actual data, not memory:
 - Analyze timestamps for productivity patterns
 - Count actual vs estimated meeting hours
 
-**Superhuman MCP** → Communication patterns, response times, email behavior
-- Superhuman thread search with timestamp analysis
+**Slashy** → Communication patterns, response times, email behavior
+- `list_messages` with timestamp queries + `read_thread` for thread detail
 - Check when you're most responsive
 - Review past purchase confirmation emails for pattern analysis
 

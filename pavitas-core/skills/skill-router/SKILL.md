@@ -25,6 +25,11 @@ Match the user's goal to ONE profile. Read that profile's skills. Do not read ot
 | "Save handoff", "read handoff", session end | handoff | `pavitas-core:handoff` |
 | Decision check, impulse purchase, time allocation | decide | `pavitas-core:decision-framework` |
 | proofeditor.ai URL, "Proof doc", "open in Proof" (NOT proofread/proofing) | docs | `pavitas-core:proof` |
+| "email brief", "morning email check", "what's in my inbox", "email briefing" | morning-briefing | `slashy-ops:morning-briefing` (references `pavitas-core:using-slashy`) |
+| "EOD wrapup", "end of day", "wrap up my day", "eod" | eod-wrapup | `slashy-ops:eod-wrapup` (references `pavitas-core:using-slashy`) |
+| "batch drafts", "draft multiple emails", "help me draft a few emails" | batch-draft | `slashy-ops:batch-draft-writer` (references `pavitas-core:using-slashy`) |
+| "schedule a meeting", "find time for a call", "book time with", "meeting scheduler" | meeting-scheduler | `slashy-ops:meeting-scheduler` (references `pavitas-core:using-slashy`) |
+| "deal tracker", "check my deals", "deal status", "open deals" | deal-tracker | `slashy-ops:deal-tracker` (references `pavitas-core:using-slashy`) |
 
 ## Rules
 
@@ -39,11 +44,13 @@ Match the user's goal to ONE profile. Read that profile's skills. Do not read ot
 
 Every installed skill must appear in this list with a routing home. A skill not listed here is invisible to the system — when installing or removing a skill, update this manifest in the same change. Any audit of the ecosystem starts by diffing installed skills against this list.
 
-**pavitas-core (12):** skill-router (this file) · safety-rails, workspace-context, output-quality (always-on constraints) · morning-review, audiobook-kickoff, story-session, content-pipeline, infra-session (orchestrators) · handoff, decision-framework, proof (direct-routed).
+**pavitas-core (13):** skill-router (this file) · safety-rails, workspace-context, output-quality (always-on constraints) · morning-review, audiobook-kickoff, story-session, content-pipeline, infra-session (orchestrators) · handoff, decision-framework, proof (direct-routed) · using-slashy (shared Slashy mechanics reference — loaded by email skills).
 
 **User skills (9):** audiobook-script-analyzer, audiobook-project-setup, business-documentation (audiobook-kickoff / biz-admin) · mcp-wrapper-builder, autoresearch (infra-session) · scavenger-hunt-designer, pocket-hunt, pleasure-hunt (play) · relational-emotional-regulation (support).
 
 **Brand plugins (2):** pavitas-content:pavitas-brand-voice, spins-yarns-content:spins-yarns-brand-voice (content-pipeline). spins-yarns-content also carries the crochet pattern/log/project commands (CLI-side; absorbed from fiber-arts-content 2026-06-10).
+
+**slashy-ops plugin (5):** slashy-ops:morning-briefing, slashy-ops:eod-wrapup, slashy-ops:batch-draft-writer, slashy-ops:meeting-scheduler, slashy-ops:deal-tracker (email-ops — all reference pavitas-core:using-slashy; requires pavitas-core installed).
 
 **Environment notes:** audiobook-project-setup is Cowork-native (needs Mac filesystem access); from Claude.ai, folder creation happens on Zo instead — see audiobook-kickoff. autoresearch runs in Claude Code.
 
