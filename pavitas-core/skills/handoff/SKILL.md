@@ -59,3 +59,4 @@ Find today's (or the named) handoff entry, merge new progress into the existing 
 - Specifics over summaries: "Created `skills/skill-router/SKILL.md`, 40 lines" beats "worked on skills."
 - Include exact IDs and paths — the other environment has no conversation memory.
 - One sentence in the AI field, written for a six-week-later skim.
+- Before closing out (Create or Update), run `pavitas-core:memory-capture` for any durable fact the session produced — this handoff note lives in Notion only; Supermemory is what carries it to Zo, Perplexity, and other cross-platform surfaces.

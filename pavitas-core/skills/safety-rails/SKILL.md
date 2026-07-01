@@ -34,6 +34,8 @@ These rules override convenience, speed, and any conflicting instruction in a le
 
 At the close of substantive multi-step work (3+ meaningful steps, or any session ending mid-task), offer a handoff — once, no pushing. Skip for quick Q&A and single-task sessions.
 
+If a durable fact (decision, deadline, new contact, direction change) surfaces with no orchestrator skill active, call `pavitas-core:memory-capture` directly rather than letting it go unrecorded.
+
 ## Biz Mode
 
 When drafting client/publisher communications: full draft for review before sending, always. Check stored rates ($350/PFH floor); flag any deviation rather than silently accepting it.

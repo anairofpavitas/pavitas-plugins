@@ -23,6 +23,7 @@ Match the user's goal to ONE profile. Read that profile's skills. Do not read ot
 | Pleasure hunt, intimate/foreplay/cruising hunt | play | `hunt-skills:pleasure-hunt` |
 | Conflict, "I'm spiraling", "help me think through", activation | support | `relational-emotional-regulation` ONLY |
 | "Save handoff", "read handoff", session end | handoff | `pavitas-core:handoff` |
+| "Save this", "remember that", "log this deal" | memory-capture | `pavitas-core:memory-capture` (direct ask only — otherwise invoked as a step by other skills, not router-matched) |
 | Decision check, impulse purchase, time allocation | decide | `pavitas-core:decision-framework` |
 | proofeditor.ai URL, "Proof doc", "open in Proof" (NOT proofread/proofing) | docs | `pavitas-core:proof` |
 | "email brief", "morning email check", "what's in my inbox", "email briefing" | morning-briefing | `slashy-ops:morning-briefing` (references `pavitas-core:using-slashy`) |
@@ -44,7 +45,7 @@ Match the user's goal to ONE profile. Read that profile's skills. Do not read ot
 
 Every installed skill must appear in this list with a routing home. A skill not listed here is invisible to the system — when installing or removing a skill, update this manifest in the same change. Any audit of the ecosystem starts by diffing installed skills against this list.
 
-**pavitas-core (13):** skill-router (this file) · safety-rails, workspace-context, output-quality (always-on constraints) · morning-review, audiobook-kickoff, story-session, content-pipeline, infra-session (orchestrators) · handoff, decision-framework, proof (direct-routed) · using-slashy (shared Slashy mechanics reference — loaded by email skills).
+**pavitas-core (14):** skill-router (this file) · safety-rails, workspace-context, output-quality (always-on constraints) · morning-review, audiobook-kickoff, story-session, content-pipeline, infra-session (orchestrators) · handoff, decision-framework, proof (direct-routed) · using-slashy (shared Slashy mechanics reference — loaded by email skills) · memory-capture (leaf — invoked as an explicit step by eod-wrapup, handoff, morning-review, infra-session, story-session, content-pipeline, and decision-framework, plus the safety-rails fallback; not router-matched standalone, but catches direct asks per the table above).
 
 **User skills (4):** business-documentation (audiobook-kickoff / biz-admin) · mcp-wrapper-builder, autoresearch (infra-session) · relational-emotional-regulation (support).
 

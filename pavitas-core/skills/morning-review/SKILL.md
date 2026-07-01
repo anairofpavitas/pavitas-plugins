@@ -36,6 +36,8 @@ Ask for adjustments. Iterate until approved.
 
 Create a Littlebird Log entry (IDs in `pavitas-core:workspace-context`), title "Daily Briefing — [Date]", in this order: **📝 Notes Throughout the Day at the very top** (empty, with divider) → Calendar (today/tomorrow) → Production → Email (from Cora brief) → 3-3-3 with checkbox tasks (`- [ ]`) → Writing check-in (incl. weekly submission status) → Crochet → Balance Check → timestamp footer. Confirm with the page link.
 
+Then run `pavitas-core:memory-capture`. Not optional — check-ins and the day's plan often surface a deadline, decision, or preference update that the published page doesn't capture as an atomic, recallable fact.
+
 **During the day:** "I finished X" → acknowledge, update the task's source entry, confirm "✅ Marked complete in [source]".
 
 ## Hard rules
