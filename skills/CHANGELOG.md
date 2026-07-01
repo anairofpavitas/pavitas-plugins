@@ -51,6 +51,10 @@ reference file updates, and debrief-driven edits all get logged here.
   skills plus the safety-rails fallback, not router-matched standalone);
   one routing-table row added for direct memory-capture asks ("save this",
   "remember that", "log this deal").
+- **output-quality** — merged delve/landscape/navigate/"in today's world" into
+  prose-rules.md word blocklist (migrated from Cowork global instructions).
+- **workspace-context** — added 4-calendar breakdown to Calendar routing row
+  (migrated from Cowork global instructions).
 - **scavenger-hunt-designer, pocket-hunt, pleasure-hunt** — relocated from
   standalone `skills/` to the new `hunt-skills` plugin (see root
   `CHANGELOG.md`) so they update as one plugin install rather than three

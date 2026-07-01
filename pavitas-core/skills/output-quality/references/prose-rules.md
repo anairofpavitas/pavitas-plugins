@@ -47,6 +47,10 @@ Strip these on sight:
 | that's the point | announces instead of delivers |
 | it's worth noting | throat-clearing |
 | importantly | padding |
+| delve | AI-tell — overused filler verb |
+| landscape (as metaphor: "the X landscape") | AI-tell — vague abstraction |
+| navigate (as metaphor: "navigate challenges") | AI-tell — vague-verb padding |
+| in today's world | AI-tell — empty temporal framing |
 
 ---
 
@@ -101,6 +105,7 @@ Before finalizing any prose, scan for:
 - [ ] Any em dashes used for dramatic effect?
 - [ ] Any isolated short sentences dropped for punch?
 - [ ] Any "genuinely," "actually," "clearly," "obviously," "simply"?
+- [ ] Any "delve," "landscape," "navigate," "in today's world"?
 - [ ] Any "here's the thing / here's where / that's the point"?
 - [ ] Any paragraph ending with a tidy resonant summary?
 - [ ] Any second-person shift in personal writing?

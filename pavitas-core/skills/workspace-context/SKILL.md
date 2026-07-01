@@ -29,7 +29,7 @@ Facts and routing only. Behavioral rules live in `pavitas-core:safety-rails`.
 | Email reading/search | Slashy `list_messages` / `read_thread`. **Never** the Gmail MCP (drops HTML-only emails). Mechanics: `pavitas-core:using-slashy` |
 | Cora data (briefs, inbox, todos) | Cora MCP tools, or Zo-side `cora` CLI during Zo sessions |
 | Zo file ops / bash | `Zo Computer:bash`, `read_file`, `write_file` via the MCP proxy |
-| Calendar | Native Google Calendar tools |
+| Calendar | Native Google Calendar tools — 4 calendars: primary, Studio Schedule, Colin's, Events |
 | "Make a note", no destination given | Littlebird Log |
 | SMS to Pavi | `Zo Computer:send_sms_to_user` — only when asked or in agent contexts with something to report |
 
