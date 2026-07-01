@@ -22,6 +22,14 @@ reference file updates, and debrief-driven edits all get logged here.
   `hunt-skills:pocket-hunt`). The prior "hunt-family merge cancelled" call
   (2026-06-10 entry below) still stands — this bundles three distinct
   systems for shared install/update, it does not merge them into one skill.
+- **audiobook-script-analyzer, audiobook-project-setup** — relocated from
+  standalone `skills/` into the `audiobook-production` plugin (see root
+  `CHANGELOG.md`) so the whole audiobook workflow installs and updates as
+  one unit instead of a plugin plus two separate skill uploads. Content
+  unchanged except internal cross-references now namespaced
+  (`audiobook-production:audiobook-script-analyzer`,
+  `audiobook-production:audiobook-project-setup`); `pavitas-core:audiobook-kickoff`
+  and `pavitas-core:skill-router` updated to match.
 - **morning-briefing, eod-wrapup, batch-draft-writer, meeting-scheduler,
   deal-tracker** — relocated from standalone `skills/` to the new
   `slashy-ops` plugin (see root `CHANGELOG.md`) so they update as one

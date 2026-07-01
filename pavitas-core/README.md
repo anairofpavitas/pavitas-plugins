@@ -16,10 +16,8 @@ ORCHESTRATORS morning-review               → replaces daily-briefing
               story-session                → fiction work, Story Grid
               content-pipeline             → two-brand social drafting
               infra-session                → Zo / MCP / repo work
-LEAVES        (unchanged, loaded on demand) audiobook-script-analyzer,
-              audiobook-project-setup, business-documentation,
+LEAVES        (unchanged, loaded on demand) business-documentation,
               publisher-profiles, writing-workshop ×4, brand voices ×2,
-              scavenger-hunt-designer, pocket-hunt, pleasure-hunt,
               decision-framework (patched), handoff (trimmed),
               relational-emotional-regulation, mcp-wrapper-builder,
               autoresearch, proof, using-slashy (Slashy mechanics,
@@ -40,7 +38,7 @@ Layering rules: constraints never contain procedures; orchestrators never contai
 **audiobook-kickoff**
 - [ ] Word counts match script on a 3-chapter spot check
 - [ ] Front/back matter excluded from PFH math
-- [ ] Folder tree matches audiobook-project-setup spec
+- [ ] Folder tree matches audiobook-production:audiobook-project-setup spec
 - [ ] Notion chapter count = analysis chapter count; relation property set
 - [ ] No fabricated metadata; gaps flagged with ⚠️
 

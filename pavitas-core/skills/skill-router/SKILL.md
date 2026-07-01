@@ -13,14 +13,14 @@ Match the user's goal to ONE profile. Read that profile's skills. Do not read ot
 | Goal signal | Profile | Load |
 |---|---|---|
 | Morning greeting, "what's on today", "brief me" | morning-review | `pavitas-core:morning-review` (calls `pavitas-core:decision-framework` by reference) |
-| New book, script uploaded, "new audiobook project" | audiobook-kickoff | `pavitas-core:audiobook-kickoff` → `audiobook-script-analyzer`, `audiobook-project-setup` (Cowork-native), `business-documentation` |
+| New book, script uploaded, "new audiobook project" | audiobook-kickoff | `pavitas-core:audiobook-kickoff` → `audiobook-production:audiobook-script-analyzer`, `audiobook-production:audiobook-project-setup` (Cowork-native), `business-documentation` |
 | Invoice, contract, client correspondence | biz-admin | `business-documentation` |
 | Fiction drafting, "interview me", Jim & Percy, Story Grid work | story-session | `pavitas-core:story-session` (self-contained — interview and style-matching are inlined) |
 | Social post, caption, content batch | content-pipeline | `pavitas-core:content-pipeline` → ONE brand voice (pavitas xor spins-yarns) |
 | Zo work, MCP, automation, repo, skill maintenance | infra-session | `pavitas-core:infra-session` → `mcp-wrapper-builder`, `autoresearch` as needed |
-| Scavenger hunt (planned group/date event) | play | `scavenger-hunt-designer` |
-| Pocket hunt, noticing walk, quick hunt on the go | play | `pocket-hunt` |
-| Pleasure hunt, intimate/foreplay/cruising hunt | play | `pleasure-hunt` |
+| Scavenger hunt (planned group/date event) | play | `hunt-skills:scavenger-hunt-designer` |
+| Pocket hunt, noticing walk, quick hunt on the go | play | `hunt-skills:pocket-hunt` |
+| Pleasure hunt, intimate/foreplay/cruising hunt | play | `hunt-skills:pleasure-hunt` |
 | Conflict, "I'm spiraling", "help me think through", activation | support | `relational-emotional-regulation` ONLY |
 | "Save handoff", "read handoff", session end | handoff | `pavitas-core:handoff` |
 | Decision check, impulse purchase, time allocation | decide | `pavitas-core:decision-framework` |
@@ -46,12 +46,16 @@ Every installed skill must appear in this list with a routing home. A skill not 
 
 **pavitas-core (13):** skill-router (this file) · safety-rails, workspace-context, output-quality (always-on constraints) · morning-review, audiobook-kickoff, story-session, content-pipeline, infra-session (orchestrators) · handoff, decision-framework, proof (direct-routed) · using-slashy (shared Slashy mechanics reference — loaded by email skills).
 
-**User skills (9):** audiobook-script-analyzer, audiobook-project-setup, business-documentation (audiobook-kickoff / biz-admin) · mcp-wrapper-builder, autoresearch (infra-session) · scavenger-hunt-designer, pocket-hunt, pleasure-hunt (play) · relational-emotional-regulation (support).
+**User skills (4):** business-documentation (audiobook-kickoff / biz-admin) · mcp-wrapper-builder, autoresearch (infra-session) · relational-emotional-regulation (support).
 
 **Brand plugins (2):** pavitas-content:pavitas-brand-voice, spins-yarns-content:spins-yarns-brand-voice (content-pipeline). spins-yarns-content also carries the crochet pattern/log/project commands (CLI-side; absorbed from fiber-arts-content 2026-06-10).
 
 **slashy-ops plugin (5):** slashy-ops:morning-briefing, slashy-ops:eod-wrapup, slashy-ops:batch-draft-writer, slashy-ops:meeting-scheduler, slashy-ops:deal-tracker (email-ops — all reference pavitas-core:using-slashy; requires pavitas-core installed).
 
-**Environment notes:** audiobook-project-setup is Cowork-native (needs Mac filesystem access); from Claude.ai, folder creation happens on Zo instead — see audiobook-kickoff. autoresearch runs in Claude Code.
+**audiobook-production plugin (2):** audiobook-production:audiobook-script-analyzer, audiobook-production:audiobook-project-setup (bundled with the plugin's own commands/agents; routed to by `pavitas-core:audiobook-kickoff`).
+
+**hunt-skills plugin (3):** hunt-skills:scavenger-hunt-designer, hunt-skills:pocket-hunt, hunt-skills:pleasure-hunt (play).
+
+**Environment notes:** audiobook-production:audiobook-project-setup is Cowork-native (needs Mac filesystem access); from Claude.ai, folder creation happens on Zo instead — see audiobook-kickoff. autoresearch runs in Claude Code.
 
 **Removed — never reference:** writing-workshop (all four skills; interview/style-matching now live inside story-session), publisher-relations:publisher-profiles, enterprise-search (all three), daily-briefing, zo-workspace-orientation, design-elevation, humanize-prose (merged into output-quality), fiber-arts-content (merged into spins-yarns-content — its old voice guidance is dead; spins-yarns-brand-voice is the only voice source).

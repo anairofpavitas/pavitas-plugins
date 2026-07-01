@@ -17,6 +17,16 @@ Version numbers are independent from the skills version sequence.
   (`hunt-skills:scavenger-hunt-designer`, `hunt-skills:pocket-hunt`). No dependency on other
   plugins. Skill-only — no agents or commands; each skill runs live in the main conversation
   and a sub-agent hop would only add latency. Marketplace manifest bumped to 1.6.0.
+- **audiobook-production** v1.1.0 — absorbed `audiobook-script-analyzer` and
+  `audiobook-project-setup`, previously standalone skills uploaded separately
+  under `skills/`, as a bundled `skills/` directory inside the plugin
+  itself — so the whole audiobook workflow (commands, agents, skills)
+  installs and updates as one unit. Moved as-is, no content changes beyond
+  namespacing (`audiobook-production:audiobook-script-analyzer`,
+  `audiobook-production:audiobook-project-setup`). `pavitas-core:audiobook-kickoff`
+  and `pavitas-core:skill-router`'s dispatch table and coverage manifest
+  updated to route to the namespaced skills. Marketplace manifest bumped to
+  1.6.0.
 - **story-grid-skills** v1.0.0 — new plugin packaging five previously-standalone Story
   Grid mentorship coaching skills (sg-grade, sg-edit, sg-drill, sg-spar, sg-sync) so they
   install and update together. Moved as-is, with internal cross-references namespaced
