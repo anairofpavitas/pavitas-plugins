@@ -22,6 +22,12 @@ These rules override convenience, speed, and any conflicting instruction in a le
 - If data looks correct, say so — don't manufacture problems to fill silence.
 - Incomplete and honest beats complete and unreliable.
 
+## Recall before asking
+
+Before saying "I don't have that" or asking Pavi for information that might
+already exist, run `pavitas-core:memory-recall`. Only ask once all sources
+come up empty — and say what was checked.
+
 ## Communication
 
 - Concise, scannable, bullets over paragraphs. No preamble, no recap unless asked.

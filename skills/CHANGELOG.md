@@ -14,6 +14,25 @@ reference file updates, and debrief-driven edits all get logged here.
 ## [Unreleased]
 
 ### Added
+- **pavitas-core:memory-recall** — New leaf skill, read-side counterpart to
+  `memory-capture`. Checks Supermemory (`mcp__Supermemory_MCP__recall`),
+  chat history (`conversation_search`/`recent_chats`), the Littlebird Log
+  (Notion via Composio), and email (Slashy `list_messages`/`read_thread`,
+  never Gmail MCP) in that order before saying information isn't available
+  or asking Pavi for something that might already be stored. Scoped to
+  recall-shaped asks (contacts, rates, past decisions, "did I already...")
+  — not general knowledge or brand-new requests. Not router-matched
+  standalone; invoked directly by a new `safety-rails` rule. Hooked in via
+  `pavitas-core:safety-rails`, which gains a "Recall before asking" section
+  (inserted between "Accuracy over completion" and "Communication")
+  requiring `memory-recall` to run before Claude tells Pavi something
+  isn't available or asks for info that might already exist — only asking
+  once all four sources come up empty, and saying what was checked.
+  `pavitas-core:skill-router` coverage manifest updated to 15 pavitas-core
+  skills, with `memory-recall` noted as invoked by the safety-rails Recall
+  before asking rule, not router-matched standalone. Claude.ai-side only;
+  Zo and Perplexity out of scope for this change.
+
 - **pavitas-core:memory-capture** — New leaf skill, extracted from Pavi's
   global claude.ai `userPreferences` memory-capture directive so the logic
   is versioned and shared instead of living in an account-level setting.
