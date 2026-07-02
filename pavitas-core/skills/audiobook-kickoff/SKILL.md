@@ -15,7 +15,7 @@ Missing facts get asked or flagged. Never invented (deadline, client contact, co
 
 ## 1. Script analysis
 
-Read and follow `audiobook-production:audiobook-script-analyzer`. Output: chapter structure, per-chapter word counts, total words/pages excluding front/back matter, file naming convention, estimated finished hours (word count ÷ ~9,300 words/finished hour as a starting estimate — label it an estimate).
+Spawn `audiobook-production:script-scout` (Task tool, `subagent_type: script-scout`) with the script file. It runs the full chapter-structure analysis per its own File Naming Convention (source of truth: `audiobook-production:audiobook-script-analyzer`) and returns chapter list, file names, per-chapter page counts, and total word count excluding front/back matter. Compute the estimate yourself from its word count — script-scout returns raw counts, not rate math: estimated finished hours = word count ÷ ~9,300 words/finished hour (a starting estimate — label it as such).
 
 ## 2. Folders
 
@@ -32,7 +32,9 @@ If Pavi wants the folders on his Mac and the session is in Claude.ai, note it as
 
 ## 3. Notion records
 
-In Audiobook Projects DB: project entry with title, author, client, deadline, PFH estimate, status. In Chapters DB: one entry per chapter, related to the project (relation property `nMOv`), with word counts and naming-convention filenames. IDs in `pavitas-core:workspace-context`. If Work Dates are wanted, propose a schedule back-planned from the deadline with a 2-chapter buffer; Pavi approves before writing dates.
+If Work Dates are wanted, propose a schedule back-planned from the deadline with a 2-chapter buffer yourself — this is a judgment call, not something to hand off. Present it and get Pavi's explicit OK before anything gets written.
+
+Then spawn `audiobook-production:production-tracker` (Task tool, `subagent_type: production-tracker`) with: script-scout's chapter output, book metadata (title, author, client, deadline, PFH estimate, status), and the approved Work Dates if any. It searches for an existing book record, creates or updates the Audiobook Projects entry, and creates one Chapters DB entry per chapter (relation property `nMOv`) with the naming-convention filenames and word counts. IDs in `pavitas-core:workspace-context`.
 
 ## 4. Business docs (when applicable)
 
@@ -44,7 +46,7 @@ Report: chapters created (count), folder path, Notion links, deadline math (chap
 
 ## Verification before reporting done
 
-- Spot-check 3 chapters: word counts match the script.
+- Spot-check 3 chapters: word counts match the script (compare against script-scout's returned data — no need to re-read the manuscript).
 - Front/back matter excluded from PFH math.
 - Folder tree matches the structure above exactly.
-- Chapter count in Notion equals chapter count in the analysis.
+- Chapter count in Notion equals chapter count in script-scout's output.

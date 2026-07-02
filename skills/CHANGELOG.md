@@ -14,6 +14,26 @@ reference file updates, and debrief-driven edits all get logged here.
 ## [Unreleased]
 
 ### Added
+- **pavitas-core:morning-intel** — New Haiku sub-agent, gather-phase
+  counterpart to `morning-review`. Pulls calendar (all 4), Cora brief,
+  Littlebird carryforward, production status, and the Joanne check in
+  one call and returns structured data, no editorializing. `morning-review`
+  rewritten into a thin dispatcher that spawns this agent for Phase 1
+  instead of running all five pulls inline at whatever model the session
+  was on; Phase 2 (3-3-3 compile, balance check) and Phase 3 (publish)
+  unchanged, still Sonnet. `daily-ops:briefing`'s parallel-agent pattern
+  had solved this same problem in the sibling plugin; morning-review
+  never got it. Same "gather → judgment" split as the PR that pinned
+  memory-capture.
+- **pavitas-core:audiobook-kickoff** — Steps 1 and 3 rewired to spawn
+  `audiobook-production:script-scout` and `audiobook-production:production-tracker`
+  (both already `model: haiku`) instead of inlining
+  `audiobook-production:audiobook-script-analyzer`'s instructions and the
+  Notion write logic directly into the kickoff session. Brings the
+  Claude.ai/Cowork skill path in line with `new-project.md`'s command
+  path, which already delegated to these agents. Work-date back-planning
+  (judgment, needs Pavi's approval) stays in the dispatcher; the agent
+  only writes records once approved.
 - **pavitas-core:memory-recall** — New leaf skill, read-side counterpart to
   `memory-capture`. Checks Supermemory (`mcp__Supermemory_MCP__recall`),
   chat history (`conversation_search`/`recent_chats`), the Littlebird Log
