@@ -10,19 +10,13 @@ IDs and tool routing: `pavitas-core:workspace-context`. Conduct rules: `pavitas-
 
 ## Phase 1 — Gather + check in
 
-Run data pulls in parallel, silently:
+Spawn the `morning-intel` sub-agent (Task tool, `subagent_type: morning-intel`) to pull calendar, Cora brief, Littlebird carryforward, production status, and the Joanne check in one call. It returns structured data — don't re-query any of its five sources yourself.
 
-1. **Calendar** — today + tomorrow across all four: `primary`, `Studio Schedule`, `Colin`, `Events`. Don't miss Events (cultural calendar).
-2. **Cora brief** — fetch the latest brief (Cora MCP: list, then show). Extract: action-required items with who/what/urgency, anything awaiting Pavi's reply. Do NOT run any direct inbox searches. If no brief exists from the last 24h, say so and offer to skip email rather than triaging manually.
-3. **Littlebird Log** — entries from the past 7 days INCLUDING comments. Carryforward rules: `[x]`/✅/strikethrough/(DONE) → skip; open `[ ]` not cancelled → carry with "(carried from [date])"; comment-sourced tasks labeled "(from Littlebird comment on [date])".
-4. **Production** — active project in Audiobook Projects DB: title, chapter progress, deadline, on-track buffer (chapters with Work Date ≤ today vs. actually complete).
-5. **Joanne check** — when was the last weekly Story Grid submission?
-
-Then ask, in one message: ✍️ Writing — yesterday and today's plan? 🧶 Crochet — any hook time or project updates? 📝 Tasks — anything floating in your head?
+While that's running (or right after), ask Pavi, in one message: ✍️ Writing — yesterday and today's plan? 🧶 Crochet — any hook time or project updates? 📝 Tasks — anything floating in your head?
 
 ## Phase 2 — Present
 
-Compile and show in chat. Structure tasks with **3-3-3**:
+Compile the agent's data plus the check-in answers and show in chat. Structure tasks with **3-3-3**:
 
 - 🎯 **Deep Focus (~3h)** — ONE primary project. Usually narration or writing. Writing takes this slot when a Joanne deadline approaches, Pavi prioritizes it, or no narration deadline presses.
 - ⚡ **Quick Wins + Scheduled** — max three items, ≤30 min each; scheduled events carry times. Extras → Overflow with dates if time-sensitive.
