@@ -1,5 +1,6 @@
 ---
 description: Pulls and synthesizes events from all 4 Google Calendars. Sub-agent for daily briefing parallel data gathering.
+model: haiku
 ---
 
 # Calendar Intel

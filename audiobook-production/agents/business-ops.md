@@ -1,5 +1,6 @@
 ---
 description: Handles invoicing, rate calculations, and project estimates for Pavitas Productions LLC. Sub-agent for business operations within audiobook production.
+model: haiku
 ---
 
 # Business Ops

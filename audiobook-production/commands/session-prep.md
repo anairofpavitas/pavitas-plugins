@@ -1,5 +1,6 @@
 ---
 description: Prepare for a recording session. Pulls today's chapters from Notion, checks deadline proximity, loads pickup notes from last session, and surfaces any publisher communications.
+model: haiku
 ---
 
 # Recording Session Prep

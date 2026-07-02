@@ -5,76 +5,23 @@ description: Writes durable facts (decisions, deadlines, contacts, direction cha
 
 # Memory Capture
 
-Writes durable, cross-platform-recallable facts to Supermemory. This is a leaf skill — it doesn't route itself into a session. Something else calls it: another skill's explicit step, or a direct ask. Don't announce the save — just do it.
+Writes durable, cross-platform-recallable facts to Supermemory. This is a leaf skill — it doesn't route itself into a session. Something else calls it: another skill's explicit step, or a direct ask.
 
 ## Two memory stores — don't confuse them
 
-Claude.ai's own native memory already runs in the background on claude.ai — no tool call, nothing this skill does, nothing it can see or edit. Supermemory (this skill) is a second, independent store. **The two don't dedupe against each other.** Write here anyway: Supermemory is what Zo, Perplexity, and every other non-claude.ai surface can actually read — native memory doesn't reach them. "Claude already remembers this" is not a reason to skip this skill; it just means claude.ai has it and nowhere else does yet.
+Claude.ai's own native memory already runs in the background on claude.ai — no tool call, nothing this does, nothing it can see or edit. Supermemory is a second, independent store, and the two don't dedupe against each other. Write here anyway: Supermemory is what Zo, Perplexity, and every other non-claude.ai surface can actually read. "Claude already remembers this" is not a reason to skip capture.
 
-## Tool
+## Execution
 
-- `mcp__Supermemory_MCP__memory` — the only write path. Its own description says not to use any other memory tool, and per `pavitas-core:workspace-context` this is the canonical Supermemory MCP (as pavi@paviproczko.com) — **not** the separate `mcp__Supermemory__*` (`add`/`search`/`list`/`delete`/`profile`) tools, which are a different, Zo-routed connector.
-  - `content` (required, string) — the memory text. See **Metadata tag** below for what goes in it.
-  - `containerTag` — always `"sm_project_default"`. See **Destination**.
-  - `action` — `"save"` (default) to write, `"forget"` to remove a stale one.
-- `mcp__Supermemory_MCP__recall` — search (`query`, `containerTag: "sm_project_default"`) for legitimate lookups: answering "what do we know about X"-type questions. **Not** a pre-write dedup check — recall has propagation lag, so an empty result doesn't mean a fact wasn't already saved; a search that comes back clean is not license to skip capturing something new. It still gets used opportunistically outside of writing: a session recalls something for an unrelated reason, notices it's stale, and `forget`s it — see **Expiry**.
+Don't write to Supermemory from here directly. Spawn the `memory-capture` sub-agent (Task tool, `subagent_type: memory-capture`) and hand it:
 
-Neither tool exposes a structured metadata parameter or a TTL/expiry field — `content` is a single string, full stop. The metadata and expiry requirements below are real, but both are satisfied by folding the information into that string, not by passing extra parameters the tool doesn't have.
+- The raw fact(s) or context to capture — verbatim is fine, let the agent extract/format
+- Source identifier if known (e.g. `claude-chat`, `zo-compactor`, `claude-code`) — default to `claude-chat` if not obvious
+- Today's date
+- A category hint if you have one (decision / deadline / project-status / etc.) — optional, the agent infers it if omitted
 
-## Save
+The agent owns the save/don't-save judgment call, the one-memory-per-fact rule, metadata tag formatting, expiry markers, and digest handling (extracting 3–10 atomic facts from a long document rather than saving it raw). Don't announce the save to Pavi — just do it. If the agent reports back what it wrote, surface that only if it's relevant to what Pavi's currently looking at.
 
-- Deadlines and time-sensitive commitments
-- Project status changes and decisions made
-- New clients, collaborators, or contacts
-- Creative decisions and direction changes
-- Personal context updates (preferences, constraints, working style)
-- Anything a future agent would need to recall
+## When to call this
 
-## Don't save
-
-- Promotional content, transactional notifications, operational noise
-- Raw digest/long-form content — extract atomic facts instead (see **Digest handling**), archive the raw content to filesystem only
-- Anything you already know wasn't captured because you were in the same session when it was saved moments ago (avoid re-saving mid-session). This is about session-local awareness, not a recall check — don't query Supermemory to verify past saves before writing.
-- Conversational filler with no durable signal
-
-## Write rule
-
-One memory per fact. Never bundle. Each entry must be self-contained, specific (names/dates/versions), and actionable.
-
-**Good:** "Pavi decided to use Claude Sonnet 4 as the default model tier for Zo compactor as of 2026-06-17"
-**Bad:** "Pavi made several decisions about the Zo pipeline including model selection, routing, and connector configuration"
-
-## Destination
-
-Always `containerTag: "sm_project_default"` (My Space). Never `"pavi"` or any other container — there is no other project configured to write into.
-
-## Expiry
-
-No TTL parameter exists on the tool, so expiry is advisory text carried inside `content`, enforced the next time a session `recall`s the memory and notices it's stale — then `forget`s it. Append a marker per category:
-
-| Category | Marker |
-|---|---|
-| Daily intelligence (Littlebird/Cora insights) | `(review: <date + 30d>)` |
-| Project status | `(review: <date + 90d>)` |
-| Decisions and preferences | none — permanent |
-| Deadlines | `(expires: <deadline date + 7d>)` |
-
-## Digest handling
-
-When a digest/long document arrives (Littlebird, Cora, financial): extract 3–10 atomic facts and write each as its own `memory` call. Never save the raw document to Supermemory.
-
-## Metadata tag — required on every write
-
-Lead every `content` string with a bracketed tag, then the fact itself, one sentence:
-
-```
-[source: <agent-or-session-identifier> | date: YYYY-MM-DD | data_source: <littlebird|cora|financial|conversation|other>] <the fact>
-```
-
-`source` examples: `claude-chat`, `zo-compactor`, `claude-code`.
-
-**Full example** (decision, permanent, no expiry marker):
-`[source: claude-chat | date: 2026-06-17 | data_source: conversation] Pavi decided to use Claude Sonnet 4 as the default model tier for Zo compactor as of 2026-06-17.`
-
-**Full example** (deadline, with expiry marker):
-`[source: claude-chat | date: 2026-06-25 | data_source: conversation] Client contract for Narration Co. is due 2026-07-02. (expires: 2026-07-09)`
+Any time you (or the skill orchestrating you) notice a durable fact worth keeping: a deadline, a decision, a new contact, a direction change, a preference update. If in doubt about whether something's save-worthy, spawn the agent anyway and let it make that call — it's cheap.

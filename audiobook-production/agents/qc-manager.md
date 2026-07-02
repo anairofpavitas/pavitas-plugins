@@ -1,5 +1,6 @@
 ---
 description: Tracks QC issues, manages pickup lists, and handles error logging for audiobook production. Sub-agent for quality control workflows.
+model: haiku
 ---
 
 # QC Manager

@@ -1,5 +1,6 @@
 ---
 description: Generate a QC spreadsheet package for the active audiobook project. Creates Excel file with chapter rows, hyperlinks to audio files, and status tracking columns.
+model: haiku
 ---
 
 # QC Pack Generator

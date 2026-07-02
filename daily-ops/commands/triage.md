@@ -1,5 +1,6 @@
 ---
 description: Mid-day email triage. Quick scan of inbox without the full briefing — just email intelligence using Cora-style processing.
+model: haiku
 ---
 
 # Email Triage

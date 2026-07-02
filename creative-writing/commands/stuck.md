@@ -1,5 +1,6 @@
 ---
 description: When stuck on writing, offer one small actionable step. Not a full plan — just the next thing to try.
+model: haiku
 ---
 
 # Unstuck Prompt
