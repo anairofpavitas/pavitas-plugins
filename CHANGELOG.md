@@ -43,6 +43,18 @@ Version numbers are independent from the skills version sequence.
   updated to route to the namespaced skills and list the new plugin.
 
 ### Changed
+- **pavitas-core** v2.1.0 — retired the Slashy-based email waterfall in favor of native Gmail
+  → Composio Gmail → Cora. `using-slashy` renamed and rewritten as `using-gmail`, documenting
+  the full per-operation routing table: search/read/draft/labels default to native Gmail;
+  send and attachment download route straight to Composio Gmail since native Gmail has
+  neither; Cora is last resort (search/read/reply-draft only, no send, no attachments).
+  `workspace-context`'s email routing rows, `decision-framework`'s two Slashy data-gathering
+  pointers, and the README architecture diagram and infra-session eval rubric all updated to
+  match. Read-receipt/open-tracking (Slashy-only, no equivalent anywhere in the new chain)
+  dropped, not migrated. `skill-router`'s five `slashy-ops:*` routing rows removed and
+  `slashy-ops` moved to the Removed list — the plugin itself is untouched and still
+  installable, but no longer routed to; it now has a dangling dependency on the retired
+  `using-slashy` skill and will error if invoked. Marketplace manifest bumped to 1.7.0.
 - **spins-yarns-content** v2.0.0 — absorbed fiber-arts-content. Gains
   `/pattern`, `/log`, and `/project` commands (cleaned: stale hardcoded
   project lists removed — the Notion Littlebird Log is the only project
