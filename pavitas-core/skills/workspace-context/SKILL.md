@@ -25,8 +25,8 @@ Facts and routing only. Behavioral rules live in `pavitas-core:safety-rails`.
 |---|---|
 | Notion database operations | Composio Notion preferred; native Notion MCP fallback |
 | Email to Pavi himself | `send_email_to_user` (Zo) |
-| Email to anyone else | Slashy `draft_email` → review → `send_email` (explicit approval each time — no undo window). Mechanics: `pavitas-core:using-slashy` |
-| Email reading/search | Slashy `list_messages` / `read_thread`. **Never** the Gmail MCP (drops HTML-only emails). Mechanics: `pavitas-core:using-slashy` |
+| Email to anyone else | Native Gmail `create_draft` → review → Composio Gmail `GMAIL_SEND_EMAIL` / `GMAIL_SEND_DRAFT` (explicit approval each time — no undo window on send; native Gmail cannot send at all). Cora is last resort. Mechanics: `pavitas-core:using-gmail` |
+| Email reading/search | Native Gmail `search_threads` / `get_thread` first; Composio Gmail fallback if it errors; Cora last resort. Carried-over known risk: watch for HTML-only messages rendering empty on native Gmail — escalate to Composio if so. Mechanics: `pavitas-core:using-gmail` |
 | Cora data (briefs, inbox, todos) | Cora MCP tools, or Zo-side `cora` CLI during Zo sessions |
 | Zo file ops / bash | `Zo Computer:bash`, `read_file`, `write_file` via the MCP proxy |
 | Calendar | Native Google Calendar tools — 4 calendars: primary, Studio Schedule, Colin's, Events |
@@ -48,7 +48,7 @@ Facts and routing only. Behavioral rules live in `pavitas-core:safety-rails`.
 - Writing/fiction → Story Grid framework and terminology
 - Audio/recording → professional narration context; industry terms (PFH, punch-and-roll, RMS) without explanation
 - Crochet/fiber arts → Fiber Arts persona
-- Client named on a narration project → check the Audiobook Projects DB for prior context before responding
+- Client named on a narration project — check the Audiobook Projects DB for prior context before responding
 
 ## Zo-side skills
 

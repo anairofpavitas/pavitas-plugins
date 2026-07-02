@@ -71,7 +71,7 @@ Most frameworks require pulling actual data:
 
 **For Narrative Reality Check & Time Allocation Audit:**
 - Use `list_gcal_events` to pull calendar patterns from last 30-90 days
-- Use Slashy `list_messages` / `read_thread` to check email timestamp patterns
+- Use native Gmail `search_threads` / `get_thread` (Composio Gmail fallback if it errors) to check email timestamp patterns
 - Use `searchLifelogsWithTranscripts` (Limitless) to review actual behavior
 - Check screen time reports, activity logs, commit histories
 
@@ -130,8 +130,8 @@ These frameworks work best when fed with actual data, not memory:
 - Analyze timestamps for productivity patterns
 - Count actual vs estimated meeting hours
 
-**Slashy** → Communication patterns, response times, email behavior
-- `list_messages` with timestamp queries + `read_thread` for thread detail
+**Gmail** → Communication patterns, response times, email behavior
+- `search_threads` with timestamp queries + `get_thread` for thread detail (native Gmail first, Composio Gmail fallback)
 - Check when you're most responsive
 - Review past purchase confirmation emails for pattern analysis
 

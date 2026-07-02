@@ -4,6 +4,8 @@ Ships as a single plugin (v2.0.0). Bundled skills load as `pavitas-core:<name>`.
 
 Refactored 2026-06-10 per the skills audit; plugin-packaged same day. Canon lives in `anairofpavitas/pavitas-plugins`; every other agent pulls from here.
 
+Email routing migrated 2026-07-02: Slashy retired in favor of native Gmail → Composio Gmail → Cora (see `using-gmail`). The `slashy-ops` plugin itself is untouched and still installable, but no longer routed to.
+
 ## Architecture
 
 ```
@@ -20,8 +22,8 @@ LEAVES        (unchanged, loaded on demand) business-documentation,
               publisher-profiles, writing-workshop ×4, brand voices ×2,
               decision-framework (patched), handoff (trimmed),
               relational-emotional-regulation, mcp-wrapper-builder,
-              autoresearch, proof, using-slashy (Slashy mechanics,
-              loaded by slashy-ops plugin)
+              autoresearch, proof, using-gmail (Gmail mechanics:
+              native Gmail → Composio Gmail → Cora)
 ```
 
 Layering rules: constraints never contain procedures; orchestrators never contain execution detail (they name leaves); leaves never route. Facts (IDs, paths) live in `pavitas-core:workspace-context` only — nothing else hard-codes them.
@@ -55,7 +57,7 @@ Layering rules: constraints never contain procedures; orchestrators never contai
 - [ ] Platform-fit pass completed
 
 **infra-session**
-- [ ] Routing correct (Slashy not Gmail; Composio Notion for DBs; Zo proxy for files)
+- [ ] Routing correct (native Gmail first for email, Composio Gmail fallback for send/attachments, Cora last resort; Composio Notion for DBs; Zo proxy for files)
 - [ ] Destructive ops previewed
 - [ ] Changelog entry written (correct file)
 - [ ] Smoke test run and results stated; handoff written if mid-task
