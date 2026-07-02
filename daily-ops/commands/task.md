@@ -1,5 +1,6 @@
 ---
 description: Quick task capture to Notion Tasks database. Takes natural language task description and creates it immediately with Status=Inbox.
+model: haiku
 ---
 
 # Quick Task Capture

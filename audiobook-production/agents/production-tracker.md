@@ -1,5 +1,6 @@
 ---
 description: Manages Notion databases for audiobook project tracking. Creates and updates book records, chapter records, and status fields. Sub-agent for audiobook production workflows.
+model: haiku
 ---
 
 # Production Tracker

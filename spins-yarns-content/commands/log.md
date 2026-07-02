@@ -1,5 +1,6 @@
 ---
 description: Save a crochet pattern or project update to Notion Littlebird Log and/or the organized crochet/ folder.
+model: haiku
 ---
 
 # Fiber Arts Log

@@ -1,5 +1,6 @@
 ---
 description: Analyzes audiobook manuscripts for chapter structure, character voices, pronunciation research, and narration prep. Sub-agent for audiobook production workflows.
+model: haiku
 ---
 
 # Script Scout

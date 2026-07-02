@@ -1,5 +1,6 @@
 ---
 description: Process a dictated audio transcript into clean prose. Removes false starts, filler words, and dictation artifacts while preserving the author's natural voice.
+model: haiku
 ---
 
 # Dictation Processing

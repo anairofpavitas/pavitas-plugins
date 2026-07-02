@@ -1,5 +1,6 @@
 ---
 description: Checks Notion databases for task status, Littlebird Log carryforward items, and accountability tracking. Sub-agent for daily briefing parallel data gathering.
+model: haiku
 ---
 
 # Notion Tracker

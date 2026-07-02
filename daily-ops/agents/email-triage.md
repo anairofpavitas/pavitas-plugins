@@ -1,5 +1,6 @@
 ---
 description: Intelligent email triage using Cora-style contextual processing. Sub-agent for daily briefing parallel data gathering.
+model: haiku
 ---
 
 # Email Triage (Cora-Style)
@@ -49,7 +50,7 @@ Creative: Tim Grahl / Story Grid, iO Training Center
 
 - If a publisher email mentions a project, cross-reference with Notion project status
 - If an email mentions money/payment, flag for business awareness
-- If an email is from an unknown sender about audiobook work, flag as potential new client
+- If an email is from an unknown sender about audiobook work, flag as potential new client — surface it, don't decide how to respond; that's a judgment call for the orchestrator/Pavi, not this agent
 - Never fabricate email content — if you can't access an email, say so
 
 ## Output
