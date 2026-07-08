@@ -1,6 +1,6 @@
 # Pavitas Productions Plugin Suite
 
-Nine custom Claude Code / Cowork plugins designed for Pavi Proczko's audiobook narration business, creative work, and personal projects.
+Eleven custom Claude Code / Cowork plugins designed for Pavi Proczko's audiobook narration business, creative work, and personal projects.
 
 > **v2/v2.1 refactor (2026-06-10):** the suite consolidated from nine plugins to six. `publisher-relations`, `enterprise-search`, and `writing-workshop` were removed; `fiber-arts-content` merged into `spins-yarns-content` v2.0.0; the core skill architecture shipped as the `pavitas-core` plugin v2.0.0. History: [CHANGELOG.md](CHANGELOG.md) (plugins) and [skills/CHANGELOG.md](skills/CHANGELOG.md) (skills).
 >
@@ -20,6 +20,14 @@ Nine custom Claude Code / Cowork plugins designed for Pavi Proczko's audiobook n
 > `audiobook-project-setup`, previously standalone `skills/` uploads, moved into the
 > `audiobook-production` plugin itself so the whole workflow (commands, agents, skills)
 > installs and updates as one unit. Plugin count unaffected by this change.
+>
+> **pdf-viewer added (2026-07-08):** Anthropic's generic `pdf-viewer` plugin (interactive
+> view / annotate / fill / sign, local `@modelcontextprotocol/server-pdf` MCP) customized
+> for a solo narration operation — examples rewritten around narration script prep (a
+> pronunciation / character-cue / breath / pickup / typo / author-question markup
+> convention), publisher-contract review and signing, and contractor W-9s. Plugin name,
+> commands, and the `view-pdf` skill name unchanged; no dependency on other plugins.
+> Marketplace manifest bumped to 1.8.0.
 
 ## Installation
 
@@ -37,6 +45,7 @@ claude plugin install pavitas-core@pavitas-plugins
 claude plugin install slashy-ops@pavitas-plugins
 claude plugin install story-grid-skills@pavitas-plugins
 claude plugin install hunt-skills@pavitas-plugins
+claude plugin install pdf-viewer@pavitas-plugins
 ```
 
 ## Plugin Overview

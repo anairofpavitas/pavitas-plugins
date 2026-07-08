@@ -11,6 +11,22 @@ Version numbers are independent from the skills version sequence.
 ## [Unreleased]
 
 ### Added
+- **pdf-viewer** v0.3.0 — added Anthropic's generic `pdf-viewer` plugin
+  (interactive view / annotate / fill-form / sign over a local
+  `@modelcontextprotocol/server-pdf` MCP), customized for a solo narration
+  operation. Rewrote every example off the generic defaults (arXiv papers,
+  anonymous contracts, bare W-9s) onto Pavi's real PDF jobs: narration script
+  prep with a defined markup convention (pronunciations=blue notes, character
+  cues=teal, breath/pause `/`,`//`, emphasis=underline, PICKUP stamps=red,
+  chapter breaks, typo strikethroughs, amber `Q:` author questions), publisher
+  contract review + signing (Aethon/Podium/Recorded Books/Blackstone/Audible,
+  with a DocuSign hand-off note), and contractor tax forms (W-9 with standing
+  Pavitas Productions LLC field context and a hard stop on guessing EIN/address/
+  bank numbers). `open`/`annotate`/`sign`/`fill-form` commands and the `view-pdf`
+  skill point summaries and chapter breakdowns back to Read / the
+  audiobook-script-analyzer skill, and the skill explicitly excludes AI voice
+  generation. Plugin and skill names unchanged; author set to Pavitas Productions
+  per the productivity-plugin precedent. Marketplace manifest bumped to 1.8.0.
 - **productivity** v1.3.0 — customized Anthropic's generic productivity plugin
   (task management + two-tier workplace memory + dashboard) for a solo
   operation instead of a team: dropped chat and separate project-tracker

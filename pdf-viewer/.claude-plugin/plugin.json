@@ -1,0 +1,9 @@
+{
+  "name": "pdf-viewer",
+  "version": "0.3.0",
+  "description": "View, annotate, and sign PDFs in a live interactive viewer, customized for Pavitas Productions: mark up narration scripts for the booth (pronunciations, character cues, breath/pause, pickups, typos, author questions), review and sign publisher contracts, and fill contractor tax forms. Adapted from Anthropic's pdf-viewer plugin.",
+  "author": {
+    "name": "Pavitas Productions"
+  },
+  "keywords": ["pdf", "annotate", "sign", "narration", "script-prep", "contracts", "forms"]
+}
