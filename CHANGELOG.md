@@ -11,6 +11,20 @@ Version numbers are independent from the skills version sequence.
 ## [Unreleased]
 
 ### Added
+- **productivity** v1.3.0 — customized Anthropic's generic productivity plugin
+  (task management + two-tier workplace memory + dashboard) for a solo
+  operation instead of a team: dropped chat and separate project-tracker
+  categories (no Slack, no Asana/Linear/Jira), Notion covers both knowledge
+  base and project tracker, Gmail/Google Calendar are native connectors
+  (no plugin `.mcp.json` entries needed), Composio documented as fallback
+  routing (preferred for Notion per standing routing rule, backup for
+  Gmail/Calendar/Drive). Memory lookup flow now checks Supermemory before
+  asking the user to explain a person/project/term, to avoid duplicating
+  or re-asking what's already durably recorded. Zo Computer added as an
+  extra `/update --comprehensive` scan source (its own memory.duckdb) and
+  as the recommended home for anything recurring (`create_automation`
+  outlives any single session), with a tool-priority note (direct Zo MCP
+  tools over `ask_zo`). Marketplace manifest bumped to 1.7.0.
 - **hunt-skills** v1.0.0 — new plugin packaging three previously-standalone scavenger-hunt
   skills (scavenger-hunt-designer, pocket-hunt, pleasure-hunt) so they install and update
   together. Moved as-is, with internal cross-references namespaced

@@ -1,0 +1,9 @@
+{
+  "name": "productivity",
+  "version": "1.3.0",
+  "description": "Task management and workplace memory for Pavitas Productions, customized from the Anthropic productivity plugin. Syncs with Notion (tasks + knowledge base) and Google Workspace (email, calendar); cross-checks Supermemory before asking twice, and uses Zo Computer for persistent scans and recurring automations.",
+  "author": {
+    "name": "Pavitas Productions"
+  },
+  "keywords": ["productivity", "tasks", "memory", "notion", "dashboard"]
+}
