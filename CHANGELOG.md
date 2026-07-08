@@ -11,6 +11,11 @@ Version numbers are independent from the skills version sequence.
 ## [Unreleased]
 
 ### Added
+- **xcode-skills** v1.0.0 — bundled Apple's seven official Xcode/Swift skills
+  (`swiftui-specialist`, `swiftui-whats-new-27`, `uikit-app-modernization`,
+  `modernize-tests`, `c-bounds-safety`, `audit-xcode-security-settings`,
+  `device-interaction`) unmodified into plugin form. New `development`-category
+  plugin; no dependency on other plugins.
 - **pdf-viewer** v0.3.0 — added Anthropic's generic `pdf-viewer` plugin
   (interactive view / annotate / fill-form / sign over a local
   `@modelcontextprotocol/server-pdf` MCP), customized for a solo narration

@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "pavitas-plugins",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "description": "Custom plugin suite for Pavitas Productions LLC",
   "owner": {
     "name": "Pavitas Productions"
@@ -72,6 +72,12 @@
       "description": "View, annotate, and sign PDFs in a live interactive viewer, customized for a solo narration operation: script prep markup (pronunciations, character cues, breath/pause, pickups, typos, author questions), publisher-contract review and signing, and contractor tax forms (W-9). Adapted from Anthropic's pdf-viewer. Local MCP server, no API keys.",
       "source": "./pdf-viewer",
       "category": "productivity"
+    },
+    {
+      "name": "xcode-skills",
+      "description": "Apple's official Xcode/Swift engineering skills: SwiftUI best practices and performance review, new SwiftUI APIs in the 2027 OS releases (SDK 27), UIKit app modernization, Swift Testing migration, C -fbounds-safety adoption, Xcode security build-setting audits, and on-device UI verification.",
+      "source": "./xcode-skills",
+      "category": "development"
     }
   ]
 }

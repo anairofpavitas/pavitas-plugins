@@ -1,6 +1,6 @@
 # Pavitas Productions Plugin Suite
 
-Eleven custom Claude Code / Cowork plugins designed for Pavi Proczko's audiobook narration business, creative work, and personal projects.
+Twelve custom Claude Code / Cowork plugins designed for Pavi Proczko's audiobook narration business, creative work, and personal projects.
 
 > **v2/v2.1 refactor (2026-06-10):** the suite consolidated from nine plugins to six. `publisher-relations`, `enterprise-search`, and `writing-workshop` were removed; `fiber-arts-content` merged into `spins-yarns-content` v2.0.0; the core skill architecture shipped as the `pavitas-core` plugin v2.0.0. History: [CHANGELOG.md](CHANGELOG.md) (plugins) and [skills/CHANGELOG.md](skills/CHANGELOG.md) (skills).
 >
@@ -46,6 +46,7 @@ claude plugin install slashy-ops@pavitas-plugins
 claude plugin install story-grid-skills@pavitas-plugins
 claude plugin install hunt-skills@pavitas-plugins
 claude plugin install pdf-viewer@pavitas-plugins
+claude plugin install xcode-skills@pavitas-plugins
 ```
 
 ## Plugin Overview
@@ -109,6 +110,9 @@ Skill-only plugin (no slash commands) — 5 skills load as `story-grid-skills:<n
 
 ### Hunt Skills (scavenger-hunt family)
 Skill-only plugin (no slash commands) — 3 skills load as `hunt-skills:<name>`. See "hunt-skills: The Scavenger-Hunt Family" section below.
+
+### Xcode Skills (Apple Swift/Xcode engineering)
+Skill-only plugin (no slash commands) — 7 skills load as `xcode-skills:<name>`. Apple's official Xcode/Swift guidance, bundled unmodified. See [xcode-skills/README.md](xcode-skills/README.md).
 
 ## pavitas-core: Skill Architecture
 

@@ -1,0 +1,10 @@
+{
+  "name": "xcode-skills",
+  "description": "Apple's official Xcode and Swift engineering skills, bundled to install and update as one plugin. Covers SwiftUI best practices and performance review, new SwiftUI APIs in the 2027 OS releases (SDK 27), UIKit app modernization, Swift Testing migration, C -fbounds-safety adoption, Xcode security build-setting audits, and on-device UI verification. Each skill's frontmatter description handles disambiguation; loads as xcode-skills:<name>.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Apple",
+    "url": "https://developer.apple.com"
+  },
+  "keywords": ["xcode", "swift", "swiftui", "uikit", "ios", "testing", "security", "bounds-safety", "apple", "development"]
+}
