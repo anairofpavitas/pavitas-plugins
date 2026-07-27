@@ -14,7 +14,7 @@ separate uploads. Loads as `hunt-skills:<name>`.
 ## Why these three are bundled, not merged
 
 Each is a distinct system with its own intake, structure, and delivery model — a prior audit
-considered merging them into one skill and reversed that decision (see `skills/CHANGELOG.md`,
+considered merging them into one skill and reversed that decision (see `CHANGELOG-skills.md`,
 2026-06-10 entry: "Hunt-family merge cancelled: three skills are distinct systems; router
 disambiguates instead"). Bundling as one plugin only changes how they ship and update; each
 skill's frontmatter `description` still does the disambiguation work so the right one loads

@@ -1,10 +1,65 @@
 # Changelog — Plugins
 
 All notable changes to pavitas-plugins **plugins** are documented here.
-Skills have their own changelog at `skills/CHANGELOG.md`.
+Skills have their own changelog at [`CHANGELOG-skills.md`](./CHANGELOG-skills.md).
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 Version numbers are independent from the skills version sequence.
+
+---
+
+## [1.10.0] — 2026-07-27
+
+### Fixed
+- **Four plugins were invisible in the marketplace.** `audiobook-production`,
+  `daily-ops`, `creative-writing`, and `spins-yarns-content` each declared their
+  MCP servers with `"type": "url"` — not a valid server type (`stdio`, `http`,
+  `sse`, `ws` are). The invalid type made each plugin fail to load, so it never
+  reached the marketplace listing and never showed up on install. Only 8 of the
+  12 plugins were actually reachable. Changed all nine server entries across the
+  four files to `"type": "http"`, matching `productivity`'s working config. The
+  correlation was exact: every plugin with a valid `.mcp.json` (or none at all)
+  loaded; every plugin with `"type": "url"` did not.
+- Removed the non-schema `"note"` field from all nine of those server entries —
+  a second, independent failure mode sitting in the same files. The information
+  wasn't dropped: each note's content now lives in that plugin's README
+  `## Connectors` section. Three of the four READMEs had been carrying abridged
+  versions of these notes, so this also restored detail that had drifted
+  (`audiobook-production`: Littlebird Log, delivery confirmations, script
+  storage; `daily-ops`: the four calendar names, VIP monitoring, Littlebird
+  Database; `spins-yarns-content`: Perplexity crochet trends as a `/weekly` input).
+- **pavitas-core:memory-recall** — SKILL.md frontmatter was not valid YAML. The
+  `description:` value wrapped across four lines with no continuation indent, so
+  a parser read line 2 as a new key and failed the whole block. Converted to a
+  `>-` folded scalar; description text unchanged. Caught by the repo-wide
+  frontmatter check added for this release.
+
+### Added
+- **miscellaneous** v1.0.0 — new plugin, thirteenth in the marketplace. Four
+  skills had been sitting loose in the repo's root `skills/` folder, which meant
+  they were readable in the repo but never installed from the marketplace:
+  `business-documentation` (with its 8 brand logo PNGs),
+  `cora-email`, `mcp-wrapper-builder` (with its `references/` and `scripts/`
+  subdirectories), and `relational-emotional-regulation`. Moved into
+  `miscellaneous/skills/` via `git mv` so history follows them. No `.mcp.json` —
+  `cora-email` drives a CLI, `mcp-wrapper-builder` works through the Zo Computer
+  proxy configured at the client level, and the other two need no external
+  service.
+
+### Changed
+- Marketplace manifest bumped 1.9.0 → 1.10.0 (new plugin; the bump also busts
+  any cached copy of the old manifest) and the `miscellaneous` entry appended to
+  `plugins`, bringing the array to 13.
+- Root cleanup: `skills/CHANGELOG.md` → `CHANGELOG-skills.md` at the repo root,
+  with its header rewritten so the cross-link to `CHANGELOG.md` still resolves
+  from the new location. Eight stale `skills/CHANGELOG.md` references across
+  README.md, `hunt-skills/README.md`, `slashy-ops/README.md`, and two
+  `pavitas-core` skills were repointed. The now-empty `skills/` directory was
+  deleted, as was `commands/`, which held only an empty `README` and no commands.
+- Root README: added a `miscellaneous` entry to the plugin overview, and
+  rewrote the "Shared Skills (repo `skills/` folder)" section — it described a
+  folder that no longer exists — into a redirect table pointing the four moved
+  skills at their new `miscellaneous:<name>` addresses.
 
 ---
 

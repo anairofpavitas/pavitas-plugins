@@ -1,0 +1,9 @@
+{
+  "name": "miscellaneous",
+  "description": "Standalone skills that don't belong to a domain plugin: Pavitas Productions business documents (invoices, contracts, branding), Cora email CLI, MCP wrapper building on Zo, and relational/emotional regulation support.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Pavitas Productions"
+  },
+  "keywords": ["invoices", "business", "email", "mcp", "regulation", "misc"]
+}

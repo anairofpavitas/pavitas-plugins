@@ -25,4 +25,4 @@ Email body prose defers to `pavitas-core:output-quality`. IDs and tool routing d
 
 ## History
 
-Migrated from Superhuman Mail to Slashy 2026-06-30 — see `skills/CHANGELOG.md` in the repo root for the full migration record. Packaged as a standalone plugin 2026-07-01 so the five skills update together rather than as individual uploads.
+Migrated from Superhuman Mail to Slashy 2026-06-30 — see `CHANGELOG-skills.md` in the repo root for the full migration record. Packaged as a standalone plugin 2026-07-01 so the five skills update together rather than as individual uploads.

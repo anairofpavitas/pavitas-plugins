@@ -1,10 +1,11 @@
 ---
 name: memory-recall
-description: Checks Supermemory, chat history, Littlebird Log, and email —
-in that order — before saying information isn't available or asking Pavi
-for something that might already be stored. Fires on recall-shaped asks
-(contacts, rates, past decisions, "did I already..."), not general
-knowledge or brand-new requests.
+description: >-
+  Checks Supermemory, chat history, Littlebird Log, and email —
+  in that order — before saying information isn't available or asking Pavi
+  for something that might already be stored. Fires on recall-shaped asks
+  (contacts, rates, past decisions, "did I already..."), not general
+  knowledge or brand-new requests.
 ---
 
 # Memory Recall

@@ -1,24 +1,20 @@
 {
   "mcpServers": {
     "notion": {
-      "type": "url",
-      "url": "https://mcp.notion.com/mcp",
-      "note": "Audiobook Projects database, Chapters database, Littlebird Log"
+      "type": "http",
+      "url": "https://mcp.notion.com/mcp"
     },
     "google-calendar": {
-      "type": "url",
-      "url": "https://gcal.mcp.claude.com/mcp",
-      "note": "Studio calendar for recording blocks and deadlines"
+      "type": "http",
+      "url": "https://gcal.mcp.claude.com/mcp"
     },
     "gmail": {
-      "type": "url",
-      "url": "https://gmail.mcp.claude.com/mcp",
-      "note": "Publisher communications, delivery confirmations"
+      "type": "http",
+      "url": "https://gmail.mcp.claude.com/mcp"
     },
     "box": {
-      "type": "url",
-      "url": "https://mcp.box.com",
-      "note": "File delivery to publishers, script storage"
+      "type": "http",
+      "url": "https://mcp.box.com"
     }
   }
 }

@@ -24,7 +24,7 @@ Claude reasons and decides; Zo executes mechanically through the proxy tools. Do
 1. **Before changing anything:** read the current state of the file/route/automation. Never edit from memory of a past session.
 2. **Destructive ops** (delete route, drop table, overwrite skill): preview the exact change, get the OK (`pavitas-core:safety-rails`).
 3. **After changes:** smoke test (wrapper → connection test; skill → trigger test; automation → dry run where possible). State what was verified, not what should work.
-4. **Changelog:** skills changes → `skills/CHANGELOG.md`; plugin/root → root `CHANGELOG.md`. Every session that touches the repo writes an entry.
+4. **Changelog:** skills changes → `CHANGELOG-skills.md`; plugin/root → root `CHANGELOG.md`. Every session that touches the repo writes an entry.
 5. **Memory:** the moment a save-worthy decision or fact lands (a model choice, a tool/route decision, a resolved tradeoff) — not only at close — run `pavitas-core:memory-capture`.
 6. **Close:** if mid-task, write a `pavitas-core:handoff`. Infra half-states are expensive to reconstruct.
 

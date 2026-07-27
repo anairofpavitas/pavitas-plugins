@@ -2,7 +2,7 @@
 
 Twelve custom Claude Code / Cowork plugins designed for Pavi Proczko's audiobook narration business, creative work, and personal projects.
 
-> **v2/v2.1 refactor (2026-06-10):** the suite consolidated from nine plugins to six. `publisher-relations`, `enterprise-search`, and `writing-workshop` were removed; `fiber-arts-content` merged into `spins-yarns-content` v2.0.0; the core skill architecture shipped as the `pavitas-core` plugin v2.0.0. History: [CHANGELOG.md](CHANGELOG.md) (plugins) and [skills/CHANGELOG.md](skills/CHANGELOG.md) (skills).
+> **v2/v2.1 refactor (2026-06-10):** the suite consolidated from nine plugins to six. `publisher-relations`, `enterprise-search`, and `writing-workshop` were removed; `fiber-arts-content` merged into `spins-yarns-content` v2.0.0; the core skill architecture shipped as the `pavitas-core` plugin v2.0.0. History: [CHANGELOG.md](CHANGELOG.md) (plugins) and [CHANGELOG-skills.md](CHANGELOG-skills.md) (skills).
 >
 > **slashy-ops added (2026-07-01):** five email/calendar skills (previously migrated off Superhuman Mail to Slashy MCP as standalone `skills/` entries) packaged into a seventh plugin so they install and update together. Requires `pavitas-core` for shared mechanics.
 >
@@ -114,6 +114,9 @@ Skill-only plugin (no slash commands) — 3 skills load as `hunt-skills:<name>`.
 ### Xcode Skills (Apple Swift/Xcode engineering)
 Skill-only plugin (no slash commands) — 7 skills load as `xcode-skills:<name>`. Apple's official Xcode/Swift guidance, bundled unmodified. See [xcode-skills/README.md](xcode-skills/README.md).
 
+### Miscellaneous (standalone skills)
+Skill-only plugin (no slash commands) — 4 skills load as `miscellaneous:<name>`. The skills that belong to no single domain: `business-documentation`, `cora-email`, `mcp-wrapper-builder`, `relational-emotional-regulation`. See [miscellaneous/README.md](miscellaneous/README.md).
+
 ## pavitas-core: Skill Architecture
 
 Shipped 2026-06-10 as the skills-v2 refactor, packaged as a plugin (v2.0.0). This repo is the canon for the skill ecosystem; claude.ai and Cowork mount the same skills.
@@ -143,7 +146,7 @@ Packaged 2026-07-01 so the five skills below install and update as one plugin ra
 | `slashy-ops:meeting-scheduler` | Availability lookup → create/update calendar event → optional confirmation email |
 | `slashy-ops:deal-tracker` | Deal/relationship thread tracking with per-thread read-receipt checks |
 
-History: migrated off Superhuman Mail to Slashy 2026-06-30, packaged as a standalone plugin 2026-07-01. Full record: [skills/CHANGELOG.md](skills/CHANGELOG.md), [CHANGELOG.md](CHANGELOG.md). Details: [slashy-ops/README.md](slashy-ops/README.md).
+History: migrated off Superhuman Mail to Slashy 2026-06-30, packaged as a standalone plugin 2026-07-01. Full record: [CHANGELOG-skills.md](CHANGELOG-skills.md), [CHANGELOG.md](CHANGELOG.md). Details: [slashy-ops/README.md](slashy-ops/README.md).
 
 ## story-grid-skills: Beat-Writing Mentorship Coaching
 
@@ -177,15 +180,21 @@ latency to what are deliberately low-friction, real-time skills.
 | `hunt-skills:pleasure-hunt` | Compact, upfront intimate hunts for sexual pleasure, intimacy, and exploration — solo, partner, group, or cruising |
 
 Three distinct systems, not a merged skill — a prior audit considered merging them and
-reversed that decision (see `skills/CHANGELOG.md`, 2026-06-10 entry). Each skill's
+reversed that decision (see `CHANGELOG-skills.md`, 2026-06-10 entry). Each skill's
 frontmatter `description` still does the disambiguation work; `pocket-hunt` and
 `pleasure-hunt` cross-reference the others by namespaced name for tone-matching and
 distinctness callouts. Details: [hunt-skills/README.md](hunt-skills/README.md).
 
-## Shared Skills (repo `skills/` folder)
+## Shared Skills (where the loose skills went)
 
-Standalone skills the plugins reference:
-- `business-documentation` — used by audiobook-production (wrap) and the biz-admin routing profile
+The repo no longer has a root `skills/` folder. Every skill now lives inside a
+plugin, so every skill installs from the marketplace.
+
+Moved into `miscellaneous` (2026-07-27) — update any older references:
+- `business-documentation` → `miscellaneous:business-documentation` (used by audiobook-production `/wrap` and the biz-admin routing profile)
+- `cora-email` → `miscellaneous:cora-email`
+- `mcp-wrapper-builder` → `miscellaneous:mcp-wrapper-builder`
+- `relational-emotional-regulation` → `miscellaneous:relational-emotional-regulation`
 
 Moved into pavitas-core in skills-v2 — update any older references:
 - `humanize-prose` and `design-elevation` → `pavitas-core:output-quality`
@@ -196,7 +205,7 @@ Moved into audiobook-production (2026-07-01) — update any older references:
 - `audiobook-script-analyzer` → `audiobook-production:audiobook-script-analyzer`
 - `audiobook-project-setup` → `audiobook-production:audiobook-project-setup`
 
-The `skills/` folder also carries standalone personal skills — including `relational-emotional-regulation` and `mcp-wrapper-builder` — see [skills/CHANGELOG.md](skills/CHANGELOG.md). The hunt family (`scavenger-hunt-designer`, `pocket-hunt`, `pleasure-hunt`) moved out of this folder into the `hunt-skills` plugin — see above.
+Full skill history: [CHANGELOG-skills.md](CHANGELOG-skills.md). The hunt family (`scavenger-hunt-designer`, `pocket-hunt`, `pleasure-hunt`) moved out of the old root folder into the `hunt-skills` plugin — see above.
 
 ## Connector Requirements
 

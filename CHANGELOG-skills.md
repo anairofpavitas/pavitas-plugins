@@ -1,7 +1,8 @@
 # Changelog — Skills
 
-All notable changes to pavitas-plugins **skills** are documented here.
-Plugins have their own changelog at `CHANGELOG.md` (repo root).
+All notable changes to the **skills** bundled inside pavitas-plugins plugins
+are documented here. The plugins themselves have their own changelog at
+[`CHANGELOG.md`](./CHANGELOG.md), alongside this file at the repo root.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 Version numbers are independent from the plugins version sequence.
@@ -12,6 +13,27 @@ reference file updates, and debrief-driven edits all get logged here.
 ---
 
 ## [Unreleased]
+
+### Fixed
+- **pavitas-core:memory-recall** — SKILL.md frontmatter was not valid YAML. The
+  `description:` value wrapped across four lines with no continuation indent, so
+  a parser reads line 2 as a new key and the whole frontmatter block fails.
+  Converted to a `>-` folded scalar; the description text is byte-identical
+  after folding. Surfaced by the repo-wide frontmatter check run for plugins
+  1.10.0.
+
+### Changed
+- Four skills moved out of the repo's root `skills/` folder into the new
+  `miscellaneous` plugin, so they finally install from the marketplace instead
+  of only existing in the repo. Update any older references:
+  `business-documentation` → `miscellaneous:business-documentation`,
+  `cora-email` → `miscellaneous:cora-email`,
+  `mcp-wrapper-builder` → `miscellaneous:mcp-wrapper-builder`,
+  `relational-emotional-regulation` → `miscellaneous:relational-emotional-regulation`.
+  Moved with `git mv`, assets included (the 8 business-documentation logo PNGs,
+  mcp-wrapper-builder's `references/` and `scripts/`). This file also moved from
+  `skills/CHANGELOG.md` to the repo root as `CHANGELOG-skills.md`; the root
+  `skills/` directory no longer exists.
 
 ### Added
 - **pavitas-core:morning-intel** — New Haiku sub-agent, gather-phase

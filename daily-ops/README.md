@@ -22,9 +22,9 @@ Daily workflow orchestration for Pavi Proczko — briefings, handoffs, task capt
 
 ## Connectors
 
-- **Google Calendar** — All 4 calendars
-- **Gmail** — Email triage and awaiting-reply tracking
-- **Notion** — Littlebird Log, Tasks database, Audiobook Projects
+- **Google Calendar** — All 4 calendars: Primary, Studio, Cultural Events, Colin's shared
+- **Gmail** — Email triage, VIP monitoring, awaiting-reply tracking
+- **Notion** — Littlebird Log, Littlebird Database, Tasks database, Audiobook Projects
 
 ## Integrates With
 

@@ -31,10 +31,10 @@ Bundled 2026-07-01 (previously standalone uploads under the repo's shared `skill
 
 ## Connectors
 
-- **Notion** — Audiobook Projects database, Chapters database
+- **Notion** — Audiobook Projects database, Chapters database, Littlebird Log
 - **Google Calendar** — Studio calendar for recording blocks and deadlines
-- **Gmail** — Publisher communications
-- **Box** — File delivery
+- **Gmail** — Publisher communications, delivery confirmations
+- **Box** — File delivery to publishers, script storage
 
 ## Setup
 

@@ -1,9 +1,8 @@
 {
   "mcpServers": {
     "notion": {
-      "type": "url",
-      "url": "https://mcp.notion.com/mcp",
-      "note": "Pavi Spins Yarns Content DB — input (Littlebird crochet brief, Perplexity crochet trends) and output (weekly content page)"
+      "type": "http",
+      "url": "https://mcp.notion.com/mcp"
     }
   }
 }

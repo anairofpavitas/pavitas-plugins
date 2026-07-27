@@ -1,9 +1,8 @@
 {
   "mcpServers": {
     "notion": {
-      "type": "url",
-      "url": "https://mcp.notion.com/mcp",
-      "note": "Joanne submission tracking, writing project notes"
+      "type": "http",
+      "url": "https://mcp.notion.com/mcp"
     }
   }
 }

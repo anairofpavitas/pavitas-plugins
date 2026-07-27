@@ -24,7 +24,7 @@ Distinct from `pavitas-content` (audiobook narration brand). As of v2.0.0 this p
 
 ## Connectors
 
-- **Notion** (via `.mcp.json`) — Pavi Spins Yarns Content DB (source + destination for `/weekly`); Littlebird Log (patterns, project logs)
+- **Notion** (via `.mcp.json`) — Pavi Spins Yarns Content DB: input (Littlebird crochet brief, Perplexity crochet trends) and output (weekly content page). Also Littlebird Log (patterns, project logs).
 - **Canva** — Used at runtime by `/weekly` to generate visual assets. Requires the Canva connector to be active in your claude.ai setup (tools surface as `mcp__claude_ai_Canva__*`).
 
 ## Source / destination DB (`/weekly`)

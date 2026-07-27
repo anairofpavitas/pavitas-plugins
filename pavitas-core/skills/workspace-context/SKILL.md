@@ -37,7 +37,7 @@ Facts and routing only. Behavioral rules live in `pavitas-core:safety-rails`.
 
 - Zo Computer: `paviproczko.zo.space` (remote Linux; all Zo paths under `/home/workspace/`)
 - Mac home: `/Users/pavi2/`; canon skills repo: `/Users/pavi2/Documents/GitHub/pavitas-plugins/` (GitHub: anairofpavitas/pavitas-plugins)
-- Changelogs: skills changes → `skills/CHANGELOG.md`; plugin/root changes → root `CHANGELOG.md`
+- Changelogs: skills changes → `CHANGELOG-skills.md`; plugin/root changes → root `CHANGELOG.md`
 - Zo memory: DuckDB at `/home/workspace/.zo/data/memory.duckdb`, CLI `bun /home/workspace/.zo/memory/scripts/memory.ts` (`hybrid "query"` preferred)
 - Canonical Supermemory: Supermemory MCP as pavi@paviproczko.com — NOT the Zo-routed connector
 - Workspace file mentions format as `` `file 'Documents/notes.md'` ``, relative to `/home/workspace`
