@@ -19,7 +19,19 @@ Create the standard folder hierarchy for a new audiobook project.
 ├── [Short Title] Chapters
 └── [Short Title] CRX
 ```
+## What goes where
 
+- **`[Short Title] Assets` — audio assets ONLY.** Music beds, sound
+  reference, voice-match files, anything that plays. No documents.
+- **Book folder root** — every non-audio file: the script PDF, the
+  billboards PDF, script-analysis spreadsheets, pronunciation lists,
+  character notes, author notes.
+- **`[Short Title] Chapters`** — recorded chapter audio.
+- **`[Short Title] CRX`** — corrections/pickups.
+
+Do NOT create a `[Short Title] Project` folder. Nuendo creates its own
+when the session is first saved.
+```
 ## Implementation
 
 Use `mcp__cowork__request_cowork_directory` to get access to the user's chosen location, then:
