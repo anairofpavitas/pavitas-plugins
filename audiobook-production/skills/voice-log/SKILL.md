@@ -43,7 +43,7 @@ Pavi describes voices in free prose. Split it:
 - **`Dialect`** — only accent/regional/register information. "Light Boston," "RP," "Texas/Southern," "light Latin," "GenAm." Record it roughly as he says it; light cleanup only.
 - **`Features`** — everything else. Age, gender, build, timbre, personality, role in the story, speech quirks (lisps, breathiness, vocal fry), reference points ("Billy from American Dad," "Alex Trebek").
 
-**If he doesn't mention an accent, leave `Dialect` empty.** Do not write "Neutral" as a default and do not invent one. Sometimes he specifies, sometimes he doesn't — that's expected.
+**If he doesn't mention an accent, leave `Dialect` empty.** Do not write "Neutral" as a default and do not invent one. Sometimes he specifies, sometimes he doesn't — that's expected. If he explicitly says "neutral," that's a value he gave you — record it.
 
 **Never edit `Dialect` on rows that already exist.** The historical values are inconsistent and he wants them left alone.
 
@@ -109,22 +109,29 @@ Check the duration afterward. If it's near-zero or the file is tiny, the capture
 
 #### 4c. Host it on Zo
 
-Get the upload token (never hardcode it into a message):
-
-```
-mcp__Zo_Computer__bash: cat /home/workspace/.zo-app-data/voice-log/token.txt
-```
-
-Upload from the Mac — this keeps the binary out of the conversation entirely:
+The upload token lives in the **macOS Keychain on Pavi's Mac**, under service `zo-voice-token`. Never read it, echo it, or route it through the conversation. Compose the curl so the shell resolves the secret locally at execution time, then run it through osascript like any other Mac command:
 
 ```
 curl -sS -X POST \
-  -H "x-voice-token: <token>" -H 'Content-Type: audio/mp4' \
+  -H "x-voice-token: $(security find-generic-password -s zo-voice-token -w)" \
+  -H 'Content-Type: audio/mp4' \
   --data-binary @/tmp/voicelog/<slug>.m4a \
   "https://paviproczko.zo.space/api/voice-sample?name=<slug>"
 ```
 
+The token is substituted inside the shell and never enters the transcript. This keeps both the binary and the credential out of the conversation.
+
 Returns `{"ok":true,"filename":"…","bytes":…,"url":"https://paviproczko.zo.space/api/voice-sample/<slug>.m4a"}`.
+
+**Failure modes:**
+
+- `SecKeychainSearchCopyNext: The specified item could not be found` — the Keychain entry hasn't been seeded. Only Pavi can seed it. Give him this line and stop:
+  ```
+  security add-generic-password -s zo-voice-token -a pavi -w 'THE_TOKEN'
+  ```
+  The canonical token value lives on Zo at `/home/workspace/.zo-app-data/voice-log/token.txt`.
+- A Keychain access prompt appears on his Mac the first time osascript reaches for the item. Tell him to click **Always Allow** so later runs are silent.
+- `401` — the Keychain copy is stale relative to Zo. Rotating means updating both: write the new value to the Zo token file, then run `security add-generic-password -U -s zo-voice-token -a pavi -w 'NEW_TOKEN'` on the Mac. The Zo route reads its file fresh on every request, so no redeploy.
 
 Files land in `/home/workspace/Audio/VoiceSamples/` on Zo and **must stay there** — the Notion `Sample` property links to that URL rather than hosting a copy. Deleting the Zo file breaks the sample. Max 25 MB.
 
@@ -163,11 +170,24 @@ notion-update-page
 
 **Known limitation:** the `Sample` file property rejects `file-upload://` references — it only takes external URLs. That's why the property links to Zo and the page body carries the hosted copy. Don't waste turns retrying the upload-ID form.
 
+**If the upload fails, still write the row.** A character with no clip beats a lost take. Leave `Sample` empty, tell him the file is parked in `/tmp/voicelog/`, and don't clean up until the sample lands.
+
 Clean up `/tmp/voicelog/` on the Mac when you're done.
 
 ### 6. Report
 
 One line: character name, series, whether a sample landed, and a link to the row. Don't restate the description back at him.
+
+## Deleting rows
+
+The primary Notion MCP exposes no delete or archive tool. To trash a row, go through the Zo Notion app:
+
+```
+use_app_notion
+  tool_name: "notion-update-page"
+  email: "pavi@paviproczko.com"
+  configured_props: {"pageId": "<row id>", "archived": true}
+```
 
 ## Creating a new series
 
@@ -211,4 +231,4 @@ When the series genuinely doesn't exist yet:
 - Don't normalize or "fix" `Dialect` values on existing rows.
 - Don't invent a dialect he didn't give you.
 - Don't delete files from `/home/workspace/Audio/VoiceSamples/` on Zo.
-- Don't put the upload token in a message to Pavi.
+- Don't read the upload token into the conversation — resolve it inside the shell, and never print it to Pavi or anywhere else.
