@@ -23,7 +23,9 @@ Read `pavitas-content:pavitas-brand-voice` and follow it. It owns the position, 
 Two differences from the `/pavitas-content:weekly` batch run:
 
 - **The subject is usually given.** Pavi names what he wants a post about. That narrows the job to finding the angle inside it — the claim, tension, or reversal — not scanning the week for candidates. Return 1–3 angles on the named subject rather than a full 5–9 slate.
-- **Source material still gets pulled.** An ad-hoc request doesn't lower the anchor or citation bar. If the anchor isn't in the sources, mark it `NEEDS ANCHOR` and name what's missing rather than filling the gap from the conversation.
+- **Source material still gets pulled.** Spawn `pavitas-content:content-intel` — it's the citation source, and every angle needs page title, URL, and date. An ad-hoc request doesn't lower the anchor or citation bar. If the anchor isn't in what the agent returns, mark it `NEEDS ANCHOR` and name what's missing rather than filling the gap from the conversation. What Pavi said in chat is a lead, not a source.
+
+Its Conflicts and Privacy-Flagged sections apply here exactly as they do in the weekly run — unresolved disagreements become constraints on the angle, and flagged material stays out.
 
 Run the verification pass before handing anything over. It's required regardless of how small the request was.
 

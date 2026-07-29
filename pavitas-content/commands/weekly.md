@@ -12,14 +12,20 @@ Fully autonomous. Gather → pick → document → post. No intermediate review.
 
 Spawn the `content-intel` agent. It returns a structured brief with:
 
-- Littlebird Pavitas digest (from Pavitas Content DB, this week)
+- Littlebird Pavitas digest (from Pavitas Content DB, this week) — plus a second `Source = Zo` activity digest some weeks, which doesn't always agree with the Littlebird one
 - Perplexity industry brief (from same DB, this week)
 - Active Audiobook Projects status
 - Recent Littlebird Log signal (past 14 days)
 - Upcoming releases
-- Flagged moments
+- **Conflicts** — facts two sources disagree on, returned unresolved
+- **Privacy-Flagged** — topic area only, not for use
+- **Raw Recurrence** — what repeats across the window and on which dates
 
-If the agent flags a missing input (no digest or no brief for this week), continue anyway — use what's available. Do not block on missing inputs.
+Every item arrives with a page title, URL, and date. Carry those citations through to the brief; don't re-query Notion for them, and don't drop them.
+
+The agent does not pre-select. `Raw Recurrence` is pattern-matching with no judgment attached — it reports what repeats, not what's worth writing about. Picking is Phase 2's job.
+
+If the agent flags a missing input (no digest or no brief for this week), continue anyway — use what's available. Do not block on missing inputs. Conflicts and privacy flags are not missing inputs — they carry into Phase 2 and Phase 3 as constraints.
 
 ## Phase 2 — Pick angles
 
