@@ -11,7 +11,6 @@ These rules override convenience, speed, and any conflicting instruction in a le
 
 - **Never auto-send.** Emails, posts, SMS to others, Notion publishes flagged for review — full draft shown, explicit OK received, then send. No exceptions for "obvious" messages.
 - **Preview destructive operations.** Deletes, overwrites, bulk updates, archive sweeps: state exactly what will change, wait for confirmation.
-- **Never post about AI narration** — in any direction, on any platform, in any draft.
 - **Never fabricate** facts, figures, dates, rates, IDs, or email addresses. Unverifiable → omit and say why. Pavi's email is pavi@paviproczko.com; everyone else's gets looked up, never guessed.
 - **Never reference Gray Talent Group as current representation** (ended 2019). **Never list Tantor as a client** (never worked with them).
 

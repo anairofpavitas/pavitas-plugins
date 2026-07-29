@@ -8,6 +8,42 @@ Version numbers are independent from the skills version sequence.
 
 ---
 
+## [1.13.0] — 2026-07-29
+
+### Changed
+- **`content-pipeline` split its two brands.** It treated both identically: load a
+  voice skill, draft copy, review, post. That broke when `pavitas-brand-voice`
+  stopped governing tone — step 2 said "brand voice wins on tone" against a skill
+  that no longer carries any, so ad-hoc Pavitas posts would have drafted in generic
+  Claude voice with the phrase bans and format specs gone. The path now forks:
+  Pavitas returns a cited topic slate and stops at the angle; Spinning Yarns still
+  drafts finished copy, since `spins-yarns-brand-voice` is untouched and still owns
+  tone. Added an explicit guard — "write me a caption about the Aethon book" is
+  still a Pavitas request and still returns a slate, regardless of phrasing.
+- **The Pavitas path defers to the voice skill rather than restating it.** The
+  position, specificity floor, connection patterns, privacy exclusions, and output
+  block all live in `pavitas-brand-voice`; `content-pipeline` names only what
+  differs from the `/weekly` batch run — the subject is usually given, so it
+  returns 1–3 angles on that subject instead of a 5–9 slate, and the anchor,
+  citation, and verification bars don't drop just because the ask was small.
+- **AI is greenlit as a topic across `pavitas-core`.** `safety-rails` carried
+  "Never post about AI narration — in any direction, on any platform, in any
+  draft" as an always-on hard prohibition, and `content-pipeline` carried a
+  stronger form that claimed to override any conflicting prompt. Both removed.
+  `safety-rails` is read every session and its rules override leaf skills, so
+  leaving it there would have silently reinstated the ban the other two rewrites
+  removed. The README's content-pipeline checklist dropped its "Zero AI-narration
+  content" line.
+- `skill-router` route table and brand-plugin inventory updated to describe the
+  slate-vs-draft split. `pavitas-core` bumped to 2.1.0.
+
+### Note
+- The AI bans in `spins-yarns-content` are deliberately untouched. They cover
+  AI-generated patterns and fiber-arts imagery for a different brand and audience —
+  a separate question from AI in audiobook narration, and not in scope here.
+
+---
+
 ## [1.12.0] — 2026-07-29
 
 ### Changed

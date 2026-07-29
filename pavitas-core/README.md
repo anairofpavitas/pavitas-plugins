@@ -14,7 +14,7 @@ CONSTRAINTS   safety-rails                 → conduct rules (always-on)
 ORCHESTRATORS morning-review               → replaces daily-briefing
               audiobook-kickoff            → new-project intake chain
               story-session                → fiction work, Story Grid
-              content-pipeline             → two-brand social drafting
+              content-pipeline             → two-brand social routing
               infra-session                → Zo / MCP / repo work
 LEAVES        (unchanged, loaded on demand) business-documentation,
               publisher-profiles, writing-workshop ×4, brand voices ×2,
@@ -49,10 +49,10 @@ Layering rules: constraints never contain procedures; orchestrators never contai
 - [ ] Session state updated at close
 
 **content-pipeline**
-- [ ] Exactly one brand voice loaded; correct brand for subject
-- [ ] Zero AI-narration content
-- [ ] Draft reviewed before any posting step
-- [ ] Platform-fit pass completed
+- [ ] Exactly one brand loaded; correct brand for subject
+- [ ] Pavitas → topic slate, verified, zero copy; spins-yarns → draft
+- [ ] Slate or draft reviewed before any posting step
+- [ ] Platform-fit pass completed (spins-yarns drafts only)
 
 **infra-session**
 - [ ] Routing correct (Slashy not Gmail; Composio Notion for DBs; Zo proxy for files)

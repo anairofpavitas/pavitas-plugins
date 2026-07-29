@@ -16,7 +16,7 @@ Match the user's goal to ONE profile. Read that profile's skills. Do not read ot
 | New book, script uploaded, "new audiobook project" | audiobook-kickoff | `pavitas-core:audiobook-kickoff` → `audiobook-production:audiobook-script-analyzer`, `audiobook-production:audiobook-project-setup` (Cowork-native), `business-documentation` |
 | Invoice, contract, client correspondence | biz-admin | `business-documentation` |
 | Fiction drafting, "interview me", Jim & Percy, Story Grid work | story-session | `pavitas-core:story-session` (self-contained — interview and style-matching are inlined) |
-| Social post, caption, content batch | content-pipeline | `pavitas-core:content-pipeline` → ONE brand voice (pavitas xor spins-yarns) |
+| Social post, caption, content batch | content-pipeline | `pavitas-core:content-pipeline` → ONE brand (pavitas xor spins-yarns). Pavitas returns a topic slate, no copy; spins-yarns drafts |
 | Zo work, MCP, automation, repo, skill maintenance | infra-session | `pavitas-core:infra-session` → `mcp-wrapper-builder`, `autoresearch` as needed |
 | Scavenger hunt (planned group/date event) | play | `hunt-skills:scavenger-hunt-designer` |
 | Pocket hunt, noticing walk, quick hunt on the go | play | `hunt-skills:pocket-hunt` |
@@ -49,7 +49,7 @@ Every installed skill must appear in this list with a routing home. A skill not 
 
 **User skills (4):** business-documentation (audiobook-kickoff / biz-admin) · mcp-wrapper-builder, autoresearch (infra-session) · relational-emotional-regulation (support).
 
-**Brand plugins (2):** pavitas-content:pavitas-brand-voice, spins-yarns-content:spins-yarns-brand-voice (content-pipeline). spins-yarns-content also carries the crochet pattern/log/project commands (CLI-side; absorbed from fiber-arts-content 2026-06-10).
+**Brand plugins (2):** pavitas-content:pavitas-brand-voice (perspective and angles only — does not govern phrasing or format; a human writer owns Pavitas copy), spins-yarns-content:spins-yarns-brand-voice (voice and tone; still drafts). Both loaded via content-pipeline. spins-yarns-content also carries the crochet pattern/log/project commands (CLI-side; absorbed from fiber-arts-content 2026-06-10).
 
 **slashy-ops plugin (5):** slashy-ops:morning-briefing, slashy-ops:eod-wrapup, slashy-ops:batch-draft-writer, slashy-ops:meeting-scheduler, slashy-ops:deal-tracker (email-ops — all reference pavitas-core:using-slashy; requires pavitas-core installed).
 
