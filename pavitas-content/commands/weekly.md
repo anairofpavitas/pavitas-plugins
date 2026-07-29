@@ -1,14 +1,17 @@
 ---
-description: Generate this week's Pavitas Productions content. Pulls Littlebird digest + Perplexity brief + active projects from Notion, picks the strongest angles, drafts one image/carousel post (IG+FB) and one short-form video script (TikTok+YT Shorts), and posts both as rows in the Pavitas Content database. Autonomous — no review step. Visual brief only, no Canva generation.
+description: Build this week's Pavitas Productions angle brief. Pulls Littlebird digest + Perplexity brief + active projects from Notion, picks every angle that clears the bar, and posts them as rows in the Pavitas Content database with verified source material. Autonomous — no review step. Angles and facts only; a human writer owns all copy.
 ---
 
-# Pavitas Weekly Content Generation
+# Pavitas Weekly Angle Brief
 
-Fully autonomous. Gather → pick → draft → post. No intermediate review. Flag problems, don't pause for permission.
+Fully autonomous. Gather → pick → document → post. No intermediate review. Flag problems, don't pause for permission.
+
+**This skill does not write copy.** No hooks, captions, hashtags, scripts, beats, or on-screen text. A human professional writes all of that. The job here is to surface the angles worth writing about and hand over the verified material behind each one.
 
 ## Phase 1 — Gather
 
 Spawn the `content-intel` agent. It returns a structured brief with:
+
 - Littlebird Pavitas digest (from Pavitas Content DB, this week)
 - Perplexity industry brief (from same DB, this week)
 - Active Audiobook Projects status
@@ -20,7 +23,9 @@ If the agent flags a missing input (no digest or no brief for this week), contin
 
 ## Phase 2 — Pick angles
 
-Load the `pavitas-brand-voice` skill. Apply the angle hierarchy:
+Load the `pavitas-brand-voice` skill. It governs whether an angle is on-brand — not how anything gets written.
+
+Apply the angle hierarchy:
 
 1. Active project / release / recording update
 2. Craft reflection (narration, Story Grid, improv, singing, acting)
@@ -28,97 +33,63 @@ Load the `pavitas-brand-voice` skill. Apply the angle hierarchy:
 4. LitRPG/genre industry moment
 5. Personal, filtered through "person behind the voice"
 
-Pick **two distinct angles** for the two pieces — don't double up. Prefer higher-tier angles when the signal supports them.
+Pick **every angle that clears the bar.** There is no target number. Prefer higher-tier angles when the signal supports them, and keep angles distinct — don't file the same story twice under different framings.
 
-**Angle pairing logic:**
-- If there's a live release or recording update, that's almost always Piece 1 (image/carousel).
-- Craft reflection usually works better as short-form video (it's a thinking-out-loud format).
-- Personal angles can work either format — pick based on what the visual/video needs are.
+**Quality gate:** An angle clears the bar when it has a reason to exist this week and at least one concrete, verifiable detail behind it. Anything that fails either test doesn't go in. Zero qualifying angles is a valid outcome — say so and explain why. Never pad to hit a count.
 
-**Quality gate:** If only one angle meets the bar, produce one piece. If zero meet the bar, produce zero and explain why. Don't pad.
+## Phase 3 — Build the angle brief
 
-## Phase 3 — Draft
+For each angle that cleared the gate, document six fields. Facts only.
 
-### Piece 1: Image/Carousel post (IG + FB, same copy)
+- **Angle** — one sentence. What this post is about.
+- **Tier** — which level of the hierarchy above it came from (1–5).
+- **Why now** — why this week and not next. The timeliness argument.
+- **Source material** — the verified facts a writer can't derive alone: title, author, publisher, release date, narration details, chapter or hour counts, specific moments, links.
+- **Constraints & credits** — embargo dates, who must be tagged, handles, release-date gates, anything that would be an error if gotten wrong.
+- **Confidence** — flag anything unverified so it gets checked before it goes out. If nothing is uncertain, say "verified."
 
-Format:
-- **Hook** — first line (grabs scroll, under 10 words ideal)
-- **Caption** — 100–180 words, first person, dry, specific
-- **Alt text** — always include, describe image for screen readers
-- **Hashtags** — 3–6, clustered at end
-- **Visual brief** — describe what the asset should show (text description, no generation). Call out if carousel (2–6 slides) vs single image. Specify text overlays if any.
+Do not suggest a format, platform, or asset treatment. That's the writer's call.
 
-### Piece 2: Short-form video script (TikTok + YT Shorts, same video)
+Two rules survive from the old draft phase, as facts rather than style:
 
-Format:
-- **Hook: 1.5 seconds** — visual + spoken. Thumb-stopping.
-- **Beats: 15–45 seconds total** — numbered (1, 2, 3...)
-- **On-screen text callouts** — explicitly marked per beat
-- **Closing beat** — not "follow for more." Leave the thought.
-- **Video brief** — what's on camera per beat (booth? product? B-roll?), audio treatment notes
-
-### Brand voice non-negotiables (from pavitas-brand-voice skill)
-- No AI narration mentions (positive, negative, neutral — none)
-- No "honored to announce," "journey," "passion project," "dream role"
-- No "delve," "landscape," "navigate" as metaphor
-- First person, dry, specific, genre-literate
-- One concrete detail per post minimum
-- Credit author + publisher + release date accurately
-- Never post embargoed work
+- Every angle carries at least one concrete, verifiable detail.
+- Credits are accurate — author, publisher, release date. If uncertain, flag it in Confidence rather than guessing.
 
 ## Phase 4 — Post to Notion
 
 **Target DB:** https://www.notion.so/eb0089eb3ccc83928e5c017c1f66a70c?v=702089eb3ccc82f4a2d2080fa27c25c1
 
 Create **ONE parent page** titled:
+
 ```
-Pavitas Content Generation [YYYY-MM-DD]
+Pavitas Angle Brief [YYYY-MM-DD]
 ```
 
 Set properties:
+
 - **Date** field → today's date (use `date` command via bash if unsure)
 - **Source** field → "Claude"
 
-Inside the parent page, create a table/database with rows for each piece. Columns:
+Inside the parent page, create a table with one row per angle. Columns:
 
-| Content Type | Platforms | Hook | Body | Visual/Video Brief | Hashtags | Notes for SM Manager | Visual Assets |
+| Angle | Tier | Why now | Source material | Constraints & credits | Confidence |
 
-**Row 1 (image/carousel):**
-- Content Type: `Image/Carousel`
-- Platforms: `Instagram, Facebook`
-- Hook: [hook line]
-- Body: [full caption + alt text]
-- Visual/Video Brief: [what asset should show, # of slides if carousel]
-- Hashtags: [3–6 tags]
-- Notes for SM Manager: [posting timing suggestion, any credit/tag requirements, release-date constraints]
-- Visual Assets: `[To be created in Canva — see Visual Brief]`
-
-**Row 2 (short-form video):**
-- Content Type: `Short-form Video`
-- Platforms: `TikTok, YouTube Shorts`
-- Hook: [hook beat — visual + spoken, 1.5s]
-- Body: [full numbered beat breakdown with on-screen text]
-- Visual/Video Brief: [per-beat shot description, audio notes]
-- Hashtags: [3–6 tags]
-- Notes for SM Manager: [shoot timing, any props/setup needed, release-date constraints]
-- Visual Assets: `[To be recorded — see Video Brief]`
-
-If producing only one piece, include one row and add a second block titled "Why only one piece this week" with a one-sentence explanation.
+If zero angles cleared the gate, create the page anyway with a single block titled "No angles this week" and a one-sentence explanation of what was missing.
 
 ## Phase 5 — Report back
 
 After posting, return a one-screen summary to Pavi:
+
 - Notion page URL
-- Angle 1 (one sentence)
-- Angle 2 (one sentence)
-- Any flagged issues (missing inputs, release-date risks, author/publisher credits that need verification)
+- Each angle in one sentence, with its tier
+- Any flagged issues (missing inputs, release-date risks, credits that need verification)
 
 No postamble. No "Let me know if you need changes."
 
 ## Hard rules (enforced at every phase)
 
-- Never mention AI narration in any form
-- Never claim endorsement not given
-- Never post embargoed work
-- Credit author + publisher + release date accurately — if uncertain, flag for Pavi
-- Quality over cadence — one strong piece beats two weak ones
+- Never claim an endorsement that wasn't given
+- Never surface embargoed work
+- Credit author + publisher + release date accurately — if uncertain, flag it
+- Quality over cadence — one strong angle beats three weak ones
+- No copy. If output contains a hook, caption, hashtag, or script line, it's wrong.

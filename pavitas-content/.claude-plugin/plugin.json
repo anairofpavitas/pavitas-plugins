@@ -1,9 +1,17 @@
 {
   "name": "pavitas-content",
-  "description": "Weekly social content generation for Pavitas Productions. Pulls the Littlebird Pavitas digest, Perplexity industry brief, and Audiobook Projects status from Notion, picks the strongest angles for the week, and drafts two pieces of content (1 image/carousel for IG+FB, 1 short-form video script for TikTok+YT Shorts). Posts drafts directly to the Pavitas Content database. Visual brief only — no Canva generation (intended for future Claude design package integration).",
-  "version": "1.0.0",
+  "description": "Weekly social content angle brief for Pavitas Productions. Pulls the Littlebird Pavitas digest, Perplexity industry brief, and Audiobook Projects status from Notion, picks every angle that clears the bar, and posts them to the Pavitas Content database with the verified source material behind each one. Angles and facts only — a human writer owns all copy.",
+  "version": "1.1.0",
   "author": {
     "name": "Pavitas Productions"
   },
-  "keywords": ["content", "social", "instagram", "tiktok", "youtube-shorts", "pavitas", "marketing"]
+  "keywords": [
+    "content",
+    "social",
+    "instagram",
+    "tiktok",
+    "youtube-shorts",
+    "pavitas",
+    "marketing"
+  ]
 }

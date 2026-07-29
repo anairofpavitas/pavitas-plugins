@@ -8,6 +8,49 @@ Version numbers are independent from the skills version sequence.
 
 ---
 
+## [1.11.0] — 2026-07-29
+
+### Changed
+- **`pavitas-content` no longer writes copy.** `/pavitas-content:weekly` produced
+  finished drafts — hooks, captions, alt text, hashtags, a 1.5-second video hook,
+  numbered beats, on-screen text callouts. A human professional now owns all of
+  that. The command was rewritten as an angle brief: it surfaces what's worth
+  writing about and hands over the verified material behind each angle. Phase 3
+  went from "Draft" to "Build the angle brief," and every copy artifact was cut.
+  A hard rule was added at the bottom — if the output contains a hook, caption,
+  hashtag, or script line, the run is wrong. Without an explicit stop, a model
+  reading the old instructions drifts back toward drafting.
+- **No fixed angle count.** The command picked exactly two distinct angles and
+  paired them to formats (release → carousel, craft reflection → short-form
+  video). It now picks every angle that clears the quality gate, with no target
+  number, and prescribes no format or platform. The angle-pairing logic was
+  format-driven, so it went with the formats.
+- **Notion output restructured.** Columns were all copy artifacts:
+  `Content Type | Platforms | Hook | Body | Visual/Video Brief | Hashtags |
+  Notes for SM Manager | Visual Assets`. Now:
+  `Angle | Tier | Why now | Source material | Constraints & credits | Confidence`.
+  `Source material` carries the facts a writer can't derive alone; `Constraints
+  & credits` is the old SM-manager column doing factual work (embargoes, required
+  tags, handles); `Confidence` flags anything unverified. Page title changed from
+  `Pavitas Content Generation [YYYY-MM-DD]` to `Pavitas Angle Brief [YYYY-MM-DD]`.
+- **AI is greenlit as a topic.** The ban on mentioning AI narration in any form
+  was removed from the command's Phase 3, its hard rules, the plugin README, and
+  the `pavitas-brand-voice` skill's topic list. AI angles now compete on the same
+  hierarchy as everything else. No stance guidance is supplied — Pavi or his
+  writer supplies it.
+- **Brand-voice phrase bans no longer bind `/weekly`.** The banned-phrase list
+  (`journey`, `passion project`, `delve`) is copy territory. The skill still
+  loads, but scoped to judging whether an angle is on-brand. The list stays
+  intact in `pavitas-brand-voice` for the commands that do still draft.
+- `pavitas-content` bumped to 1.1.0; marketplace description updated.
+
+### Note
+- `pavitas-brand-voice` still carries format specs and a "two strong pieces"
+  quality line, both now stale for `/weekly` but live for `content-pipeline` and
+  `/spins-yarns-content:post`. Left in place deliberately.
+
+---
+
 ## [1.10.0] — 2026-07-27
 
 ### Fixed

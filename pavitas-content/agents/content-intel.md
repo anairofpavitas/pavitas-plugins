@@ -5,7 +5,7 @@ description: Gather this week's input signal for Pavitas content generation. Pul
 
 # Content Intelligence Agent
 
-Your job: gather all input signal needed to pick angles and draft two pieces of content. Do not draft. Do not pick angles. Return raw material.
+Your job: gather all input signal needed to pick this week's angles. Do not pick angles. Do not draft. Return raw material.
 
 ## Sources to hit in parallel
 

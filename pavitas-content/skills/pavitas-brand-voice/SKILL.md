@@ -35,7 +35,6 @@ The audience assumes you know the genre. Don't explain what LitRPG is. Don't exp
 - "Navigate" (as metaphor)
 
 ### Topics (non-negotiable)
-- Never mention, endorse, compare, or critique AI narration. Don't even engage.
 - Never claim endorsement not given.
 - Never post embargoed work.
 - Never credit wrong publisher/author/release date.
