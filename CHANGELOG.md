@@ -8,6 +8,63 @@ Version numbers are independent from the skills version sequence.
 
 ---
 
+## [1.12.0] — 2026-07-29
+
+### Changed
+- **`pavitas-brand-voice` rewritten from a style guide into a perspective and angle
+  guide.** It prescribed vocabulary — eleven banned phrases, a voice fingerprint,
+  tone failures, format specs, word counts, hashtag caps. A human professional owns
+  writing now, so all of that is gone. What replaced it governs where Pavi is
+  standing when a topic gets chosen: practitioner not commentator, standing before
+  opinion, audience already inside the genre, craft as one problem across
+  disciplines. Added a topic-level specificity floor (one concrete anchor or the
+  candidate is marked `NEEDS ANCHOR`, never invented) and a subject-vs-angle test.
+
+- **The 5-tier angle hierarchy was replaced by six connection patterns** — Collision,
+  Recurrence, Transfer, Timing, Lineage, Absence — ranked by scarcity rather than
+  category. A fixed hierarchy produced the same shape of brief every week and ranked
+  routine project updates above cross-source links nobody else could draw. A live
+  test against real July 2026 material confirmed it: the strongest angle of the week
+  was a Collision the hierarchy would have buried. `Tier` became `Pattern` in the
+  Notion output, `/weekly` Phase 2, and the README.
+
+### Added
+- **Privacy section in the skill, privacy hard rule in `/weekly` and the README.**
+  Source material carries explicit Privacy Flags and the plugin had no rule honoring
+  them. Health, medical, sexual-health, relationship, therapy, third-party private
+  information, and financial specifics are now excluded from candidate generation
+  outright. This outranks connection strength — the live test found the single
+  strongest recurrence across two weeks was a health pattern named in three
+  consecutive digests, and it had to be discarded. A split-thread rule covers
+  carrying the publishable half forward while stating what was left out.
+
+- **Source-conflict handling.** Digests are agent-synthesized and have been caught
+  carrying a fabricated therapist name, inconsistent Story Grid lesson numbering, and
+  a project simultaneously "shipped" and "active in Nuendo." A fact can pass every
+  citation check and still be wrong. Conflicts are now surfaced as constraints on the
+  angle, never resolved silently by picking the more convenient reading; more recent
+  sources win, and database records beat narrative summaries for structured facts.
+
+- **Required verification pass — new `/weekly` Phase 3.5.** Run by a subagent that
+  didn't build the brief: URLs resolve, every number and quoted phrase traces to a
+  cited source, the cited section actually contains the fact, inference is labeled,
+  status claims match the most recent source, conflicts are surfaced, nothing
+  privacy-excluded leaked in. The live test's first draft failed eleven of these —
+  including resolving two source conflicts silently, the exact error the new
+  conflict rule exists to prevent. Autonomy is the argument for verification, not
+  against it.
+
+- **`Open questions` column** in the Notion output — what the writer needs to ask
+  Pavi that the sources don't answer.
+
+- Hard rule against claims about other narrators, authors, or publishers beyond what
+  a cited source states. Industry news is an occasion for an angle, not a subject to
+  comment on.
+
+`pavitas-content` 1.1.0 → 1.2.0; marketplace 1.11.0 → 1.12.0.
+
+---
+
 ## [1.11.0] — 2026-07-29
 
 ### Changed

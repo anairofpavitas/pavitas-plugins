@@ -1,7 +1,7 @@
 {
   "name": "pavitas-content",
   "description": "Weekly social content angle brief for Pavitas Productions. Pulls the Littlebird Pavitas digest, Perplexity industry brief, and Audiobook Projects status from Notion, picks every angle that clears the bar, and posts them to the Pavitas Content database with the verified source material behind each one. Angles and facts only — a human writer owns all copy.",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "author": {
     "name": "Pavitas Productions"
   },

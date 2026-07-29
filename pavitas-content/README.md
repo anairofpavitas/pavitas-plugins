@@ -14,7 +14,7 @@ Distinct from `spins-yarns-content` (which handles @pavi.spins.yarns, the croche
 
 ## Skills (reusable across future commands)
 
-- `pavitas-brand-voice` — Voice guide. Genre-literate, dry, first-person, craft-forward. Banned phrases, hard rules, angle hierarchy, format specs. Within `/weekly` it governs only whether an angle is on-brand, not how anything gets written.
+- `pavitas-brand-voice` — Perspective and angle guide. Governs where Pavi is standing when a topic is chosen (practitioner not commentator, standing before opinion, audience already inside the genre), the specificity floor every angle has to clear, six connection patterns for finding what's worth saying, privacy exclusions, source-conflict handling, and a required verification pass. It does not govern word choice, phrasing, or format — a human writer owns all of that.
 
 ## Agents
 
@@ -37,21 +37,25 @@ URL: https://www.notion.so/eb0089eb3ccc83928e5c017c1f66a70c
 
 Each run creates one Notion page with a table of angle rows. Columns:
 
-| Angle | Tier | Why now | Source material | Constraints & credits | Confidence |
+| Angle | Pattern | Why now | Anchor & source material | Constraints & credits | Open questions | Confidence |
 
-`Tier` maps to the angle hierarchy (1 = active project/release, 5 = personal). `Source material` carries the facts a writer can't derive alone — titles, authors, publishers, release dates, specific moments. `Constraints & credits` carries embargo dates, required tags, and handles. `Confidence` flags anything unverified.
+`Pattern` is how the angle was found — Collision (industry signal against Pavi's week), Recurrence (same idea twice inside 14 days), Transfer (a principle from one discipline explaining another), Timing, Lineage (this book's decision traceable to an earlier one), Absence, or Single-source. Rows are ordered by connection scarcity, strongest first. `Anchor & source material` leads with the one concrete detail that makes the angle exist, then the supporting facts and citations. `Constraints & credits` carries embargo dates, required tags, handles, unresolved source conflicts, and privacy splits. `Open questions` is what the writer needs to ask Pavi. `Confidence` reports verification status.
 
 No format or platform is prescribed. That call belongs to the writer.
 
 ## Quality gate
 
-An angle clears the bar when it has a reason to exist this week and at least one concrete, verifiable detail behind it. There's no target number of angles — the skill surfaces every one that qualifies and pads nothing. Zero is a valid week.
+An angle clears the bar when it has a reason to exist this week and one concrete anchor behind it — a named book, a specific line, a dated session, a decision with a before and after, a number, a mistake. There's no target number of angles — the skill surfaces every one that qualifies and pads nothing. Zero is a valid week.
+
+Every brief goes through a verification pass before posting, run by a subagent that didn't build it: URLs resolve, every number and quote traces to a cited source, inference is labeled, status claims match the most recent source, conflicts are surfaced rather than silently resolved.
 
 ## Hard rules (non-negotiable)
 
 - Never claim endorsement not given
 - Never surface embargoed work
 - Credit author + publisher + release date accurately — if uncertain, flag it
+- Privacy: nothing flagged private, no health or medical content, no relationship or therapy content, no third-party private information, no financial specifics. Outranks angle strength.
+- Never invent an anchor, quote, date, or source
 - No copy. A hook, caption, hashtag, or script line in the output means something went wrong.
 
 ## Install
