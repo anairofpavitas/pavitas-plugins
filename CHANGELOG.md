@@ -93,6 +93,26 @@ Version numbers are independent from the skills version sequence.
 - **`Open questions` column** in the Notion output — what the writer needs to ask
   Pavi that the sources don't answer.
 
+### Fixed
+- **`content-intel` was filtering Audiobook Projects on statuses that don't exist.**
+  It queried for "Active," "Pickups," and "Awaiting Approval." The DB's actual
+  options are Backlog / Standing By / Recording / Batched / Submitted / Editing /
+  Approved / OUT OF STUDIO / Released / Canceled, so the filter silently dropped
+  every project — including a 223,242-word book sitting in Submitted and two more
+  in Standing By. Confirmed against live data. Now filters on the real values, and
+  the DB and data-source IDs are hardcoded instead of searched for by name.
+- **`content-intel` returned no URLs.** Every angle has to cite page title, URL, and
+  date, and the agent handed up titles and excerpts only — so the command had to
+  re-query Notion to cite anything. Citations are now part of the return format.
+- Removed the agent's nonexistent `% complete` and `Deadline` fields; completion is
+  the `Task Completion` rollup and the range is `Dates`. Empty Author and Publisher
+  fields are now reported as empty rather than left blank and quietly filled later.
+- `Flagged Moments` asked the agent for "anything that feels post-worthy" while its
+  own rules said don't interpret. Replaced with `Raw Recurrence` — what repeats and
+  on which dates, no judgment. Added `Conflicts` and `Privacy-Flagged` sections so
+  disagreements and excluded material surface at gather time instead of being
+  discovered, or missed, during angle selection.
+
 - Hard rule against claims about other narrators, authors, or publishers beyond what
   a cited source states. Industry news is an occasion for an angle, not a subject to
   comment on.

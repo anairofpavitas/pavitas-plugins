@@ -18,7 +18,7 @@ Distinct from `spins-yarns-content` (which handles @pavi.spins.yarns, the croche
 
 ## Agents
 
-- `content-intel` — Parallel Notion gatherer. Pulls Littlebird digest, Perplexity brief, Audiobook Projects status, recent Littlebird Log signal.
+- `content-intel` — Parallel Notion gatherer. Pulls Littlebird digest, Perplexity brief, Audiobook Projects status, recent Littlebird Log signal. Returns every item with its page title, URL, and date so angles can be cited without re-querying. Surfaces source conflicts without resolving them, quarantines privacy-flagged entries, and reports raw recurrence across the window.
 
 ## Connectors
 
