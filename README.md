@@ -211,8 +211,8 @@ Full skill history: [CHANGELOG-skills.md](CHANGELOG-skills.md). The hunt family 
 
 Plugins that bundle an `.mcp.json` use remote MCP connectors via OAuth:
 - **Notion**: https://mcp.notion.com/mcp
-- **Google Calendar**: https://gcal.mcp.claude.com/mcp
-- **Gmail**: https://gmail.mcp.claude.com/mcp
 - **Box**: https://mcp.box.com
+
+Gmail and Google Calendar are **not** bundled here. They were previously declared against `gmail.mcp.claude.com` and `gcal.mcp.claude.com` — Claude Code connector hostnames that Codex cannot resolve, which made every session start with an MCP startup failure. Removed 2026-08-22. In Codex, use the native `gmail@openai-curated` and `google-calendar@openai-curated` plugins instead; they authenticate through OpenAI's own connector layer and need nothing from this repo.
 
 Authenticate each connector once; plugins share the authentication. Canva is connected at the claude.ai session level (not bundled) — without it, `/spins-yarns-content:weekly` still produces drafts and visual briefs and flags that assets weren't generated.
