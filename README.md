@@ -39,6 +39,7 @@ claude plugin marketplace add [path-or-repo]/pavitas-plugins
 claude plugin install audiobook-production@pavitas-plugins
 claude plugin install daily-ops@pavitas-plugins
 claude plugin install creative-writing@pavitas-plugins
+claude plugin install raw-capture@pavitas-plugins
 claude plugin install pavitas-content@pavitas-plugins
 claude plugin install spins-yarns-content@pavitas-plugins
 claude plugin install pavitas-core@pavitas-plugins
@@ -55,14 +56,15 @@ claude plugin install xcode-skills@pavitas-plugins
 |--------|---------|----------|--------|--------|------------|
 | **audiobook-production** | 1.1.0 | 4 | 4 | 2 | Notion, Calendar, Gmail, Box |
 | **daily-ops** | 1.0.0 | 5 | 3 | — | Calendar, Gmail, Notion |
-| **creative-writing** | 1.0.0 | 5 | 2 | — | Notion |
+| **creative-writing** | 1.1.0 | 5 | 2 | — | Notion |
+| **raw-capture** | 1.0.0 | — | — | 3 | — |
 | **pavitas-content** | 1.0.0 | 1 | 1 | 1 | Notion (session) |
 | **spins-yarns-content** | 2.0.0 | 5 | 1 | 1 | Notion; Canva (session) |
 | **pavitas-core** | 2.0.0 | — | — | 13 | — |
 | **slashy-ops** | 1.0.0 | — | — | 5 | Slashy (session) |
 | **story-grid-skills** | 1.0.0 | — | — | 5 | — |
 | **hunt-skills** | 1.0.0 | — | — | 3 | — |
-| **TOTAL** | | **20** | **11** | **30** | |
+| **TOTAL** | | **20** | **11** | **33** | |
 
 Connectors marked *(session)* are not bundled in the plugin's `.mcp.json` — they use whatever connection the claude.ai / Cowork session already has. pavitas-content bundles no `.mcp.json` at all; Canva is used at runtime by `/spins-yarns-content:weekly` for visual assets.
 
@@ -86,7 +88,7 @@ Connectors marked *(session)* are not bundled in the plugin's `.mcp.json` — th
 - `/creative-writing:scene` — Story Grid scene analysis
 - `/creative-writing:submit` — Mentor submission prep
 - `/creative-writing:clean` — Anti-AI prose cleaning
-- `/creative-writing:dictate` — Dictation transcript processing
+- `/creative-writing:dictate` — Superseded; delegates to `raw-capture:clean-draft`
 - `/creative-writing:stuck` — One actionable step to get unstuck
 
 ### Pavitas Content (audiobook brand social)
@@ -98,6 +100,12 @@ Connectors marked *(session)* are not bundled in the plugin's `.mcp.json` — th
 - `/spins-yarns-content:pattern` — Pattern transcription (video/web → PDF or Notion)
 - `/spins-yarns-content:log` — Save pattern/project update to Notion + crochet/ folder
 - `/spins-yarns-content:project` — Track active crochet projects via Littlebird Log
+
+### Raw Capture (dictation + handwriting cleanup)
+Skill-only plugin (no slash commands) — 3 skills load as `raw-capture:<name>`. Takes a pasted
+transcript or photos of handwritten pages and returns clean prose (`clean-draft`), sorted story
+structure (`sort-brainstorm`), or a filled Five Commandments form (`fill-commandments`). Audio is
+out of scope — transcribe upstream and paste. See [raw-capture/README.md](raw-capture/README.md).
 
 ### Pavitas Core (skill architecture)
 Skill-only plugin (no slash commands) — 13 skills load as `pavitas-core:<name>`. See next section.

@@ -1,0 +1,9 @@
+{
+  "name": "raw-capture",
+  "description": "Turn raw captured writing into clean, structured output: pasted dictation transcripts or photographed handwritten pages in, manuscript prose (clean-draft), sorted story-development structure (sort-brainstorm), or a filled Five Commandments skeleton with crisis matrix (fill-commandments) out. Ported from the Zo dictation family with the transcription layer removed — the interpretive layer travels, the pipeline doesn't. Faithfulness rules are shared across all three via clean-draft/references.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Pavitas Productions"
+  },
+  "keywords": ["writing", "fiction", "dictation", "handwriting", "transcription", "story-grid", "LitRPG"]
+}

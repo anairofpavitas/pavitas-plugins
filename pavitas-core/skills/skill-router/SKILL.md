@@ -16,6 +16,9 @@ Match the user's goal to ONE profile. Read that profile's skills. Do not read ot
 | New book, script uploaded, "new audiobook project" | audiobook-kickoff | `pavitas-core:audiobook-kickoff` → `audiobook-production:audiobook-script-analyzer`, `audiobook-production:audiobook-project-setup` (Cowork-native), `business-documentation` |
 | Invoice, contract, client correspondence | biz-admin | `business-documentation` |
 | Fiction drafting, "interview me", Jim & Percy, Story Grid work | story-session | `pavitas-core:story-session` (self-contained — interview and style-matching are inlined) |
+| Pasted dictation transcript or photo of handwritten drafting, "clean this up", "read my handwriting" | raw-capture | `raw-capture:clean-draft` (triage may re-route to the two below) |
+| "Process this brainstorm", "sort this session", thinking-out-loud rather than prose | raw-capture | `raw-capture:sort-brainstorm` |
+| "Process the commandments", "run the crisis matrix", material opening on the word *crisis* | raw-capture | `raw-capture:fill-commandments` |
 | Social post, caption, content batch | content-pipeline | `pavitas-core:content-pipeline` → ONE brand (pavitas xor spins-yarns). Pavitas returns a topic slate, no copy; spins-yarns drafts |
 | Zo work, MCP, automation, repo, skill maintenance | infra-session | `pavitas-core:infra-session` → `mcp-wrapper-builder`, `autoresearch` as needed |
 | Scavenger hunt (planned group/date event) | play | `hunt-skills:scavenger-hunt-designer` |
@@ -38,6 +41,7 @@ Match the user's goal to ONE profile. Read that profile's skills. Do not read ot
 - Never load both brand voices in one session.
 - The **support** profile suppresses everything else — no router talk, no other skills, no task management. Just the skill.
 - The three hunt skills are distinct systems, not variants. Route by the signals above; if ambiguous, ask which flavor.
+- The three raw-capture skills share a triage. Enter at `raw-capture:clean-draft` unless the session type is already obvious; when ambiguous between prose and thinking, default to `sort-brainstorm` — it preserves prose verbatim, whereas clean-draft would strip thinking as filler.
 - If no profile matches, proceed with constraints only. Don't force a skill onto a task that doesn't need one.
 - Loading a profile means reading the orchestrator's SKILL.md; the orchestrator names which leaves to read and when. Don't pre-load leaves the orchestrator hasn't called for.
 
@@ -54,6 +58,8 @@ Every installed skill must appear in this list with a routing home. A skill not 
 **slashy-ops plugin (5):** slashy-ops:morning-briefing, slashy-ops:eod-wrapup, slashy-ops:batch-draft-writer, slashy-ops:meeting-scheduler, slashy-ops:deal-tracker (email-ops — all reference pavitas-core:using-slashy; requires pavitas-core installed).
 
 **audiobook-production plugin (2):** audiobook-production:audiobook-script-analyzer, audiobook-production:audiobook-project-setup (bundled with the plugin's own commands/agents; routed to by `pavitas-core:audiobook-kickoff`).
+
+**raw-capture plugin (3):** raw-capture:clean-draft (prose recovery — owns the shared faithfulness/triage/formatting references the other two read) · raw-capture:sort-brainstorm (sorts thinking into Bible sections) · raw-capture:fill-commandments (Five Commandments skeleton + crisis matrix). Two input modes, text and page (photographed handwriting); audio is out of scope — transcribe upstream and paste. Ported from the Zo dictation-to-* family with the transcription pipeline removed. `creative-writing:dictate` delegates to clean-draft.
 
 **hunt-skills plugin (3):** hunt-skills:scavenger-hunt-designer, hunt-skills:pocket-hunt, hunt-skills:pleasure-hunt (play).
 

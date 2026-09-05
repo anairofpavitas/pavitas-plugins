@@ -1,32 +1,13 @@
 ---
-description: Process a dictated audio transcript into clean prose. Removes false starts, filler words, and dictation artifacts while preserving the author's natural voice.
-model: haiku
+description: Clean a dictated or handwritten draft. Delegates to raw-capture:clean-draft — the full interpretive layer (faithfulness rules, self-corrections, instruction handling, fiction formatting) lives there.
 ---
 
 # Dictation Processing
 
-Clean up dictated first drafts. Pavi uses dictation for discovery drafts — the raw transcript needs cleaning but the voice should be preserved.
+Superseded. This command is a pointer, kept so the `/dictate` trigger keeps resolving.
 
-## Execution
+**Load `raw-capture:clean-draft` and follow it.** Do not process the input from this file.
 
-1. **Accept input**: transcribed text (from Perplexity Fiction Transcription Space or other source)
-2. **Clean dictation artifacts**:
-   - Remove false starts and restarts
-   - Remove filler words (um, uh, like, you know)
-   - Fix sentence boundaries (dictation often runs sentences together)
-   - Correct obvious word substitutions from speech-to-text errors
-   - Standardize punctuation
-3. **Preserve voice**:
-   - Keep Pavi's natural phrasing and word choices
-   - Don't "improve" the prose — just clean the transcription noise
-   - Maintain the discovery-draft energy
-4. **Flag uncertainties**:
-   - Mark any words or phrases that might be transcription errors
-   - Note character names or invented terms that might be misspelled
-5. **Output**: clean draft ready for revision
+That skill handles both input modes — a pasted transcript or photographed handwriting — and carries the rules this command used to approximate: the priority order, the five permitted changes and the forbidden list, never-blend, the three-signal instruction test with its asymmetric-failure bias, the lexicon cross-check, and the notes contract.
 
-## Rules
-- First pass only — don't edit for quality, just for transcription cleanliness
-- Pavi's anchor phrase: "Let me see what happens next" — this is his writing mindset, respect it
-- If the transcript includes stage directions or notes-to-self ("note: check this later"), preserve them as inline comments
-- For LitRPG content: system messages and stat blocks may be dictated conversationally — format them properly
+If the material turns out to be thinking-out-loud rather than prose, or Five Commandments slots being filled, its triage will route to `raw-capture:sort-brainstorm` or `raw-capture:fill-commandments` instead.

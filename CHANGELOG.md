@@ -8,6 +8,44 @@ Version numbers are independent from the skills version sequence.
 
 ---
 
+## [1.14.0] — 2026-09-05
+
+### Added
+- **`raw-capture` plugin — three skills, ported from the Zo dictation family.**
+  `dictation-to-draft`, `dictation-to-brainstorm`, and `dictation-to-commandments` lived on Zo
+  Computer and could not travel: each welded its judgment layer to one ingest path (ElevenLabs
+  Scribe v2 → `condense.py` → a vault tree under `Dictation/`). The interpretive layer — which is
+  the part worth having — is independent of all of it. `raw-capture:clean-draft`,
+  `raw-capture:sort-brainstorm`, and `raw-capture:fill-commandments` carry that layer with the
+  pipeline removed.
+
+  **Two input modes, and they have inverted strengths.** Text mode (a pasted transcript) has exact
+  words but no pauses, so instruction detection runs on two of its three signals — it acts only when
+  register and frame break are both unambiguous, and never applies a structural move. Page mode
+  (photographed handwriting, which Claude reads natively) has fallible word-reading but explicit
+  intent: a strikethrough is an unambiguous self-correction, an arrow an unambiguous move, a margin
+  note unambiguously an aside. Neither mode is a degraded version of the other, and every skill
+  reports which one it ran in.
+
+  **Audio is out of scope, deliberately.** Claude's model reads text and images; it does not hear,
+  and this session's egress reaches no transcription service. Transcribe upstream and paste the
+  result — raw, ideally, since a source that already stripped false starts destroyed the evidence
+  separating a self-correction from an instruction. The skills say so in their report when that is
+  the case.
+
+### Changed
+- **`creative-writing` 1.0.0 → 1.1.0.** `/dictate` was a `model: haiku` command whose stated job —
+  "accept transcribed text, clean dictation artifacts" — is exactly `raw-capture:clean-draft`'s
+  trigger. Two entries competing for the same request, with haiku-grade judgment on prose that
+  cannot be recovered, is the wrong outcome. The command now delegates rather than competing; the
+  file is kept so the trigger still resolves. Plugin description and README updated to match.
+- **`pavitas-core:skill-router`** gained three routing rows, a coverage-manifest entry for the new
+  plugin, and a rule covering the shared triage: enter at `clean-draft` unless the session type is
+  already obvious, and when ambiguous between prose and thinking default to `sort-brainstorm`,
+  which preserves prose verbatim where `clean-draft` would strip thinking as filler.
+
+---
+
 ## [1.13.0] — 2026-07-29
 
 ### Changed

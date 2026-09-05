@@ -14,6 +14,38 @@ reference file updates, and debrief-driven edits all get logged here.
 
 ## [Unreleased]
 
+### Added
+- **`raw-capture:clean-draft`, `raw-capture:sort-brainstorm`, `raw-capture:fill-commandments`** —
+  the Zo `dictation-to-*` family, with the transcription pipeline stripped out. What was cut: the
+  Scribe curl and `keyterms` encoding, `condense.py` and the whole condense stage, the pause table,
+  the `Dictation/` output tree, the `audio/processed/` move and purge contract, and the
+  `knitrpg-vault-sync` git rules. What survived verbatim: the priority order, the five permitted
+  changes and the forbidden list, never-blend, the three-signal instruction test with its
+  asymmetric-failure bias, the dialogue guard, the notes contract, the Bible category sort, the
+  Five Commandments definitions with both TP tests and the L57 PC correction, and the
+  matrix → resolution linkage.
+- **Shared references.** `clean-draft/references/{faithfulness,triage,fiction-formatting}.md` are
+  read by all three skills. In the Zo family two of the three said "read `dictation-to-draft`'s
+  Stage 1 and follow it exactly" — pointing at another skill's prose, which is what made it
+  fragile. They now point at stable reference files.
+- **`fill-commandments/references/five-commandments.md`** — an operative copy of
+  `Documents/Writing/Five Commandments - method.md`, which lives on Zo *outside* the vault and so
+  never synced anywhere. The skill calls that definition load-bearing, so it now travels with the
+  skill. Upstream remains canonical: when the two disagree, the Zo file wins and the copy is the bug.
+
+### Changed
+- **The lexicon changed character rather than being dropped.** It was a Scribe API parameter capped
+  at 100 keyterms, which is the only reason `xAdmin/lexicon-keyterms.md` existed as a per-session
+  shortlist. As reading context there is no cap — all ~282 KnitRPG names load, and the selection
+  logic is obsolete. It also matters *more* now: page mode has no calibrated confidence signal
+  (unlike ASR, the reading and the flagging are the same act), so cross-checking every proper noun
+  against the name files is the closest available substitute.
+- **Bible checks are now conditional and must say so.** `sort-brainstorm` and `fill-commandments`
+  check claims against `Bible/` only when it is reachable in the session. When it is not, they
+  report that the check did not run. Skipping it silently would destroy the value of the ⚠️ flag.
+- **`creative-writing:dictate`** rewritten as a pointer to `raw-capture:clean-draft`. The `model:
+  haiku` pin is gone with it.
+
 ### Fixed
 - **pavitas-core:memory-recall** — SKILL.md frontmatter was not valid YAML. The
   `description:` value wrapped across four lines with no continuation indent, so

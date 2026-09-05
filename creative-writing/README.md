@@ -9,7 +9,7 @@ Story Grid-based fiction writing toolkit for Pavi's original creative work.
 | `/creative-writing:scene` | Analyze a scene against Story Grid 5 Commandments |
 | `/creative-writing:submit` | Format + prep a submission for mentor Joanne Mitchell |
 | `/creative-writing:clean` | Strip AI-isms from prose via humanize-prose rules |
-| `/creative-writing:dictate` | Process dictated transcript into clean prose |
+| `/creative-writing:dictate` | **Superseded** — delegates to `raw-capture:clean-draft`. Kept so the trigger resolves. |
 | `/creative-writing:stuck` | One small actionable step to get unstuck |
 
 ## Sub-Agents

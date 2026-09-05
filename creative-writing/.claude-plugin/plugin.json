@@ -1,9 +1,16 @@
 {
   "name": "creative-writing",
-  "description": "Story Grid-based fiction writing toolkit for Pavi's original creative work. Scene analysis against 5 Commandments, mentor submission formatting for Joanne Mitchell, anti-AI prose cleaning, dictation transcript processing, and unstuck prompts. Covers Jim & Percy LitRPG project and future fiction. Not for audiobook narration — that's the audiobook-production plugin.",
-  "version": "1.0.0",
+  "description": "Story Grid-based fiction writing toolkit for Pavi's original creative work. Scene analysis against 5 Commandments, mentor submission formatting, anti-AI prose cleaning, and unstuck prompts. Dictation and handwriting cleanup now lives in the raw-capture plugin; the /dictate command delegates there. Not for audiobook narration — that's the audiobook-production plugin.",
+  "version": "1.1.0",
   "author": {
     "name": "Pavitas Productions"
   },
-  "keywords": ["writing", "fiction", "story-grid", "scenes", "prose", "LitRPG"]
+  "keywords": [
+    "writing",
+    "fiction",
+    "story-grid",
+    "scenes",
+    "prose",
+    "LitRPG"
+  ]
 }
