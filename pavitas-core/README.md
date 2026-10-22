@@ -39,6 +39,15 @@ Layering rules: constraints never contain procedures; orchestrators never contai
 - **No token:** the hooks print one line saying the log isn't set up and send nothing except an anonymous "a hook ran" ping to Zo (`/api/context/agent-ping`). In cloud sessions (Cowork, Claude Code on the web) there is deliberately no token; those read the briefing through the Zo connector instead (`python3 /home/workspace/Projects/agent-log/zo_agent.py now`).
 - Zo's own chats aren't hooked; Zo's nightly job logs them and writes the daily digest. Details: `Projects/agent-log/README.md` on Zo.
 
+## Runner: Zo hands work to Claude Code on this Mac (added 2026-10-22)
+
+`runner/agent_runner.py` lets Zo queue a job for a named Mac (`zo_agent.py job add` on Zo, or an accepted digest offer). A LaunchAgent (`com.pavitas.agent-runner`) runs it every 60 seconds while you're logged in; with no job waiting it makes one small request and exits. With a job, it runs Claude Code headless (logged in the shared agent log as agent `zo-job`) and reports the result to Zo, which shows it in the Zo Home feed and texts it if the job asked.
+
+- **read jobs** (default): read files, search, browse. Nothing that changes anything.
+- **edit jobs**: also edit files and run a fixed list of build/test/inspect commands, only inside a git repo, in a separate worktree (`<repo>/.claude/worktrees/zo-job-<id>`) on a new branch `zo-job-<id>`. Changes are committed there and left for review; never pushed or merged, and your own checkout is never touched. Anything outside the allowed list is refused and listed in the result.
+- One job at a time per Mac, 30-minute limit, folder must be inside your home folder. A Mac that goes to sleep mid-job has the job marked failed after 45 minutes.
+- **Setup (once per Mac, after the agent-log setup):** `python3 ~/.claude/plugins/marketplaces/pavitas-plugins/pavitas-core/runner/agent_runner.py setup`. Also `status`, `off`, `on`, `uninstall`. Log: `~/.config/pavitas/runner.log`.
+
 ## Evaluation rubrics (run via autoresearch, quarterly)
 
 **morning-review**

@@ -8,6 +8,13 @@ Version numbers are independent from the skills version sequence.
 
 ---
 
+## [1.17.0] — 2026-10-22
+
+### Added
+- **`pavitas-core` 2.3.0 → 2.4.0 — job runner.** Zo could plan work but not do it on the Macs, where Pavi's code and files live. `runner/agent_runner.py`, run every minute by a LaunchAgent, claims the next job Zo queued for this machine, runs Claude Code headless and reports back (Zo Home feed, optional text). Polling rather than a held connection keeps it simple and cheap: one small request a minute when idle. Edit jobs only run in a separate git worktree on a new `zo-job-<id>` branch with a fixed allow-list of commands, so an unattended run can't touch Pavi's checkout, push, or delete anything; read jobs can't change anything at all.
+
+---
+
 ## [1.16.0] — 2026-10-22
 
 ### Changed
