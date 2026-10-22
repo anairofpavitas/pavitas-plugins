@@ -12,7 +12,10 @@ Commands:
   end                   SessionEnd hook (reads hook JSON on stdin, returns at once)
   sweep [options]       Log sessions that ended without the end hook (also used by Zo's nightly job)
 
-Not logged: headless `claude -p` runs, sessions in scratch folders (/tmp, /var/folders), and sessions that
+Apps that run Claude Code headless for real conversations set PAVITAS_AGENT_SOURCE (Dictate sets "dictate"): those
+runs get the briefing on their first turn and are logged under that agent name, one entry per conversation.
+
+Not logged: headless `claude -p` runs without PAVITAS_AGENT_SOURCE, sessions in scratch folders (/tmp, /var/folders), and sessions that
 were only slash commands. Apps built on the Agent SDK (Claude desktop, Obsidian plugins, Zo chat) are logged.
   setup                 Save the Zo agent token and this machine's name, then test the connection
   status                Show configuration and the last few log lines
@@ -80,15 +83,21 @@ def disabled():
     return os.environ.get("PAVITAS_AGENT_LOG", "1") == "0"
 
 
+def source_app():
+    """An app that runs Claude Code headless for real conversations sets PAVITAS_AGENT_SOURCE (Dictate: "dictate")."""
+    return re.sub(r"[^a-z0-9._-]", "", os.environ.get("PAVITAS_AGENT_SOURCE", "").lower())[:32]
+
+
 def headless():
-    """`claude -p` runs (scripts, tools, background helpers) are not sessions worth logging or briefing."""
-    return os.environ.get("CLAUDE_CODE_ENTRYPOINT", "") == "sdk-cli"
+    """`claude -p` runs (scripts, tools, background helpers) are not sessions worth logging or briefing,
+    unless an app marked them as a real conversation with PAVITAS_AGENT_SOURCE."""
+    return os.environ.get("CLAUDE_CODE_ENTRYPOINT", "") == "sdk-cli" and not source_app()
 
 
-def noise(info):
+def noise(info, marked=False):
     """True for sessions that aren't real work: headless runs, scratch folders, or nothing but slash commands.
     Apps built on the Agent SDK (Claude desktop, Obsidian plugins, Zo chat) report sdk-ts/sdk-py and are kept."""
-    if info.get("entrypoint") == "sdk-cli":
+    if info.get("entrypoint") == "sdk-cli" and not marked:
         return "headless run"
     if (info.get("cwd") or "").startswith(TEMP_DIRS):
         return "scratch folder"
@@ -286,7 +295,7 @@ def send_session(token, machine, agent, session_id, path, reason=None):
     if info is None:
         log(f"skip {session_id[:8]}: transcript unreadable")
         return False
-    why = noise(info)
+    why = noise(info, marked=bool(source_app()))
     if why:
         log(f"skip {session_id[:8]}: {why}")
         return True
@@ -345,9 +354,11 @@ def cmd_start():
         ping("start", False)   # tells Zo a hook ran somewhere with no token; sends nothing else
         return
     machine = machine_name()
+    if source_app() and hook.get("source") == "resume":
+        return   # an app continuing its own conversation: the briefing is already in it
     try:
         status, text = http("GET", "now", token=token, timeout=6,
-                            query={"machine": machine, "agent": "claude-code", "exclude": hook.get("session_id", "")})
+                            query={"machine": machine, "agent": source_app() or "claude-code", "exclude": hook.get("session_id", "")})
         if status == 200 and text.strip():
             print(text)
     except Exception as e:
@@ -381,7 +392,7 @@ def cmd_end():
     for fd in (0, 1, 2):
         os.dup2(devnull, fd)
     time.sleep(2)   # the transcript is written asynchronously; let the last lines land
-    if send_session(token, machine_name(), "claude-code", session_id, path, hook.get("reason")):
+    if send_session(token, machine_name(), source_app() or "claude-code", session_id, path, hook.get("reason")):
         mark_sent(session_id, path)
     os._exit(0)
 

@@ -8,6 +8,13 @@ Version numbers are independent from the skills version sequence.
 
 ---
 
+## [1.16.0] — 2026-10-22
+
+### Changed
+- **`pavitas-core` 2.2.0 → 2.3.0 — agent-log hooks recognize Dictate.** Dictate's agent mode runs Claude Code headless (`claude -p`), which 2.2.0 skipped as a script run, so spoken agent requests got no briefing and never reached the log. An app now marks a real conversation with `PAVITAS_AGENT_SOURCE` (Dictate 0.6 sets `dictate`); those runs are briefed on their first turn (not again on each resumed turn, where the briefing is already in context) and logged under that agent name. Unmarked `claude -p` runs are still skipped.
+
+---
+
 ## [1.15.0] — 2026-10-22
 
 ### Added
