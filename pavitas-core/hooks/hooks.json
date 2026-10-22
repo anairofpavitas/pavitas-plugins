@@ -1,0 +1,20 @@
+{
+  "description": "Shared agent log with Zo: a briefing of the last 24 hours at session start, a short summary of the session sent to Zo at session end. Needs ~/.config/pavitas/zo-agent-token (run: python3 \"<plugin>/hooks/agent_log.py\" setup). Without it the hooks do nothing except note on Zo that they ran.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear",
+        "hooks": [
+          { "type": "command", "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/hooks/agent_log.py\" start", "timeout": 10 }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          { "type": "command", "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/hooks/agent_log.py\" end", "timeout": 5 }
+        ]
+      }
+    ]
+  }
+}
