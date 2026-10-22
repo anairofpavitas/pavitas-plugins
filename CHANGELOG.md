@@ -8,6 +8,13 @@ Version numbers are independent from the skills version sequence.
 
 ---
 
+## [1.17.1] — 2026-10-22
+
+### Fixed
+- **`pavitas-core` 2.4.1 — agent log and runner work with python.org Python.** On the Studio Mac `python3` is a python.org install with no certificate bundle, so every call to Zo failed with `CERTIFICATE_VERIFY_FAILED` (setup reported it; the hooks would have failed silently). `agent_log.http` now retries any certificate failure with macOS's own bundle (`/etc/ssl/cert.pem`, or certifi if present). The runner uses the same helper.
+
+---
+
 ## [1.17.0] — 2026-10-22
 
 ### Added

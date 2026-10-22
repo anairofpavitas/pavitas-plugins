@@ -34,6 +34,7 @@ import glob
 import json
 import os
 import re
+import ssl
 import subprocess
 import sys
 import time
@@ -142,6 +143,25 @@ def scrub(s):
     return HEX.sub("[redacted]", s)
 
 
+def _ssl_problem(err):
+    reason = getattr(err, "reason", err)
+    return isinstance(reason, ssl.SSLError) or "CERTIFICATE_VERIFY_FAILED" in str(err)
+
+
+def _fallback_context():
+    """python.org installers ship Python without a certificate bundle, so every HTTPS call fails with
+    CERTIFICATE_VERIFY_FAILED until "Install Certificates.command" is run. macOS keeps its own bundle at
+    /etc/ssl/cert.pem; use that (or certifi, if it happens to be installed)."""
+    for cafile in ("/etc/ssl/cert.pem", "/usr/local/etc/openssl/cert.pem", "/opt/homebrew/etc/openssl@3/cert.pem"):
+        if os.path.exists(cafile):
+            return ssl.create_default_context(cafile=cafile)
+    try:
+        import certifi
+        return ssl.create_default_context(cafile=certifi.where())
+    except Exception:
+        return None
+
+
 def http(method, path, token=None, body=None, query=None, timeout=10):
     url = f"{BASE}/{path}"
     if query:
@@ -152,8 +172,17 @@ def http(method, path, token=None, body=None, query=None, timeout=10):
     req.add_header("User-Agent", "pavitas-agent-log/1")
     if token:
         req.add_header("X-Agent-Token", token)
-    with urllib.request.urlopen(req, timeout=timeout) as r:
-        return r.status, r.read().decode("utf-8", "replace")
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            return r.status, r.read().decode("utf-8", "replace")
+    except urllib.error.HTTPError:
+        raise
+    except (urllib.error.URLError, ssl.SSLError) as err:
+        ctx = _fallback_context() if _ssl_problem(err) else None
+        if ctx is None:
+            raise
+        with urllib.request.urlopen(req, timeout=timeout, context=ctx) as r:
+            return r.status, r.read().decode("utf-8", "replace")
 
 
 def read_hook_input():
