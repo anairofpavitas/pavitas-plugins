@@ -11,6 +11,9 @@ Commands:
   start                 SessionStart hook (reads hook JSON on stdin)
   end                   SessionEnd hook (reads hook JSON on stdin, returns at once)
   sweep [options]       Log sessions that ended without the end hook (also used by Zo's nightly job)
+
+Not logged: headless `claude -p` runs, sessions in scratch folders (/tmp, /var/folders), and sessions that
+were only slash commands. Apps built on the Agent SDK (Claude desktop, Obsidian plugins, Zo chat) are logged.
   setup                 Save the Zo agent token and this machine's name, then test the connection
   status                Show configuration and the last few log lines
 
@@ -56,6 +59,8 @@ HEX = re.compile(r"\b[a-f0-9]{40,}\b")
 REMINDER = re.compile(r"<system-reminder>.*?</system-reminder>", re.S)
 CMD_NOISE = re.compile(r"<(local-command-caveat|local-command-stdout|local-command-stderr|command-message|command-args)>.*?</\1>", re.S)
 EDIT_TOOLS = {"Edit", "Write", "MultiEdit", "NotebookEdit"}
+SLASH_ONLY = re.compile(r"^\(ran /[^)]*\)\s*$")
+TEMP_DIRS = ("/tmp", "/private/tmp", "/var/folders", "/private/var/folders")
 
 
 # ---------- small helpers ----------
@@ -73,6 +78,23 @@ def log(msg):
 
 def disabled():
     return os.environ.get("PAVITAS_AGENT_LOG", "1") == "0"
+
+
+def headless():
+    """`claude -p` runs (scripts, tools, background helpers) are not sessions worth logging or briefing."""
+    return os.environ.get("CLAUDE_CODE_ENTRYPOINT", "") == "sdk-cli"
+
+
+def noise(info):
+    """True for sessions that aren't real work: headless runs, scratch folders, or nothing but slash commands.
+    Apps built on the Agent SDK (Claude desktop, Obsidian plugins, Zo chat) report sdk-ts/sdk-py and are kept."""
+    if info.get("entrypoint") == "sdk-cli":
+        return "headless run"
+    if (info.get("cwd") or "").startswith(TEMP_DIRS):
+        return "scratch folder"
+    if info.get("turns", 0) < 1:
+        return "no prompts"
+    return None
 
 
 def read_token():
@@ -223,7 +245,8 @@ def condense(path):
                 elif t == "user" and not d.get("isMeta"):
                     q = user_text(d.get("message") or {})
                     if q:
-                        info["turns"] += 1
+                        if not SLASH_ONLY.match(q):
+                            info["turns"] += 1
                         info["first_query"] = info["first_query"] or q[:200]
                         lines.append("USER: " + q[:USER_MAX])
                 elif t == "assistant":
@@ -263,8 +286,9 @@ def send_session(token, machine, agent, session_id, path, reason=None):
     if info is None:
         log(f"skip {session_id[:8]}: transcript unreadable")
         return False
-    if info["turns"] < 1:
-        log(f"skip {session_id[:8]}: no prompts")
+    why = noise(info)
+    if why:
+        log(f"skip {session_id[:8]}: {why}")
         return True
     now = datetime.now(timezone.utc).isoformat()
     body = {
@@ -306,7 +330,7 @@ def ping(event, has_token):
 
 def cmd_start():
     hook = read_hook_input()
-    if disabled():
+    if disabled() or headless():
         return
     token = read_token()
     if not token:
@@ -340,7 +364,7 @@ def cmd_start():
 
 def cmd_end():
     hook = read_hook_input()
-    if disabled():
+    if disabled() or headless():
         return
     token = read_token()
     if not token:
@@ -383,7 +407,6 @@ def cmd_sweep(argv):
     idle = float(arg(argv, "--idle-minutes", "30")) * 60
     limit = int(arg(argv, "--limit", "20"))
     skip = arg(argv, "--skip", "")
-    include_sdk = "--include-sdk" in argv
     prefixes = []
     pf = arg(argv, "--skip-prefixes")
     if pf and os.path.exists(pf):
@@ -413,10 +436,8 @@ def cmd_sweep(argv):
         info = condense(f)
         if info is None:
             continue
-        entry = info.get("entrypoint") or ""
-        automated = (entry.startswith("sdk") and not include_sdk) or \
-            any(info["first_query"].startswith(p) for p in prefixes)
-        if automated or info["turns"] < 1:
+        automated = noise(info) or any(info["first_query"].startswith(p) for p in prefixes)
+        if automated:
             state[sid] = {"mtime": m, "at": now, "skipped": True}
             skipped += 1
             continue
