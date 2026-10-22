@@ -26,6 +26,18 @@ LEAVES        (unchanged, loaded on demand) business-documentation,
 
 Layering rules: constraints never contain procedures; orchestrators never contain execution detail (they name leaves); leaves never route. Facts (IDs, paths) live in `pavitas-core:workspace-context` only — nothing else hard-codes them.
 
+## Hooks: shared agent log with Zo (added 2026-10-22)
+
+`hooks/hooks.json` runs `hooks/agent_log.py` in every Claude Code session on any machine with this plugin enabled.
+
+- **SessionStart** (new, resumed, or cleared session): prints Zo's briefing of the last 24 hours across every machine and agent (agent sessions, what Ambient heard, the longest Activity Journal stretches, yesterday's digest). Claude Code adds it to the session's context. Times out quietly after about 6 seconds if Zo is slow. It also starts a background catch-up that sends any earlier session on this machine that ended without the SessionEnd hook (crash, closed terminal).
+- **SessionEnd**: returns at once and, in a detached background process, sends Zo a trimmed copy of the session (prompts, reply openings and endings, files changed; tool output left out; secret-looking strings redacted). Zo has Claude Haiku write a 1–3 sentence entry with decisions and open threads, stores only that entry in `journal.db` → `agent_sessions`, and discards the text.
+- **Setup per machine (once):** `python3 ~/.claude/plugins/marketplaces/pavitas-plugins/pavitas-core/hooks/agent_log.py setup`. It asks for the Zo agent token (kept on Zo at `Projects/agent-log/.agent-token`) and the machine name (`office-macbook`, `studio-macbook`, matching the Activity Journal), saves them in `~/.config/pavitas/` with owner-only permissions, and tests the connection. Never commit the token.
+- **Check:** `python3 …/agent_log.py status`. In a session, `/hooks` lists both hooks with source "plugin".
+- **Off switch:** `export PAVITAS_AGENT_LOG=0` for one shell or script, or `"disableAllHooks": true` in `~/.claude/settings.json` for everything.
+- **No token:** the hooks print one line saying the log isn't set up and send nothing except an anonymous "a hook ran" ping to Zo (`/api/context/agent-ping`). In cloud sessions (Cowork, Claude Code on the web) there is deliberately no token; those read the briefing through the Zo connector instead (`python3 /home/workspace/Projects/agent-log/zo_agent.py now`).
+- Zo's own chats aren't hooked; Zo's nightly job logs them and writes the daily digest. Details: `Projects/agent-log/README.md` on Zo.
+
 ## Evaluation rubrics (run via autoresearch, quarterly)
 
 **morning-review**

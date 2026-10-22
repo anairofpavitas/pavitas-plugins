@@ -8,6 +8,13 @@ Version numbers are independent from the skills version sequence.
 
 ---
 
+## [1.15.0] — 2026-10-22
+
+### Added
+- **`pavitas-core` 2.1.0 → 2.2.0 — first hooks in the suite: a shared agent log with Zo.** Pavi works across two Macs, Zo, claude.ai and Cowork, and no agent knew what the others had done. `hooks/hooks.json` now runs `hooks/agent_log.py` on SessionStart (prints Zo's 24-hour briefing into the session's context, then a detached catch-up of sessions that never logged) and SessionEnd (detached upload of a trimmed session; Zo has Haiku write a short entry and keeps only that). Shipping the hooks in the plugin rather than in each machine's settings means every machine with pavitas-core enabled gets them on its next update; each machine still needs a one-time `agent_log.py setup` for the token, which never lives in this repo. SessionEnd hooks get 1.5 seconds by default, so the upload forks and returns immediately. Without a token the hooks print one line and do nothing else, which is also how cloud sessions (Cowork, web) behave by design.
+
+---
+
 ## [1.14.0] — 2026-09-05
 
 ### Added
