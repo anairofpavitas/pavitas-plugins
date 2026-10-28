@@ -69,7 +69,7 @@
     },
     {
       "name": "productivity",
-      "description": "Task management (TASKS.md) and two-tier workplace memory (CLAUDE.md + memory/) with a visual dashboard, adapted from Anthropic's generic productivity plugin for a solo operation: Notion serves as both knowledge base and project tracker, Gmail/Google Calendar handle email and scheduling, gaps are checked against Supermemory before asking twice, and Zo Computer covers persistent activity scanning and recurring automations.",
+      "description": "Task management (TASKS.md) and two-tier workplace memory (CLAUDE.md + memory/) with a visual dashboard, adapted from Anthropic's generic productivity plugin for a solo operation: Notion serves as both knowledge base and project tracker, Gmail/Google Calendar handle email and scheduling, gaps are checked against Konshus before asking twice, and Zo Computer covers persistent activity scanning and recurring automations.",
       "source": "./productivity",
       "category": "productivity"
     },

@@ -30,7 +30,7 @@ Facts and routing only. Behavioral rules live in `pavitas-core:safety-rails`.
 | Cora data (briefs, inbox, todos) | Cora MCP tools, or Zo-side `cora` CLI during Zo sessions |
 | Zo file ops / bash | `Zo Computer:bash`, `read_file`, `write_file` via the MCP proxy |
 | Calendar | Native Google Calendar tools — 4 calendars: primary, Studio Schedule, Colin's, Events |
-| "Make a note", no destination given | Littlebird Log. If the note also meets pavitas-core:memory-capture's Save criteria (decision, deadline, contact, direction change), additionally call memory-capture with a one-line distillation after writing the note — don't duplicate the full note text into Supermemory. |
+| "Make a note", no destination given | Littlebird Log. If the note also meets pavitas-core:memory-capture's Save criteria (decision, deadline, contact, direction change), additionally call memory-capture with a one-line distillation after writing the note — don't duplicate the full note text into Konshus. |
 | SMS to Pavi | `Zo Computer:send_sms_to_user` — only when asked or in agent contexts with something to report |
 
 ## Workspace facts
@@ -39,7 +39,7 @@ Facts and routing only. Behavioral rules live in `pavitas-core:safety-rails`.
 - Mac home: `/Users/pavi2/`; canon skills repo: `/Users/pavi2/Documents/GitHub/pavitas-plugins/` (GitHub: anairofpavitas/pavitas-plugins)
 - Changelogs: skills changes → `CHANGELOG-skills.md`; plugin/root changes → root `CHANGELOG.md`
 - Zo memory: DuckDB at `/home/workspace/.zo/data/memory.duckdb`, CLI `bun /home/workspace/.zo/memory/scripts/memory.ts` (`hybrid "query"` preferred)
-- Canonical Supermemory: Supermemory MCP as pavi@paviproczko.com — NOT the Zo-routed connector
+- Canonical memory: Konshus (`mcp__Konshus__*`) is the source of truth about Pavi. Supermemory is legacy — don't read or write it.
 - Workspace file mentions format as `` `file 'Documents/notes.md'` ``, relative to `/home/workspace`
 - ACX/Audible-direct delivery specs: -23dB to -18dB RMS, -60dB noise floor, -3dB peak, 44.1kHz/192kbps MP3
 

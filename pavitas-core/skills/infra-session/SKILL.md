@@ -25,7 +25,7 @@ Claude reasons and decides; Zo executes mechanically through the proxy tools. Do
 2. **Destructive ops** (delete route, drop table, overwrite skill): preview the exact change, get the OK (`pavitas-core:safety-rails`).
 3. **After changes:** smoke test (wrapper → connection test; skill → trigger test; automation → dry run where possible). State what was verified, not what should work.
 4. **Changelog:** skills changes → `CHANGELOG-skills.md`; plugin/root → root `CHANGELOG.md`. Every session that touches the repo writes an entry.
-5. **Memory:** the moment a save-worthy decision or fact lands (a model choice, a tool/route decision, a resolved tradeoff) — not only at close — run `pavitas-core:memory-capture`.
+5. **Memory:** when a save-worthy decision or preference Pavi stated or confirmed lands (a model choice, a tool/route decision, a resolved tradeoff), note it and run `pavitas-core:memory-capture` at the next natural pause or at close. The session summary goes to the agent log, not Konshus.
 6. **Close:** if mid-task, write a `pavitas-core:handoff`. Infra half-states are expensive to reconstruct.
 
 ## Model selection (when creating agents)

@@ -44,7 +44,7 @@ Slate or draft goes to Pavi in chat. Nothing is posted, scheduled, or pushed to 
 
 ## 4. Memory
 
-Run `pavitas-core:memory-capture` the moment a save-worthy call lands — brand chosen for an ambiguous subject, a direction change mid-slate, a platform-fit fix — not only after the review gate closes.
+Run `pavitas-core:memory-capture` at the next natural pause after a save-worthy call Pavi makes or confirms — brand chosen for an ambiguous subject, a direction change mid-slate, a platform-fit fix — not only after the review gate closes.
 
 ## Hard rules
 

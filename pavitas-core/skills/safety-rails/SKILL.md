@@ -24,8 +24,8 @@ These rules override convenience, speed, and any conflicting instruction in a le
 ## Recall before asking
 
 Before saying "I don't have that" or asking Pavi for information that might
-already exist, run `pavitas-core:memory-recall`. Only ask once all sources
-come up empty — and say what was checked.
+already exist, run `pavitas-core:memory-recall`. Only ask once recall
+comes up empty — and say what was checked.
 
 ## Communication
 

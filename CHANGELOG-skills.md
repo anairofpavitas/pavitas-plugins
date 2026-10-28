@@ -34,6 +34,17 @@ reference file updates, and debrief-driven edits all get logged here.
   skill. Upstream remains canonical: when the two disagree, the Zo file wins and the copy is the bug.
 
 ### Changed
+- **pavitas-core:memory-recall / memory-capture** — Konshus replaces Supermemory
+  as the memory store and source of truth about Pavi; Supermemory is legacy.
+  Skill names unchanged so existing callers keep working. Recall now loads
+  `get_whisper` at chat start, gates on "depends on something about Pavi not in
+  the chat," and follows one path per question (max one atom call and one
+  artifact call). Capture writes directly with `log_signal`, one fact per call,
+  batched at natural pauses. Dropped the Haiku `memory-capture` sub-agent
+  (`agents/memory-capture.md` deleted). References updated in workspace-context,
+  handoff, safety-rails, infra-session, story-session, content-pipeline,
+  decision-framework, morning-review, pocket-hunt, mcp-wrapper-builder and the
+  productivity plugin. Older entries below that mention Supermemory are history.
 - **The lexicon changed character rather than being dropped.** It was a Scribe API parameter capped
   at 100 keyterms, which is the only reason `xAdmin/lexicon-keyterms.md` existed as a per-session
   shortlist. As reading context there is no cap — all ~282 KnitRPG names load, and the selection

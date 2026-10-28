@@ -78,7 +78,7 @@ I see some terms I want to make sure I understand:
 3. **Phoenix** - Is this a project codename? What's it about?
 ```
 
-Before asking, check Supermemory for each term — Pavi may have already explained it in another session. Continue through each task, asking only about terms that aren't in Supermemory and haven't already been decoded here.
+Before asking, check Konshus for each term — Pavi may have already explained it in another session. Continue through each task, asking only about terms that aren't in Konshus and haven't already been decoded here.
 
 ### 6. Optional Comprehensive Scan
 

@@ -40,7 +40,7 @@ At a natural break (or on request), assemble interview answers into prose.
 
 1. **Open:** read the last `pavitas-core:handoff` for this project, or ask where things stand.
 2. **Work:** interview → compile. Prose mechanics obey `pavitas-core:output-quality`; the project's existing voice wins on style.
-3. **Memory:** the moment a scene decision, direction change, or premise commitment lands — not only at close — run `pavitas-core:memory-capture`.
+3. **Memory:** when Pavi makes or confirms a scene decision, direction change, or premise commitment, note it and run `pavitas-core:memory-capture` at the next natural pause or at close.
 4. **Close:** if mentor-relevant, note Joanne submission status. Offer a `pavitas-core:handoff` if work continues elsewhere.
 
 ## Rules

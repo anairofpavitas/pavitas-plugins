@@ -64,14 +64,14 @@ User: "ask todd about the PSR for phoenix"
 2. If not found → search memory/glossary.md
    → Full glossary has everyone/everything
 
-3. If still not found → check Supermemory (durable cross-session facts)
+3. If still not found → check Konshus (durable cross-session facts)
    → If found, pull just what's needed into memory/ (or CLAUDE.md if it's high-frequency) — don't ask the user again for something they already told Claude elsewhere
 
 4. If still not found → ask user
    → "What does X mean? I'll remember it."
 ```
 
-This tiered approach keeps CLAUDE.md lean (~100 lines) while supporting unlimited scale in memory/ — and avoids re-asking Pavi things already captured in Supermemory. Supermemory and this local memory are not the same store: this file is a fast decoder ring scoped to wherever the plugin runs; Supermemory is the durable, cross-platform record of decisions, deadlines, contacts, and direction changes (written via the `memory-capture` skill). Don't copy full Supermemory entries here wholesale — just the bits needed for quick lookup.
+This tiered approach keeps CLAUDE.md lean (~100 lines) while supporting unlimited scale in memory/ — and avoids re-asking Pavi things already captured in Konshus. Konshus and this local memory are not the same store: this file is a fast decoder ring scoped to wherever the plugin runs; Konshus is the durable, cross-platform record of decisions, deadlines, contacts, and direction changes (written via the `memory-capture` skill). Don't copy full Konshus entries here wholesale — just the bits needed for quick lookup.
 
 ## File Locations
 

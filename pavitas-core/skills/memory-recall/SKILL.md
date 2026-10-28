@@ -1,34 +1,50 @@
 ---
 name: memory-recall
 description: >-
-  Checks Supermemory, chat history, Littlebird Log, and email —
-  in that order — before saying information isn't available or asking Pavi
-  for something that might already be stored. Fires on recall-shaped asks
-  (contacts, rates, past decisions, "did I already..."), not general
-  knowledge or brand-new requests.
+  Recalls from Konshus (the source of truth about Pavi) when an answer depends
+  on something about him that isn't visible in the chat: preferences, people,
+  past decisions, project history, rates. Loads the whisper at the start of
+  every chat. Skips general knowledge, open research, brand-new requests, and
+  anything already surfaced this chat.
 ---
 
 # Memory Recall
 
-## Check order
-1. Supermemory — `mcp__Supermemory_MCP__recall` (pavi@paviproczko.com,
-   containerTag sm_project_default). Empty result ≠ proof — recall lags
-   behind writes. Don't report "not saved" off a single empty check.
-2. Chat history — `conversation_search` / `recent_chats`. Catches things
-   discussed but never distilled into a Supermemory write.
-3. Littlebird Log — Notion DB 28d089eb-... via Composio. Often has the raw
-   note before (or instead of) a Supermemory entry.
-4. Email — Slashy `list_messages`/`read_thread`, never Gmail MCP (drops
-   HTML-only mail). Use when the fact plausibly arrived via correspondence.
+Konshus is the source of truth about Pavi. Supermemory is legacy; don't read from it.
 
-## When this runs
-Recall-shaped asks only: "what's X's email," "what did we decide about Y,"
-"did I already set this up," "where's the note on..." Skip for general
-knowledge, open research, or requests with nothing yet to recall.
+## Gate 1 — Start of every new chat
 
-## Stopping condition
-All four checked and empty → tell Pavi what was checked, then ask directly.
-No silent guessing, no fabrication, no skipping straight to asking.
+Call `mcp__Konshus__get_whisper` once, silently, before the first reply.
+
+If the chat is planning or advice and the whisper is too thin to ground it, escalate once to `mcp__Konshus__get_briefing`. Never more than once per chat.
+
+## Gate 2 — Should recall run at all?
+
+Run it only when the answer depends on something about Pavi that isn't visible in the chat: preferences, people, past decisions, project history, rates.
+
+Skip it for general knowledge, open research, brand-new requests, and anything already surfaced this chat.
+
+## One path per question
+
+No synonym retries. Pick the path that fits and stay on it.
+
+| Question | Path |
+|---|---|
+| Identity ("who am I," "what do you know about me") | Use the whisper already loaded |
+| Specific recall (a preference, a person, a decision, a rate) | `search_atoms` with `kind` of `about_you`, `craft`, or `knowledge`. If empty, `search_artifacts` once |
+| Names a source: PDF, ChatGPT, Readwise, Obsidian, Day One, Notion, calendar | Straight to `search_artifacts` with `source_type` |
+| Quoting a document | `get_artifact` first, using the id from `search_artifacts` |
+| "What did I think back then" | `recall_past_self`, or `search_atoms` with `as_of` |
+| Catch-up | `whats_changed_since`; for work sessions, the agent log (`zo_agent.py`) |
+
+## Limits
+
+At most one atom call and one artifact call per question.
+
+If both come up empty, say what was checked and ask Pavi directly. No guessing, no fabrication.
+
+Atoms are summaries, never his exact words. Don't quote them as if they were. When two atoms disagree, give both with their dates instead of picking one.
 
 ## Don't
-Don't re-run mid-session for something already surfaced in this conversation.
+
+Never narrate the lookup. No "let me check Konshus." Use what came back.

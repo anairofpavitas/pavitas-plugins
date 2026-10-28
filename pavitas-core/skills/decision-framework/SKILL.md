@@ -109,7 +109,7 @@ Each framework concludes with a clear decision section. Answer:
 
 ### Step 6: Save the Decision
 
-The moment the decision resolves — YES, NO, or DEFER — run `pavitas-core:memory-capture`. Not only at final wrap: don't wait for the review trigger or the artifact file to be filed, the decision itself is the durable fact.
+When the decision resolves — YES, NO, or DEFER — run `pavitas-core:memory-capture` at the next natural pause. Not only at final wrap: don't wait for the review trigger or the artifact file to be filed, the decision itself is the durable fact. Direct "remember this" still writes immediately.
 
 ### Step 7: Set Review Triggers
 

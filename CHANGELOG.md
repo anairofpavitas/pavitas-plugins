@@ -8,6 +8,16 @@ Version numbers are independent from the skills version sequence.
 
 ---
 
+## [1.18.0] — 2026-10-28
+
+### Changed
+- **pavitas-core 2.5.0** — Konshus replaces Supermemory as the memory store;
+  Supermemory is legacy. The Haiku `memory-capture` sub-agent is removed (the
+  skill writes directly). `productivity` and marketplace descriptions now point
+  at Konshus. Skill-level detail is in `CHANGELOG-skills.md`.
+
+---
+
 ## [1.17.1] — 2026-10-22
 
 ### Fixed

@@ -93,7 +93,7 @@ All on Zo, via `Zo Computer:read_file` + `edit_file`/`write_file`. Per Pavi's ru
 - **`Documents/MCP-Proxies.md`** — add the wrapper under "Active proxies" with its URL, tool list, slug + set-date, and an explicit **OAuth shim: wired** or **OAuth shim: none (standard)** line. Update the at-a-glance shim table near the top too.
 - **`Documents/Connections-Index.md`** — add a row to the section 3 proxy table and bump "Last updated".
 - **Auto-memory `project_mcp_proxy.md`** — add the proxy entry with slug, dispatch mode, shim status, and `rotate by <+1 year>` date.
-- **Supermemory** — save the new proxy (name, slug, dispatch mode, shim status, date) so it's recallable in future sessions.
+- **Konshus** — save the new proxy (name, slug, dispatch mode, shim status, date) so it's recallable in future sessions.
 
 ### 7. Tell Pavi how to connect
 Give the URL. For the client's API-key/token field: **leave it blank** (URL-only). Mention which clients it's verified for.

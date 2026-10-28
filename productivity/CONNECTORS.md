@@ -38,11 +38,11 @@ Zo (`paviproczko.zo.space`) is Pavi's own always-on remote environment — it ke
 - **Home for anything recurring:** If a workflow here should run on a schedule (a daily `/update`, a standing reminder), prefer a Zo automation (`create_automation`) over a one-off scheduled task tied to this session — it survives regardless of which surface (Cowork, Claude Code, claude.ai) is open, or whether Pavi's computer is even on.
 - **Tool priority:** When touching Zo, call its MCP tools directly — `bash`, `read_file`, `write_file`, `create_automation`, `send_sms_to_user`, `send_telegram_message`, etc. Use `ask_zo` only as a fallback when no direct tool covers the need, not as the default entry point.
 
-## Supermemory vs. this plugin's local memory
+## Konshus vs. this plugin's local memory
 
-This plugin's `CLAUDE.md` / `memory/` directory and Pavi's Supermemory are **not the same thing** and shouldn't duplicate each other:
+This plugin's `CLAUDE.md` / `memory/` directory and Pavi's Konshus are **not the same thing** and shouldn't duplicate each other:
 
 - `CLAUDE.md` / `memory/` — fast, local decoder ring for shorthand (nicknames, acronyms, project codenames) scoped to wherever this plugin is running.
-- Supermemory — the durable, cross-platform system for facts that matter beyond one session (decisions, deadlines, contacts, direction changes), written via the `memory-capture` skill.
+- Konshus — the durable, cross-platform system for facts that matter beyond one session (decisions, deadlines, contacts, direction changes), written via the `memory-capture` skill.
 
-Before asking Pavi to explain a person, project, or term during bootstrap or gap-filling, check Supermemory first. Only ask if it's genuinely not there. Don't copy full Supermemory entries into `CLAUDE.md` wholesale — pull just what's needed for the decoder ring.
+Before asking Pavi to explain a person, project, or term during bootstrap or gap-filling, check Konshus first (`pavitas-core:memory-recall`). Only ask if it's genuinely not there. Don't copy full Konshus entries into `CLAUDE.md` wholesale — pull just what's needed for the decoder ring.

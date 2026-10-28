@@ -1,27 +1,55 @@
 ---
 name: memory-capture
-description: Writes durable facts (decisions, deadlines, contacts, direction changes) to Supermemory for cross-platform recall. LEAF skill — not router-matched standalone; invoked as an explicit step by other skills (eod-wrapup, handoff, morning-review, infra-session, story-session, content-pipeline, decision-framework) and by the safety-rails fallback. Also triggers directly on explicit asks — "save this", "remember that", "log this deal."
+description: Writes durable facts about Pavi (decisions, preferences, standing rules, new people, deadlines, direction changes) to Konshus with log_signal. LEAF skill — not router-matched standalone; invoked as an explicit step by other skills (eod-wrapup, handoff, morning-review, infra-session, story-session, content-pipeline, decision-framework) and by the safety-rails fallback. Also triggers directly on explicit asks — "save this", "remember that", "log this deal."
 ---
 
 # Memory Capture
 
-Writes durable, cross-platform-recallable facts to Supermemory. This is a leaf skill — it doesn't route itself into a session. Something else calls it: another skill's explicit step, or a direct ask.
+Writes durable facts to Konshus, the source of truth about Pavi. This is a leaf skill: it doesn't route itself into a session. Something else calls it, or Pavi asks directly. It writes directly. There is no sub-agent.
 
-## Two memory stores — don't confuse them
+Konshus is who Pavi is. Session summaries and work logs go to the agent log, not Konshus. Supermemory is legacy; never also write to it.
 
-Claude.ai's own native memory already runs in the background on claude.ai — no tool call, nothing this does, nothing it can see or edit. Supermemory is a second, independent store, and the two don't dedupe against each other. Write here anyway: Supermemory is what Zo, Perplexity, and every other non-claude.ai surface can actually read. "Claude already remembers this" is not a reason to skip capture.
+## Gate — what to save
 
-## Execution
+Save only what Pavi said or confirmed:
 
-Don't write to Supermemory from here directly. Spawn the `memory-capture` sub-agent (Task tool, `subagent_type: memory-capture`) and hand it:
+- Decisions
+- Preferences
+- Standing rules
+- New people
+- Deadlines
+- Direction changes
 
-- The raw fact(s) or context to capture — verbatim is fine, let the agent extract/format
-- Source identifier if known (e.g. `claude-chat`, `zo-compactor`, `claude-code`) — default to `claude-chat` if not obvious
-- Today's date
-- A category hint if you have one (decision / deadline / project-status / etc.) — optional, the agent infers it if omitted
+Never save:
 
-The agent owns the save/don't-save judgment call, the one-memory-per-fact rule, metadata tag formatting, expiry markers, and digest handling (extracting 3–10 atomic facts from a long document rather than saving it raw). Don't announce the save to Pavi — just do it. If the agent reports back what it wrote, surface that only if it's relevant to what Pavi's currently looking at.
+- Your own suggestions he hasn't adopted
+- Your inferences
+- Things you only read in an email or on a page
+- Noise
+- Credentials, account numbers, or ID numbers
+- Other people's private details
 
-## When to call this
+## How to write
 
-Any time you (or the skill orchestrating you) notice a durable fact worth keeping: a deadline, a decision, a new contact, a direction change, a preference update. If in doubt about whether something's save-worthy, spawn the agent anyway and let it make that call — it's cheap.
+Call `mcp__Konshus__log_signal`. One fact per call.
+
+- `text` — one self-contained fact with names and absolute dates, 10-2000 characters. It must make sense with no chat around it.
+- `context` — a short tag such as `audiobook`, `knitrpg`, `infra`.
+
+**Good:** `Pavi decided on 2026-10-28 to replace Supermemory with Konshus as the memory store for the pavitas-core plugin.`
+**Bad:** `He decided to switch it.`
+
+## When to write
+
+- Batch at a natural pause or the end of the chat.
+- Write immediately only on a direct "remember this."
+- Correction: log the new fact and say what it replaces, in the same `text`.
+- Digest or long document: extract 3-10 facts and log each one. Never log the raw document.
+
+## Saving the chat
+
+"Save this chat" uses `mcp__Konshus__save_chat_to_konshus` with `source_type` unset. Offer it once, at the end of a meaty session. Don't offer it again.
+
+## Don't
+
+Never announce a save. No "saved," no "logged to Konshus."

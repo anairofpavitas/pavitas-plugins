@@ -25,7 +25,7 @@ The skill is built around three foundational principles. These override anything
 3. Ask if there's any additional feedback that didn't come up during the walk.
 4. Classify each final item into one of three buckets:
    - **this-hunt only** — already applied, no further action
-   - **forever preference (memory)** — a durable taste/pattern preference that should color all future hunts but doesn't require a structural file edit. Save to Supermemory via `mcp__mcp-supermemory-ai__memory` (e.g. "Remember that I prefer found-object combinatorial hunts over commercial gift bags").
+   - **forever preference (memory)** — a durable taste/pattern preference that should color all future hunts but doesn't require a structural file edit. Save to Konshus via `pavitas-core:memory-capture` (e.g. "Remember that I prefer found-object combinatorial hunts over commercial gift bags").
    - **skill update (file edit)** — an actual structural or rule change to the skill. Edit the relevant `SKILL.md` or references file.
 5. Apply memory updates immediately at the user's OK. Offer to apply skill file edits now, or save them for later.
 
@@ -111,7 +111,7 @@ Bake research into seed prompts and clue mechanics naturally. Don't dump researc
    - For each banked item, ask: forever or just this hunt?
    - Ask if there's any additional feedback that didn't come up during the walk
    - Classify final feedback set (this-hunt only / forever preference / skill update)
-   - Apply forever preferences via Supermemory immediately (with the user's OK). Offer to apply skill file edits now or save for later.
+   - Apply forever preferences via Konshus immediately (with the user's OK). Offer to apply skill file edits now or save for later.
 
 If a destination-with-delivery hunt: also ask how the delivery went. Light, curious, no scoring.
 
@@ -136,7 +136,7 @@ Map each beat to the right tool. Be invisible about tool choice — the user is 
 - **Neighborhood research / open-now / events:** `WebSearch` with tight 2–5 word queries. Prefer this over rendering a full page.
 - **Specific shop check (hours, status, menu):** `WebFetch` against the URL. Escalate to Claude in Chrome (`mcp__Claude_in_Chrome__*`) only if the page is JS-rendered or requires interaction.
 - **Photos from the user:** the user attaches photos directly in chat. Read them with the file tools. **Text descriptions remain authoritative** — never override the user's naming based on what the photo looks like.
-- **Forever preferences from the debrief:** `mcp__mcp-supermemory-ai__memory`, written from Pavi's perspective ("Remember that I prefer found-object hunts in residential environments").
+- **Forever preferences from the debrief:** `pavitas-core:memory-capture` (Konshus `log_signal`), written from Pavi's perspective ("Remember that I prefer found-object hunts in residential environments").
 - **Closing artifacts (if the user wants one):** photo collage or visual via `canvas-design` skill, social posts as drafts in chat, journal pages via the `pdf` or `docx` skill. Always offer, never force.
 - **Scheduling a recurring hunt prompt** (e.g., weekly Sunday morning nudge): `mcp__scheduled-tasks__create_scheduled_task`. Only on user request.
 

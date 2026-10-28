@@ -168,5 +168,5 @@ Present grouped by confidence. High-confidence items offered to add directly; lo
 - Fuzzy matching on task titles handles minor wording differences
 - Safe to run frequently — only updates when there's new info
 - `--comprehensive` always runs interactively
-- Check Supermemory before asking Pavi to explain a person/project/term that's decoded here for the first time — only ask if it's genuinely not already recorded there
+- Check Konshus before asking Pavi to explain a person/project/term that's decoded here for the first time — only ask if it's genuinely not already recorded there
 - If Pavi wants this update running on a schedule, set it up as a Zo automation (`create_automation`) rather than a session-local scheduled task, so it keeps running even when this session isn't open
