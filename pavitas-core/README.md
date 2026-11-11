@@ -11,8 +11,7 @@ META          skill-router                 → goal → load-set dispatch
 CONSTRAINTS   safety-rails                 → conduct rules (always-on)
               workspace-context            → IDs, routing, facts (always-on)
               output-quality               → prose + visual standards (always-on)
-ORCHESTRATORS morning-review               → replaces daily-briefing
-              audiobook-kickoff            → new-project intake chain
+ORCHESTRATORS audiobook-kickoff            → new-project intake chain
               story-session                → fiction work, Story Grid
               content-pipeline             → two-brand social routing
               infra-session                → Zo / MCP / repo work
@@ -49,13 +48,6 @@ Layering rules: constraints never contain procedures; orchestrators never contai
 - **Setup (once per Mac, after the agent-log setup):** `python3 ~/.claude/plugins/marketplaces/pavitas-plugins/pavitas-core/runner/agent_runner.py setup`. Also `status`, `off`, `on`, `uninstall`. Log: `~/.config/pavitas/runner.log`.
 
 ## Evaluation rubrics (run via autoresearch, quarterly)
-
-**morning-review**
-- [ ] Email sourced from Cora brief; zero direct inbox calls
-- [ ] Four calendars pulled, today+tomorrow only
-- [ ] 3-3-3 present; ≥1 non-production item surfaced
-- [ ] Presented in chat before any Notion write; published only on explicit OK
-- [ ] Littlebird entry uses canonical DB ID; Notes section at top; America/Chicago dates
 
 **audiobook-kickoff**
 - [ ] Word counts match script on a 3-chapter spot check

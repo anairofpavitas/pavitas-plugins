@@ -1,6 +1,6 @@
 ---
 name: memory-capture
-description: Writes durable facts about Pavi (decisions, preferences, standing rules, new people, deadlines, direction changes) to Konshus with log_signal. LEAF skill — not router-matched standalone; invoked as an explicit step by other skills (eod-wrapup, handoff, morning-review, infra-session, story-session, content-pipeline, decision-framework) and by the safety-rails fallback. Also triggers directly on explicit asks — "save this", "remember that", "log this deal."
+description: Writes durable facts about Pavi (decisions, preferences, standing rules, new people, deadlines, direction changes) to Konshus with log_signal. LEAF skill — not router-matched standalone; invoked as an explicit step by other skills (eod-wrapup, handoff, infra-session, story-session, content-pipeline, decision-framework) and by the safety-rails fallback. Also triggers directly on explicit asks — "save this", "remember that", "log this deal."
 ---
 
 # Memory Capture
