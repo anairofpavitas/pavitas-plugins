@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "pavitas-plugins",
-  "version": "1.17.1",
+  "version": "1.19.0",
   "description": "Custom plugin suite for Pavitas Productions LLC",
   "owner": {
     "name": "Pavitas Productions"
@@ -15,7 +15,7 @@
     },
     {
       "name": "daily-ops",
-      "description": "Daily workflow orchestration: briefings, handoffs, email triage, task capture, day reviews",
+      "description": "Daily workflow orchestration: handoffs, email triage, task capture, day reviews",
       "source": "./daily-ops",
       "category": "productivity"
     },
@@ -45,7 +45,7 @@
     },
     {
       "name": "pavitas-core",
-      "description": "Core skill architecture: router, constraints (safety-rails, workspace-context, output-quality), orchestrators (morning-review, audiobook-kickoff, story-session, content-pipeline, infra-session), handoff, decision-framework, proof, using-slashy. Hooks: shared agent log with Zo. Runner: Zo-queued Claude Code jobs",
+      "description": "Core skill architecture: router, constraints (safety-rails, workspace-context, output-quality), orchestrators (audiobook-kickoff, story-session, content-pipeline, infra-session), handoff, decision-framework, proof, using-slashy. Hooks: shared agent log with Zo. Runner: Zo-queued Claude Code jobs",
       "source": "./pavitas-core",
       "category": "productivity"
     },

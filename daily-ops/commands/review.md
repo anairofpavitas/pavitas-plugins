@@ -8,8 +8,8 @@ Wrap up the day and set up tomorrow.
 
 ## Execution Steps
 
-1. **Check today's briefing** — pull the Littlebird Log entry from this morning
-2. **Review the 3-3-3** against what actually happened:
+1. **Check this morning's Littlebird Log entry**, if there is one (the morning briefing command was retired 2026-11-11, so there may be none)
+2. **Review the 3-3-3** against what actually happened, if this morning's entry has one:
    - Which deep focus items were completed?
    - Which quick wins got done?
    - Which habits/joy items happened?
