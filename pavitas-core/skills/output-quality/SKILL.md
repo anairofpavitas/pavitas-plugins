@@ -1,6 +1,6 @@
 ---
 name: output-quality
-description: Always-on quality constraints for everything Claude produces for Pavi. Two halves — prose (strip AI-isms from all non-technical writing) and visual (elevate all presentations, documents, dashboards, HTML beyond defaults). Read once per session; apply automatically without announcing. For deep work, read the matching reference file. Merges the former humanize-prose and design-elevation skills.
+description: Always-on quality constraints for everything Claude produces for Pavi. Two halves — prose (strip AI-isms from all non-technical writing) and visual (elevate all presentations, documents, dashboards, HTML beyond defaults). Read once per session; apply automatically without announcing. For deep work, read the matching reference file. Merges the former humanize-prose and design-elevation skills. Visual work uses the Pavitas design profile.
 ---
 
 # Output Quality
@@ -35,6 +35,8 @@ Generic is a choice, not a constraint. Build functional first, then elevate befo
 2. **Color** — one primary + one accent + grays, applied functionally, with restraint
 3. **Layout** — 8pt spacing system, grid alignment, generous margins, asymmetry where it guides attention
 4. **Format polish** — slides: one idea per slide, 48–64pt headlines; sheets: styled headers, banding, right-aligned numbers, no gridlines; HTML: hover states, 0.2s transitions; docs: 1in+ margins, running headers
+
+**Pavitas house look.** Anything visual for Pavi or Pavitas Productions starts from `references/pavitas-design-profile.md`: ink, stone and parchment with one coral pop, Mrs Eaves (Libre Baskerville on claude.ai pages), flat 4–6px cards, the torn-paper edge. Brand-facing work (site, clients, invoices) stays emoji-free and light-only. Personal pages and docs for Pavi get flair: a few emoji as section markers, small inline images or icons, color, and a dark mode. The profile comes from the Pavitas Productions Design System on Claude Design; if they disagree, the Design System wins.
 
 For substantial visual work, read before delivering: `references/interrogation-checklist.md`, then pull moves from `references/technique-catalog.md` and `references/reference-library.md`. Philosophy and bold-vs-restraint judgment: `references/design-philosophy.md`. Systematic order of operations: `references/elevation-protocol.md`.
 

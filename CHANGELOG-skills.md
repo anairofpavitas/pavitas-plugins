@@ -34,6 +34,11 @@ reference file updates, and debrief-driven edits all get logged here.
   skill. Upstream remains canonical: when the two disagree, the Zo file wins and the copy is the bug.
 
 ### Changed
+- **`pavitas-core:output-quality`** — the visual half now starts from the Pavitas design profile
+  (`references/pavitas-design-profile.md`), taken from the Pavitas Productions Design System on
+  Claude Design: palette and its rule of thirds, Mrs Eaves with the Libre Baskerville fallback for
+  claude.ai pages, shape, motion and the torn-paper edge. Splits brand-facing work (no emoji, light
+  only) from personal pages for Pavi (a few emoji, small images, color, dark mode), per his Nov 10 ask.
 - **pavitas-core:memory-recall / memory-capture** — Konshus replaces Supermemory
   as the memory store and source of truth about Pavi; Supermemory is legacy.
   Skill names unchanged so existing callers keep working. Recall now loads
