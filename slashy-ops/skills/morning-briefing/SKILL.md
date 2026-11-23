@@ -1,11 +1,11 @@
 ---
 name: morning-briefing
-description: Email-first morning intelligence using Slashy. Surfaces unread priorities, calendar snapshot, and threaded context on anything flagged — without Cora mediation. Use when Pavi wants a focused inbox + calendar picture rather than the full pavitas-core:morning-review. Triggers on "email brief", "morning email check", "what's in my inbox", "email briefing".
+description: Email-first morning intelligence using Slashy. Surfaces unread priorities, calendar snapshot, and threaded context on anything flagged — without Cora mediation. Use when Pavi wants a focused inbox + calendar picture for the day ahead. Triggers on "email brief", "morning email check", "what's in my inbox", "email briefing".
 ---
 
 # Morning Briefing
 
-Focused email + calendar intelligence at day start. Not a full day orchestrator — that's `pavitas-core:morning-review`. This skill goes deep on inbox and calendar without Cora mediation.
+Focused email + calendar intelligence at day start. Not a full day orchestrator. This skill goes deep on inbox and calendar without Cora mediation.
 
 Tool mechanics: `pavitas-core:using-slashy`. Email body prose: `pavitas-core:output-quality`. IDs and routing: `pavitas-core:workspace-context`.
 

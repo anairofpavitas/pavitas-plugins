@@ -12,7 +12,6 @@ Match the user's goal to ONE profile. Read that profile's skills. Do not read ot
 
 | Goal signal | Profile | Load |
 |---|---|---|
-| Morning greeting, "what's on today", "brief me" | morning-review | `pavitas-core:morning-review` (calls `pavitas-core:decision-framework` by reference) |
 | New book, script uploaded, "new audiobook project" | audiobook-kickoff | `pavitas-core:audiobook-kickoff` → `audiobook-production:audiobook-script-analyzer`, `audiobook-production:audiobook-project-setup` (Cowork-native), `business-documentation` |
 | Invoice, contract, client correspondence | biz-admin | `business-documentation` |
 | Fiction drafting, "interview me", Jim & Percy, Story Grid work | story-session | `pavitas-core:story-session` (self-contained — interview and style-matching are inlined) |
@@ -49,7 +48,7 @@ Match the user's goal to ONE profile. Read that profile's skills. Do not read ot
 
 Every installed skill must appear in this list with a routing home. A skill not listed here is invisible to the system — when installing or removing a skill, update this manifest in the same change. Any audit of the ecosystem starts by diffing installed skills against this list.
 
-**pavitas-core (15):** skill-router (this file) · safety-rails, workspace-context, output-quality (always-on constraints) · morning-review, audiobook-kickoff, story-session, content-pipeline, infra-session (orchestrators) · handoff, decision-framework, proof (direct-routed) · using-slashy (shared Slashy mechanics reference — loaded by email skills) · memory-capture (leaf — invoked as an explicit step by eod-wrapup, handoff, morning-review, infra-session, story-session, content-pipeline, and decision-framework, plus the safety-rails fallback; not router-matched standalone, but catches direct asks per the table above) · memory-recall (leaf — invoked directly by the safety-rails Recall before asking rule on recall-shaped requests; not router-matched standalone).
+**pavitas-core (14):** skill-router (this file) · safety-rails, workspace-context, output-quality (always-on constraints) · audiobook-kickoff, story-session, content-pipeline, infra-session (orchestrators) · handoff, decision-framework, proof (direct-routed) · using-slashy (shared Slashy mechanics reference — loaded by email skills) · memory-capture (leaf — invoked as an explicit step by eod-wrapup, handoff, infra-session, story-session, content-pipeline, and decision-framework, plus the safety-rails fallback; not router-matched standalone, but catches direct asks per the table above) · memory-recall (leaf — invoked directly by the safety-rails Recall before asking rule on recall-shaped requests; not router-matched standalone).
 
 **User skills (4):** business-documentation (audiobook-kickoff / biz-admin) · mcp-wrapper-builder, autoresearch (infra-session) · relational-emotional-regulation (support).
 
@@ -65,4 +64,4 @@ Every installed skill must appear in this list with a routing home. A skill not 
 
 **Environment notes:** audiobook-production:audiobook-project-setup is Cowork-native (needs Mac filesystem access); from Claude.ai, folder creation happens on Zo instead — see audiobook-kickoff. autoresearch runs in Claude Code.
 
-**Removed — never reference:** writing-workshop (all four skills; interview/style-matching now live inside story-session), publisher-relations:publisher-profiles, enterprise-search (all three), daily-briefing, zo-workspace-orientation, design-elevation, humanize-prose (merged into output-quality), fiber-arts-content (merged into spins-yarns-content — its old voice guidance is dead; spins-yarns-brand-voice is the only voice source).
+**Removed — never reference:** writing-workshop (all four skills; interview/style-matching now live inside story-session), publisher-relations:publisher-profiles, enterprise-search (all three), daily-briefing, morning-review and its morning-intel agent (retired 2026-11-11), daily-ops:briefing (retired 2026-11-11), zo-workspace-orientation, design-elevation, humanize-prose (merged into output-quality), fiber-arts-content (merged into spins-yarns-content — its old voice guidance is dead; spins-yarns-brand-voice is the only voice source).

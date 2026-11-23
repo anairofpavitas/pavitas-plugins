@@ -1,5 +1,5 @@
 ---
-description: Mid-day email triage. Quick scan of inbox without the full briefing — just email intelligence using Cora-style processing.
+description: Mid-day email triage. Quick scan of inbox — email intelligence using Cora-style processing.
 model: haiku
 ---
 
@@ -10,7 +10,7 @@ Lightweight mid-day inbox check. No calendar, no tasks, no Notion — just email
 ## Execution
 
 1. Search Gmail for unread emails from last 12 hours
-2. Apply Cora-style triage (same categories as briefing):
+2. Apply Cora-style triage:
    - 🔴 ACTION REQUIRED — with extracted action and deadline
    - 🟢 FYI — one-line summary
    - 🏷️ PROMOS — bare-bones, star relevant ones

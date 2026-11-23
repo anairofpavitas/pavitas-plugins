@@ -78,7 +78,6 @@ Connectors marked *(session)* are not bundled in the plugin's `.mcp.json` — th
 - Skills: `audiobook-production:audiobook-script-analyzer` (file naming convention, chapter→workday distribution — source of truth for `new-project`/`script-scout`/`production-tracker`), `audiobook-production:audiobook-project-setup` (Cowork-native folder creation)
 
 ### Daily Operations
-- `/daily-ops:briefing` — Morning briefing (3-3-3 method)
 - `/daily-ops:handoff` — Session handoff management
 - `/daily-ops:triage` — Mid-day email check
 - `/daily-ops:task` — Quick task capture to Notion
@@ -133,11 +132,11 @@ Shipped 2026-06-10 as the skills-v2 refactor, packaged as a plugin (v2.0.0). Thi
 |-------|--------|------|
 | Meta | `skill-router` | Goal → load-set dispatch; owns the coverage manifest every installed skill must appear in |
 | Constraints (always-on) | `safety-rails`, `workspace-context`, `output-quality` | Conduct rules; IDs/routing/facts; prose + visual standards |
-| Orchestrators | `morning-review`, `audiobook-kickoff`, `story-session`, `content-pipeline`, `infra-session` | Domain workflows that name which leaf skills to load |
+| Orchestrators | `audiobook-kickoff`, `story-session`, `content-pipeline`, `infra-session` | Domain workflows that name which leaf skills to load |
 | Direct-routed | `handoff`, `decision-framework`, `proof` | Load on their own triggers |
 
 Notes:
-- `morning-review` replaces the old `daily-briefing` skill (712 → ~70 lines; email sourced from the Cora brief).
+- `morning-review` (which had replaced `daily-briefing`) was retired on 2026-11-11, along with `daily-ops:briefing`.
 - `output-quality` absorbed `humanize-prose` and `design-elevation` (reference files preserved).
 - `story-session` is self-contained — writing-workshop's interview and style-matching were inlined (skills-v2.1).
 - Layering rules, eval rubrics, and migration details: [pavitas-core/README.md](pavitas-core/README.md) and [pavitas-core/MIGRATION.md](pavitas-core/MIGRATION.md).

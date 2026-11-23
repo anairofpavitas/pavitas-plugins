@@ -8,6 +8,19 @@ Version numbers are independent from the skills version sequence.
 
 ---
 
+## [1.19.0] — 2026-11-11
+
+### Removed
+- **pavitas-core 2.6.0** — `morning-review` and its `morning-intel` sub-agent are retired
+  (Pavi, Nov 11: no longer used; nothing scheduled ran them). `skill-router` drops the
+  morning row and lists both under Removed; `memory-capture` and `slashy-ops:morning-briefing`
+  no longer point at it.
+- **daily-ops 1.1.0** — `/daily-ops:briefing` and its three sub-agents (`calendar-intel`,
+  `email-triage`, `notion-tracker`, used only by it) are retired. `/daily-ops:review` now
+  skips the 3-3-3 comparison when there is no morning entry.
+
+---
+
 ## [1.18.0] — 2026-10-28
 
 ### Changed
